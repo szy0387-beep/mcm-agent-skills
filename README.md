@@ -9,11 +9,13 @@
 | 现在要做什么 | 打开这一章 |
 | --- | --- |
 | 拿到题目，想和队友从读题走到提交 | [全流程与三人分工](docs/end-to-end.md) |
+| 想从手机和 WPS 练到陌生题合练 | [三人分级练习](docs/training-drill.md) |
 | 知道要交什么，想选模型、算法和验证方式 | [常见题型与方法](docs/modeling-methods.md) |
 | 要画论文图、地图、流程图或交互图 | [可视化选型指南与代码示例](docs/visualization-guide.md) |
 | 想看一套真实案例如何分析、运行、写进论文 | [宇树机器人赛题全流程复盘](docs/robotics-case.md) |
 | 想亲手把英文题做成一篇可编译的练习稿 | [英文调度完整短例](examples/dispatch/README.md) |
 | 计算已做完，准备核对结论、打包并交稿 | [终稿复核和源码包检查](docs/final-delivery.md) |
+| 要起英文稿或按评阅原则审自己的论文 | [亚太赛 LaTeX 模板](templates/apmcm-paper/) · [逐问自审与同题对照](docs/paper-review.md) |
 
 ## 本次亚太赛三人四日分工
 
@@ -41,7 +43,7 @@
 
 ## 快速开始
 
-1. [下载完整 ZIP](https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip)并解压。用 Codex 打开包含本页和 `AGENTS.md` 的文件夹。**11 个核心 Skill 和 21 个专项 Skill 均已随包提供。**
+1. [下载完整 ZIP](https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip)并解压。用 Codex 打开包含本页和 `AGENTS.md` 的文件夹。**13 个核心 Skill 和 21 个专项 Skill 均已随包提供。**
 2. 把题面和附件复制到该文件夹下的 `cases/我的题/inputs/`。已有代码、结果或论文时告诉 Codex 位置，方便从当前步骤接手。也可以在 Codex 中附上文件并说明它们对应哪一问。
 3. 在这个项目的聊天里输入下面的一句。也可以点名 `$mcm-skill-router`。
 
@@ -80,6 +82,8 @@ python .agents/skills/mcm-fast/scripts/dispatch.py examples/dispatch/units.csv e
 | [mcm-simulation-training](.agents/skills/mcm-simulation-training/SKILL.md) | 过程仿真、情景和灵敏度 |
 | [mcm-visualization-training](.agents/skills/mcm-visualization-training/SKILL.md) | 论文图、数据口径和视觉复核 |
 | [mcm-paper-training](.agents/skills/mcm-paper-training/SKILL.md) | 竞赛论文源稿、Overleaf 和证据对照 |
+| [mcm-paper-self-review](.agents/skills/mcm-paper-self-review/SKILL.md) | 逐问查漏、核对摘要和评阅证据 |
+| [mcm-model-comparison](.agents/skills/mcm-model-comparison/SKILL.md) | 统一约束、分母和指标后比较方案 |
 | [mcm-citation](.agents/skills/mcm-citation/SKILL.md) | 找出处、插入正文引用、整理书目和终审 |
 | [mcm-training-review](.agents/skills/mcm-training-review/SKILL.md) | 独立复算、单错反例、迁移与复盘 |
 | [mcm-fast](.agents/skills/mcm-fast/SKILL.md) | 复跑本包的调度示例和可复用的月度预测脚本 |
@@ -102,6 +106,10 @@ python .agents/skills/mcm-fast/scripts/dispatch.py examples/dispatch/units.csv e
 维护者可用 `python scripts/install_extras.py --list` 查锁定版本和上游来源。[版本清单](third-party-skills.json)
 
 在正式比赛中，按当届组委会规则确定 AI 使用范围、提交内容和披露要求。练习真题可从[亚太赛官网](https://www.apmcm.org/)等赛事站点获取。
+
+## 维护与贡献
+
+运行 `python scripts/check_package.py` 核对随包技能、链接、调度练习和源码 ZIP。[贡献说明](CONTRIBUTING.md) · [GitHub Actions 检查](https://github.com/szy0387-beep/mcm-agent-skills/actions)
 
 ## 许可证
 

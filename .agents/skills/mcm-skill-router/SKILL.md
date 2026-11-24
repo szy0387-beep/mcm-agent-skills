@@ -16,7 +16,7 @@ description: 数学建模项目的总入口。用户描述想做的事、询问�
 | 用户目标 | 推荐流程 | 主入口 |
 | --- | --- | --- |
 | 让 AI 用真题练完整流程或继续自主训练 | 从训练记录接手下一环，逐阶段验收 | [自主训练流程](references/autonomous-training.md) |
-| 我想从零学真题、我们三人想合练 | 一步一练，手算后复跑，队友交叉核验 | `$mcm-team-drill` |
+| 我想从零学真题、我们三人想合练 | 先用表格手算，再复跑、注入单错并换题 | [三人合练](../../../docs/training-drill.md) · `$mcm-team-drill` |
 | 复跑已有案例、换输入跑现成脚本 | 核对输入与适用范围，运行本地入口，先读摘要 | `$mcm-fast` |
 | 拿到英文原题，想逐问翻译或核对术语、约束、附件字段 | 按原题逐问核对并生成中文任务表 | [英文题翻译](../mcm-problem-translate/SKILL.md) |
 | 给出自己的题面和附件，想开题、完成小问或接手已有进度 | 从当前案例推进，串起审题、模型、程序、结果和证据 | [新题协作流程](references/new-problem.md) |
@@ -27,6 +27,8 @@ description: 数学建模项目的总入口。用户描述想做的事、询问�
 | 想探索数据分布、做交互图、画地图或流程图 | 按交付物选 Seaborn、Plotly、GeoPandas 或 Mermaid | [可视化选型指南](../../../docs/visualization-guide.md) |
 | 有模型与结果，想要完整竞赛论文或 Overleaf 包 | 用已核验结果生成论文，按所用模板检查并交付 | [论文训练](../mcm-paper-training/SKILL.md) |
 | 有稿件，想核对数字或交付终稿 | 核对证据和假设、修编译，交源码包时在新目录解包重编 | [论文训练](../mcm-paper-training/SKILL.md) · [终稿复核](../../../docs/final-delivery.md) |
+| 想按评阅原则自查或看同题获奖稿差在哪 | 对照原题逐问查证据，按影响给出修订和验收 | [论文自审](../mcm-paper-self-review/SKILL.md) |
+| 两份答案差很多，或要比较节能幅度、基线和候选 | 统一任务、约束、指标、单位和分母后复算 | [方案对照](../mcm-model-comparison/SKILL.md) |
 | 想复盘训练、定位实现错因或验证能否迁移 | 独立复算，做单错反例和新输入检查 | [训练复盘](../mcm-training-review/SKILL.md) |
 | 想找文献、数据或方法出处，补 BibTeX 或核查论文引用 | 找一手来源，核对它是否支持正文，再定位引用与条目 | [引用与参考文献](../mcm-citation/SKILL.md) |
 

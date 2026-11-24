@@ -2,6 +2,12 @@
 
 按 Git 标签记录面向组员的变化。日期使用北京时间。[GitHub 发布页](https://github.com/szy0387-beep/mcm-agent-skills/releases)
 
+## [v2.3.0] · 2026-11-24
+
+- 新增论文自审和方案对照两个核心 Skill，随包技能达到 34 个。补上七项评阅原则、自审表及宇树同题作品的对照方法。
+- 加入亚太赛英文 LaTeX 起稿模板，并提供从手机、WPS 到 Python 和陌生题的三人合练路线。
+- 新增标准库验收脚本和 Windows、Ubuntu 的 GitHub Actions 检查，核对技能清单、公开入口、调度结果与 Overleaf 源码包。
+
 ## [v2.2.0] · 2026-11-24
 
 - 收录 Seaborn、Plotly、GeoPandas 和 Mermaid 四项可视化 Skill，随包技能达到 32 个。
@@ -71,6 +77,7 @@
 - 首次标记发布，提供数学建模总入口、训练技能和第三方来源清单。
 - 修正 Windows 上安装独立专项技能的路径处理。
 
+[v2.3.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.2.0...v2.3.0
 [v2.2.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.1.0...v2.2.0
 [v2.1.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.0.0...v2.1.0
 [v2.0.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v1.8.0...v2.0.0

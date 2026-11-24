@@ -1,0 +1,169 @@
+\documentclass[12pt,a4paper]{article}
+
+\usepackage[top=25.4mm,bottom=25.4mm,left=25mm,right=25mm,
+  headheight=12pt,headsep=18.5pt]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext,newtxmath}
+\usepackage{booktabs,graphicx,tabularx}
+\usepackage{fancyhdr,lastpage,titlesec,titletoc}
+\usepackage{etoolbox}
+\usepackage[font=small,labelfont=bf,labelsep=space]{caption}
+\usepackage[hidelinks,pageanchor=false]{hyperref}
+
+\newcommand{\ContestYear}{}
+\newcommand{\TeamNumber}{}
+\newcommand{\ProblemChosen}{}
+\newcommand{\PaperTitle}{Paper Title}
+
+\newcommand{\TeamHeader}{\ifdefempty{\TeamNumber}{}{Team \# \TeamNumber}}
+\fancypagestyle{frontmatter}{%
+  \fancyhf{}%
+  \fancyhead[L]{\fontsize{9}{11}\selectfont\TeamHeader}%
+  \renewcommand{\headrulewidth}{0.6pt}%
+}
+\fancypagestyle{mainmatter}{%
+  \fancyhf{}%
+  \fancyhead[L]{\fontsize{9}{11}\selectfont\TeamHeader}%
+  \fancyhead[R]{\fontsize{9}{11}\selectfont Page \thepage\ of \pageref*{LastPage}}%
+  \renewcommand{\headrulewidth}{0.6pt}%
+}
+
+\linespread{1.08}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+\setlength{\emergencystretch}{1em}
+\raggedbottom
+\renewcommand{\thesection}{\Roman{section}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\titleformat{\section}[block]
+  {\centering\bfseries\fontsize{16}{19}\selectfont}{\thesection.}{0.45em}{}
+\titleformat{\subsection}
+  {\bfseries\fontsize{14}{17}\selectfont}{\thesubsection}{0.6em}{}
+\titleformat{\subsubsection}
+  {\bfseries\normalsize}{\thesubsubsection}{0.6em}{}
+\titlespacing*{\section}{0pt}{16pt plus 3pt}{9pt}
+\titlespacing*{\subsection}{0pt}{12pt plus 2pt}{4pt}
+\titlespacing*{\subsubsection}{0pt}{7pt plus 2pt}{3pt}
+
+\setcounter{tocdepth}{3}
+\renewcommand{\contentsname}{\fontsize{18}{21}\selectfont Contents}
+\titlecontents{section}[2.6em]{\small\bfseries}
+  {\contentslabel[\thecontentslabel.]{2.6em}}{\hspace*{-2.6em}}
+  {\titlerule*[3pt]{.}\contentspage}
+\titlecontents{subsection}[3.0em]{\normalsize}
+  {\contentslabel{3.0em}}{}{\titlerule*[3pt]{.}\contentspage}
+\titlecontents{subsubsection}[4.8em]{\small}
+  {\contentslabel{3.1em}}{}{\titlerule*[3pt]{.}\contentspage}
+\captionsetup{justification=centering}
+
+% Keep the bibliography heading in the numbered section sequence.
+\patchcmd{\thebibliography}{\section*{\refname}}{\clearpage\section{\refname}}{}
+  {\PackageError{apmcm-paper}{Could not number the bibliography heading}{}}
+
+\newcommand{\PaperBackMatter}[1]{%
+  \clearpage
+  \phantomsection
+  \section*{#1}%
+  \addcontentsline{toc}{section}{#1}%
+}
+
+\begin{document}
+\pagestyle{frontmatter}
+
+\begin{center}
+  \vspace*{10pt}
+  \setlength{\extrarowheight}{6pt}
+  \begin{tabular}{|c|c|}
+    \hline
+    \makebox[8em]{Team Number} & \makebox[8em]{\TeamNumber} \\
+    \hline
+    Problem Chosen & \ProblemChosen \\
+    \hline
+  \end{tabular}
+
+  \vspace{19pt}
+  \rule{0.9\linewidth}{0.8pt}\par
+  \vspace{4pt}
+  \ContestYear{} APMCM Summary Sheet\par
+  \vspace{4pt}
+  {\bfseries\fontsize{16}{21}\selectfont\PaperTitle\par}
+  \vspace{8pt}
+  {\bfseries Summary\par}
+\end{center}
+
+\noindent State the problem, the scope of the paper, and the overall approach.
+
+\textbf{Problem 1.} State the method and report the verified result with
+its units and the conditions under which it applies.
+
+\noindent\textbf{Keywords:} Replace with terms specific to the paper.
+
+\clearpage
+\begingroup
+  \titlespacing*{\section}{0pt}{0pt}{9pt}
+  \vspace*{10pt}
+  \tableofcontents
+\endgroup
+
+\newgeometry{top=25.4mm,bottom=25.4mm,left=31.8mm,right=31.8mm,
+  headheight=12pt,headsep=18.5pt}
+\setlength{\headwidth}{\textwidth}
+\setcounter{page}{1}
+\hypersetup{pageanchor=true}
+\pagestyle{mainmatter}
+
+\section{Introduction}
+\subsection{Background}
+Describe the setting and the motivation for the work.
+\subsection{Problem Restatement}
+State each covered task and its required output.
+\subsection{Our Work}
+Show how the inputs, models, and results connect across tasks.
+
+\section{The Description of the Problem}
+\subsection{Analysis of Problem 1}
+Explain the constraints, the modeling challenge, and the chosen approach.
+
+\section{Basic Assumptions}
+State the assumptions, their basis, and the conclusions they affect.
+
+\section{Symbols}
+\begin{table}[!ht]
+  \centering
+  \begin{tabularx}{\linewidth}{@{}lXl@{}}
+    \toprule
+    \textbf{\textit{Symbol}} & \textbf{\textit{Definition}} & \textbf{\textit{Unit}} \\
+    \midrule
+    $x$ & Replace with a symbol used in the model & State the unit \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\section{Models}
+\subsection{Analysis and Solution of Problem 1}
+\subsubsection{Model Preparation}
+Document the inputs and any preprocessing relevant to this task.
+\subsubsection{Model Formulation and Solution}
+Derive the model and describe the solution procedure. Cite the sources
+actually used~\cite{verified-source}.
+\subsubsection{Results and Analysis}
+Report the verified results, and explain what the checks support.
+
+\section{Evaluation and Promotion of the Model}
+\subsection{Strengths}
+Explain the demonstrated strengths of the model.
+\subsection{Weaknesses}
+Describe its limitations and the conditions for applying it elsewhere.
+
+\begin{thebibliography}{9}
+  \bibitem{verified-source} Replace with a verified source cited in the text.
+\end{thebibliography}
+
+% Omit this section when the actual use and contest instructions do not call for it.
+\PaperBackMatter{Report on Use of AI Tools}
+Record the tools, tasks, material retained, and how it was checked.
+
+% Omit this section when there is no appendix material.
+\PaperBackMatter{Appendix}
+List relevant software, source code, and supporting material.
+\end{document}

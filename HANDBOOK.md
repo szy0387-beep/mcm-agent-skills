@@ -11,13 +11,15 @@
 | 有结果，要选统计图、交互图、地图或流程图 | 图源、图文件、单位和核对记录 | [可视化选型指南](docs/visualization-guide.md) |
 | 把结果交给下游小问或队友 | 文件版本、字段和单位、覆盖范围、验收记录 | [交接模板](templates/CASE.md#小问产物交接) |
 | 写摘要、英文正文和结论 | 逐问答案、图表、引用和可编译源稿 | [从结果写到交稿](docs/end-to-end.md#7-写论文与编译) |
+| 按评阅原则自审、对照同题稿 | 逐问证据、修订优先级和复核记录 | [论文自审指南](docs/paper-review.md) · [空白自审表](templates/PAPER_REVIEW.md) |
 | 编译、审查和交稿 | 终稿证据表、解包重编的 PDF、必要附件和提交确认 | [终稿与源码包检查](docs/final-delivery.md) · [三人终审](docs/end-to-end.md#8-从干净目录复跑并终审) |
 
 ## 用两道题走一遍
 
 - **看真实分工。** 机器人赛题展示同一道题里直接计算、轨迹规划、动作协调和能耗比较分别怎么做，哪些结果可入稿，哪些需要补证据。[宇树案例拆解](docs/robotics-case.md)
 - **上手复跑。** 用原始 CSV 完成英文三问。先手算一个小时，再出图、组装 LaTeX 源稿、编译、互相审阅最终 PDF。[英文调度完整短例](examples/dispatch/README.md) · [三人交接示例](examples/dispatch/team-handoff.md)
+- **分级合练。** 先用手机或表格做一个时段，再测试反例，最后选未练过的题做限时复核。[三人合练与换题](docs/training-drill.md)
 
 ## 比赛时从这里找工具
 
-先看当届规则。已有程序和结果时，按小问核对当前验收范围，再选用工具。[亚太赛四天安排](docs/apmcm-2026.md) · [可复制的 Codex 指令](docs/codex-prompts.md) · [32 个技能入口](README.md#技能一览)
+先看当届规则。已有程序和结果时，按小问核对当前验收范围，再选用工具。[亚太赛四天安排](docs/apmcm-2026.md) · [论文起稿模板](templates/apmcm-paper/README.md) · [可复制的 Codex 指令](docs/codex-prompts.md) · [34 个技能入口](README.md#技能一览)
