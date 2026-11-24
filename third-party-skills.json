@@ -27,7 +27,7 @@
         {
           "name": "sympy",
           "path": "skills/sympy",
-          "license": "See license in upstream SKILL.md"
+          "license": "BSD-3-Clause"
         },
         {
           "name": "uncertainty-and-units",
@@ -63,7 +63,7 @@
         {
           "name": "matplotlib",
           "path": "skills/matplotlib",
-          "license": "See license in upstream SKILL.md"
+          "license": "Matplotlib License"
         }
       ]
     },

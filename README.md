@@ -4,7 +4,7 @@
 
 ## 快速开始
 
-1. 在 GitHub 选 **Code → Download ZIP** 并解压。用 Codex 打开包含本页和 `AGENTS.md` 的文件夹。9 个核心 Skill 随仓库一起提供。
+1. 在 GitHub 选 **Code → Download ZIP** 并解压。用 Codex 打开包含本页和 `AGENTS.md` 的文件夹。**9 个核心 Skill 和 17 个专项 Skill 均已随包提供。**
 2. 把题面和附件复制到该文件夹下的 `cases/我的题/inputs/`。已有代码、结果或论文时告诉 Codex 位置，方便从当前步骤接手。也可以在 Codex 中附上文件并说明它们对应哪一问。
 3. 在这个项目的聊天里输入下面的一句。也可以点名 `$mcm-skill-router`。
 
@@ -14,7 +14,7 @@
 
 ### 我该准备什么
 
-使用核心技能需要可用的 Codex。运行内置案例和 Python 解题代码还需要 Python 3.10 或更新版本。可选专项和第三方 Python 包按你的题目安装。生成论文源稿后，可用题目指定的本地编译器或 Overleaf 生成 PDF。
+使用技能需要可用的 Codex。运行内置案例和 Python 解题代码还需要 Python 3.10 或更新版本。运行某个专项技能的示例时，按需安装它用到的 Python 库或求解器。生成论文源稿后，可用题目指定的本地编译器或 Overleaf 生成 PDF。
 
 如希望在终端建立完整案例目录，在项目根目录运行 `python scripts/new_case.py team-q1`。它会建立 `inputs/`、`src/`、`outputs/`、`paper/` 和 `CASE.md`。组员各用自己的案例目录，附件与结果默认保存在本地。
 
@@ -42,20 +42,23 @@ python .agents/skills/mcm-fast/scripts/dispatch.py examples/dispatch/units.csv e
 | [mcm-fast](.agents/skills/mcm-fast/SKILL.md) | 复跑本包的调度示例和可复用的月度预测脚本 |
 | [mcm-team-drill](.agents/skills/mcm-team-drill/SKILL.md) | 个人陪练与三人队交接 |
 
-## 可选专项技能
+## 随包专项技能
 
-核心流程开箱可用。需要统计、优化、仿真或审图方面的专项参考时，可从锁定的上游版本安装：
+解压后可以直接点名专项 Skill，也可以让 `$mcm-skill-router` 按当前小问选择。专项设置为按需调用，适合在遇到具体方法或验收问题时使用。[17 个专项 Skill 的入口和用途](.agents/skills/mcm-skill-router/references/specialist-skills.md)
 
-```sh
-python scripts/install_extras.py --list
-python scripts/install_extras.py exploratory-data-analysis statsmodels
-python scripts/install_extras.py --all
-```
+| 任务 | 可用 Skill |
+| --- | --- |
+| 拆题、看同类案例 | `$mcm`、`$math-modeling-solver` |
+| 理解附件、预测和比较模型 | `$exploratory-data-analysis`、`$statsmodels`、`$scikit-learn` |
+| 列优化模型、验算整数解、规划网络或权衡多目标 | `$problem-formulation`、`$mip-solver-and-solution-audit`、`$networkx`、`$pymoo` |
+| 离散事件仿真、公式和单位验证 | `$simpy`、`$sympy`、`$uncertainty-and-units` |
+| 画图、审图和共享可复跑笔记本 | `$matplotlib`、`$scientific-visualization`、`$jupyter-notebook` |
+| 查写法、审查结论证据 | `$math-modeling-paper`、`$scientific-critical-thinking` |
 
-安装脚本调用本机 Codex 的系统 Skill Installer。可通过 `--installer` 指定其路径。安装目标为此仓库的 `.agents/skills/`，新增专项可按需点名调用。专项技能使用的 Python 包按各自说明另行安装。[专项技能版本及来源](third-party-skills.json)
+维护者可用 `python scripts/install_extras.py --list` 查锁定版本和上游来源。[版本清单](third-party-skills.json)
 
 在正式比赛中，按当届组委会规则确定 AI 使用范围、提交内容和披露要求。练习真题可从[亚太赛官网](https://www.apmcm.org/)等赛事站点获取。
 
 ## 许可证
 
-本仓库自制内容采用 [MIT](LICENSE)。通过可选安装器取得的技能由[各自上游许可证](third-party-skills.json)授权。
+本仓库自制内容采用 [MIT](LICENSE)。随包专项技能保留各自的上游许可证与版权说明。[第三方来源与许可证](THIRD_PARTY.md)
