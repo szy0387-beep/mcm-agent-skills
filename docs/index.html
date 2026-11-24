@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="面向数学建模新手三人队的开源 Codex 技能库。拿到英文赛题后，按路线完成审题、求解、验算与论文。">
+  <meta name="theme-color" content="#111a30">
+  <title>数学建模技能库 · 从赛题到论文</title>
+  <link rel="stylesheet" href="site.css">
+  <script src="site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header" id="top">
+    <div class="container header-row">
+      <a class="brand" href="./">
+        <span class="brand-mark" aria-hidden="true">∑</span>
+        <span>数学建模技能库</span>
+      </a>
+      <nav aria-label="主要导航">
+        <a href="#route">参赛路线</a>
+        <a href="#skills">技能索引</a>
+        <a href="#updates">更新日志</a>
+      </nav>
+      <a class="github-link" href="https://github.com/szy0387-beep/mcm-agent-skills">GitHub</a>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">面向第一次参赛的三人队</p>
+          <h1 id="hero-title">把赛题做成<br><span>一篇可提交的论文</span></h1>
+          <p class="hero-summary">从英文原题开始，逐问明确交付物。用 Codex 协助建模和求解，由队友验算结果，再整理成论文与提交附件。</p>
+          <div class="actions">
+            <a class="button button-primary" href="#start">开始使用</a>
+            <a class="button button-outline" href="https://github.com/szy0387-beep/mcm-agent-skills/releases/latest">下载最新版</a>
+          </div>
+          <p class="hero-meta">11 个核心 Skill <span aria-hidden="true">/</span> 17 个专项 Skill <span aria-hidden="true">/</span> MIT 开源</p>
+        </div>
+        <figure class="example">
+          <figcaption>
+            <span class="example-label">可复跑短例</span>
+            <strong>两台机组的三小时调度</strong>
+          </figcaption>
+          <div class="chart" aria-label="调度总费用">
+            <div class="chart-row">
+              <span>原始需求</span>
+              <div class="chart-track" aria-hidden="true"><span class="chart-bar base"></span></div>
+              <strong>980</strong>
+            </div>
+            <div class="chart-row">
+              <span>每小时 +10 MW</span>
+              <div class="chart-track" aria-hidden="true"><span class="chart-bar raised"></span></div>
+              <strong>1120</strong>
+            </div>
+            <p class="chart-note">两条柱形均从 0 开始，数值为总费用。</p>
+          </div>
+          <div class="example-check">
+            <span>可行性检查</span>
+            <p>需求 141 MW，超过两台机组的总上限 140 MW。</p>
+          </div>
+          <a class="example-link" href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/examples/dispatch/README.md">打开英文题面与论文练习</a>
+        </figure>
+      </div>
+    </section>
+
+    <section class="container section" id="route" aria-labelledby="route-title">
+      <div class="section-head">
+        <div>
+          <h2 id="route-title">从读题到交稿</h2>
+          <p>每一步都留下一份队友能接手和核对的产出。</p>
+        </div>
+        <a class="text-link" href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/figures/first-contest-mindmap.md">查看完整路线图</a>
+      </div>
+      <ol class="route">
+        <li>
+          <span class="step-number" aria-hidden="true">01</span>
+          <h3>读题与建模</h3>
+          <p>核对英文原题、附件和约束，为每问写出目标、变量和基准模型。</p>
+          <span class="deliverable">交付小问表与模型说明</span>
+        </li>
+        <li>
+          <span class="step-number" aria-hidden="true">02</span>
+          <h3>求解与出图</h3>
+          <p>把模型写成可复跑程序，按题目需要做仿真或情景分析。</p>
+          <span class="deliverable">交付命令、结果表与图</span>
+        </li>
+        <li>
+          <span class="step-number" aria-hidden="true">03</span>
+          <h3>队友独立复核</h3>
+          <p>手算一个小例子，检查约束和异常输入，再对照程序结果。</p>
+          <span class="deliverable">交付验算记录与修正项</span>
+        </li>
+        <li>
+          <span class="step-number" aria-hidden="true">04</span>
+          <h3>写稿与提交</h3>
+          <p>逐问写答案，核对数字、图表和引用，按当届规则检查 PDF 与附件。</p>
+          <span class="deliverable">交付论文 PDF 与附件</span>
+        </li>
+      </ol>
+    </section>
+
+    <section class="container section start-section" id="start" aria-labelledby="start-title">
+      <div class="start-panel">
+        <div>
+          <h2 id="start-title">打开 Codex 开题</h2>
+          <ol class="setup">
+            <li>从<a href="https://github.com/szy0387-beep/mcm-agent-skills/releases/latest">发布页</a>下载 Source code (zip) 并解压。</li>
+            <li>用 Codex 打开包含 <code>AGENTS.md</code> 的文件夹。</li>
+            <li>把题面和附件放进 <code>cases/我的题/inputs/</code>，再发送练习指令。</li>
+          </ol>
+        </div>
+        <div class="prompt-panel">
+          <div class="prompt-header">
+            <h3>练习指令</h3>
+            <button type="button" class="copy-button" id="copy-prompt" hidden>复制指令</button>
+          </div>
+          <p class="prompt" id="prompt-text">这是我的练习题。题面和附件在 cases/我的题/inputs/。用 $mcm-skill-router 帮我审第一问，列出题目要求、附件和约束，并说明接下来要交付什么。</p>
+          <p id="copy-status" class="copy-status" role="status"></p>
+          <a class="text-link" href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/docs/codex-prompts.md">查看各阶段的指令模板</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="skills" aria-labelledby="skills-title">
+      <div class="section-head">
+        <div>
+          <h2 id="skills-title">按任务找 Skill</h2>
+          <p>从总入口开始，或直接调用当前小问需要的技能。</p>
+        </div>
+        <a class="text-link" href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-skill-router/references/specialist-skills.md">查看 17 个专项 Skill</a>
+      </div>
+      <div class="skill-grid">
+        <article>
+          <h3>开题与建模</h3>
+          <ul>
+            <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-skill-router/SKILL.md">流程总入口</a><span>mcm-skill-router</span></li>
+            <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-problem-translate/SKILL.md">英文审题与翻译</a><span>mcm-problem-translate</span></li>
+            <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-model-training/SKILL.md">拆题与基准建模</a><span>mcm-model-training</span></li>
+          </ul>
+        </article>
+        <article>
+          <h3>实现与计算</h3>
+          <ul>
+            <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-code-training/SKILL.md">编程、复跑与验错</a><span>mcm-code-training</span></li>
+            <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-simulation-training/SKILL.md">仿真与灵敏度分析</a><span>mcm-simulation-training</span></li>
+            <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-visualization-training/SKILL.md">可复现的论文图</a><span>mcm-visualization-training</span></li>
+            <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-fast/SKILL.md">复跑现有案例</a><span>mcm-fast</span></li>
+          </ul>
+        </article>
+        <article>
+          <h3>协作与交稿</h3>
+          <ul>
+            <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-team-drill/SKILL.md">三人合练与交接</a><span>mcm-team-drill</span></li>
+            <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-paper-training/SKILL.md">论文写作与编译</a><span>mcm-paper-training</span></li>
+            <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-citation/SKILL.md">文献检索与引用</a><span>mcm-citation</span></li>
+            <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-training-review/SKILL.md">独立验算与复盘</a><span>mcm-training-review</span></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="container section updates-section" id="updates" aria-labelledby="updates-title">
+      <div class="updates-panel">
+        <div>
+          <h2 id="updates-title">更新日志</h2>
+          <p>按版本查看新增内容和历史差异。</p>
+        </div>
+        <div class="actions">
+          <a class="button button-dark" href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/CHANGELOG.md">查看完整更新日志</a>
+          <a class="text-link" href="https://github.com/szy0387-beep/mcm-agent-skills/releases">查看发布记录</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <span>Math Modeling Agent Skills</span>
+      <div>
+        <a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/docs/team-playbook.md">首赛手册</a>
+        <a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/LICENSE">MIT 许可证</a>
+        <a href="#top">回到顶部</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

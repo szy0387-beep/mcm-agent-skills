@@ -1,12 +1,18 @@
 # Math Modeling Agent Skills
 
-面向数模小组的 Codex 技能。组员可以用自己的题面和附件开题，从拆解小问、建模和求解走到出图、论文与结果复核。也可以按个人陪练或 AI 自主训练的方式使用。
+**给第一次参加数学建模竞赛的三人队。** 用自己的题面和附件开题，从读题、建模和求解走到出图、写论文与交叉验算。也支持个人陪练和 AI 自主训练。
 
-**拿到题后，先看从赛题到可提交论文的路线图。** 图里写清每一步要交付什么、在哪两处验收，以及出错后回到哪一步。[赛题到论文路线图](figures/first-contest-mindmap.md) · [首赛实战手册](docs/team-playbook.md) · [参考文献怎么找、怎么用](docs/references-guide.md)
+[项目主页](https://szy0387-beep.github.io/mcm-agent-skills/) · [下载最新版](https://github.com/szy0387-beep/mcm-agent-skills/releases/latest) · [更新日志](CHANGELOG.md)
+
+| 你现在要做什么 | 从这里开始 |
+| --- | --- |
+| 拿到一份新赛题 | [赛题到论文路线图](figures/first-contest-mindmap.md) · [首赛实战手册](docs/team-playbook.md) |
+| 想先练一遍完整流程 | [英文题到论文短例](examples/dispatch/README.md) · [可复制的 Codex 指令](docs/codex-prompts.md) |
+| 已经有代码、数据或论文 | [技能一览](#技能一览) · [参考文献怎么找、怎么用](docs/references-guide.md) |
 
 ## 快速开始
 
-1. 在 GitHub 选 **Code → Download ZIP** 并解压。用 Codex 打开包含本页和 `AGENTS.md` 的文件夹。**11 个核心 Skill 和 17 个专项 Skill 均已随包提供。**
+1. 在[发布页](https://github.com/szy0387-beep/mcm-agent-skills/releases/latest)下载 **Source code (zip)** 并解压。用 Codex 打开包含本页和 `AGENTS.md` 的文件夹。**11 个核心 Skill 和 17 个专项 Skill 均已随包提供。**
 2. 把题面和附件复制到该文件夹下的 `cases/我的题/inputs/`。已有代码、结果或论文时告诉 Codex 位置，方便从当前步骤接手。也可以在 Codex 中附上文件并说明它们对应哪一问。
 3. 在这个项目的聊天里输入下面的一句。也可以点名 `$mcm-skill-router`。
 
