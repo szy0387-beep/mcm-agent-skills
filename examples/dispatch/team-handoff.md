@@ -21,13 +21,19 @@
 运行以下命令后，表中的路径都从 `outputs/dispatch-paper/` 开始。
 
 ```sh
-python examples/dispatch/run_paper.py --output outputs/dispatch-paper
+python examples/dispatch/run_paper.py --output outputs/dispatch-paper --overleaf-zip
 ```
 
 ## 最后由三个人一起核对
 
+| 小问 | 论文中的结论与口径 | 证据位置 | 终稿位置 |
+| --- | --- | --- | --- |
+| 1 | 基准费用 980，整数 MW 且逐小时独立调度 | `base/schedule.csv` 的三行费用，复核求和 | 摘要与基准排班表 |
+| 2 | 提高需求后费用为 1120，增加 140 个成本单位 | `plus10/schedule.csv` 和 `base/schedule.csv` 的费用总数，复核同一时段 | 摘要、情景段、费用图 |
+| 3 | 第 2 小时需求 141 MW 时不可行，总上限 140 MW | `units.csv` 两台机组上限和 `feasibility.txt` | 验算段 |
+
 1. 建模手用原题核对三个答案与约束，确认缺口或假设已说明。
 2. 编程手从原始 CSV 重跑，复核 980、1120、140 和 141 的含义。不同方案费用的差值是 140，机组的容量上限也是 140 MW，两者单位不同。
-3. 论文手编译 `paper/main.tex`，对照最终 PDF 核对表格、图和段落。摘要报告两种成本，结果段解释情景，验算段解释不可行性。
+3. 论文手把 `overleaf.zip` 交给另一位队员。接收人从空目录解包并编译 `main.tex`，对照 PDF 核对表格、图和段落。摘要报告两种成本，结果段解释情景，验算段解释不可行性。
 
 [完整练习与编译方法](README.md) · [空白 CASE 模板](../../templates/CASE.md)

@@ -34,9 +34,9 @@ python .agents/skills/mcm-fast/scripts/dispatch.py examples/dispatch/units.csv e
 从仓库根目录运行以下命令。只需 Python 标准库，脚本会从原始附件生成排班表、核验记录和 LaTeX 源稿。
 
 ~~~sh
-python examples/dispatch/run_paper.py --output outputs/dispatch-paper
+python examples/dispatch/run_paper.py --output outputs/dispatch-paper --overleaf-zip
 ~~~
 
-检查 `outputs/dispatch-paper/paper/main.tex`。把 `paper/` 内的文件一起上传到 Overleaf，选择 `main.tex` 后编译。有本地 Tectonic 时，在 `paper/` 中运行 `tectonic main.tex`。
+命令会生成 `outputs/dispatch-paper/overleaf.zip`。在 Overleaf 中上传整个 ZIP，新建项目后选择 `main.tex` 编译。也可以把 ZIP 解到空目录，在里面运行 `tectonic main.tex`。打开新生成的 PDF，核对两张表、费用对照图和摘要里的 980、1120，以及不可行输入的 141 MW。[解包和终审检查](../../docs/final-delivery.md)
 
 这道合成小题用来练怎样把题面、结果和论文对上。正式比赛用当届模板和提交说明。练完整真题时，按[首赛手册](../../docs/team-playbook.md)扩展到其他小问，并用[引用指南](../../docs/references-guide.md)核对外部来源。

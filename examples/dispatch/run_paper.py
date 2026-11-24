@@ -7,11 +7,14 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
+from tempfile import NamedTemporaryFile
+from zipfile import ZIP_DEFLATED, ZipFile
 
 
 HERE = Path(__file__).resolve().parent
 SOLVER = HERE.parents[1] / ".agents/skills/mcm-fast/scripts/dispatch.py"
 SCHEDULE_FIELDS = ("hour", "demand_mw", "unit_1_mw", "unit_2_mw", "cost")
+PAPER_SOURCES = ("main.tex", "base-schedule.tex", "scenario-schedule.tex", "comparison.tex")
 
 
 def read_demand():
@@ -77,11 +80,25 @@ def write_paper(output, base, scenario):
         f"\\newcommand{{\\ScenarioBar}}{{{cost_scale * scenario_total:.2f}mm}}\n"
     )
     (paper / "comparison.tex").write_text(comparison, encoding="utf-8")
+    return paper
+
+
+def package_paper(paper, destination):
+    with NamedTemporaryFile(dir=destination.parent, prefix=".overleaf-", delete=False) as staged:
+        temporary_path = Path(staged.name)
+    try:
+        with ZipFile(temporary_path, "w", compression=ZIP_DEFLATED) as archive:
+            for name in PAPER_SOURCES:
+                archive.write(paper / name, arcname=name)
+        temporary_path.replace(destination)
+    finally:
+        temporary_path.unlink(missing_ok=True)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output", type=Path, required=True, help="Directory for results and paper source")
+    parser.add_argument("--overleaf-zip", action="store_true", help="Package the paper sources as overleaf.zip")
     args = parser.parse_args()
     output = args.output.resolve()
     output.mkdir(parents=True, exist_ok=True)
@@ -92,9 +109,13 @@ def main():
     write_demand(raised, [(hour, power + 10) for hour, power in demand])
     scenario = run_schedule(raised, output / "plus10")
     check_feasibility(output, demand)
-    write_paper(output, base, scenario)
+    paper = write_paper(output, base, scenario)
     print(f"Base: {base[1]}; plus 10 MW: {scenario[1]}; infeasible case verified.")
-    print(f"Paper source: {output / 'paper' / 'main.tex'}")
+    print(f"Paper source: {paper / 'main.tex'}")
+    if args.overleaf_zip:
+        archive = output / "overleaf.zip"
+        package_paper(paper, archive)
+        print(f"Overleaf package: {archive}")
 
 
 if __name__ == "__main__":

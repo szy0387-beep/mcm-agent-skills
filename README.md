@@ -12,6 +12,7 @@
 | 知道要交什么，想选模型、算法和验证方式 | [常见题型与方法](docs/modeling-methods.md) |
 | 想看一套真实案例如何分析、运行、写进论文 | [宇树机器人赛题全流程复盘](docs/robotics-case.md) |
 | 想亲手把英文题做成一篇可编译的练习稿 | [英文调度完整短例](examples/dispatch/README.md) |
+| 计算已做完，准备核对结论、打包并交稿 | [终稿复核和源码包检查](docs/final-delivery.md) |
 
 ## 本次亚太赛三人四日分工
 
