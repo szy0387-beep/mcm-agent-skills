@@ -1,21 +1,25 @@
-%%{init: {"theme":"base","themeVariables":{"fontFamily":"Microsoft YaHei, Noto Sans CJK SC, sans-serif","fontSize":"17px","background":"#ffffff","git0":"#243B53","gitBranchLabel0":"#FFFFFF","cScale0":"#243B53","cScale1":"#BDD5EF","cScale2":"#C5E1D6","cScale3":"#DDD0EB","cScale4":"#F4DEBD","cScaleLabel1":"#1B2B3D","cScaleLabel2":"#1B2B3D","cScaleLabel3":"#1B2B3D","cScaleLabel4":"#1B2B3D"}}}%%
-mindmap
-  first(三人队数模首赛)
-    roadmap[赛程怎么走]
-      prepare(1 赛前分工试跑)
-      select(2 选题并立基准)
-      solve(3 求解验算写稿)
-      close(4 交稿并复盘)
-    growth[队员练什么]
-      先手算并写下预期
-      自己换输入重跑
-      解释结果和局限
-    ai[AI 怎么用]
-      先给题意与已有方案
-      按规则用 AI 辅助
-      从原题与数据核对
-    team[三人怎么配合]
-      建模手提供模型和预期
-      编程手提供复跑和结果
-      论文手核对证据与结论
-      交换复核并确认提交
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Microsoft YaHei, Noto Sans CJK SC, sans-serif","fontSize":"17px","background":"#ffffff","lineColor":"#49647C","primaryTextColor":"#182C40","edgeLabelBackground":"#ffffff"},"flowchart":{"curve":"linear","nodeSpacing":25,"rankSpacing":24,"padding":10,"wrappingWidth":320}}}%%
+flowchart TB
+    start(["拿到题面和附件"]) --> read["<b>1 拆成小问</b><br/>确定每问的输入、单位和交付物"]
+    read --> model["<b>2 建立基准模型</b><br/>写清变量、目标、约束和手算预期"]
+    model --> run["<b>3 跑通求解或仿真</b><br/>保存重跑命令、结果表和图"]
+    run --> audit{{"<b>4 队友独立复算</b><br/>数据、约束和结果一致吗？"}}
+    audit -->|需修正| fix["查数据、模型或程序<br/>修正后重跑并验算"]
+    audit -->|通过| draft["<b>5 按小问写论文</b><br/>逐问写答案、图表、证据和局限"]
+    fix -.-> run
+    draft --> pdf["<b>6 编译论文</b><br/>生成 PDF 并备齐当届附件"]
+    pdf --> preflight{{"<b>7 队友审查最终版</b><br/>逐问齐全、数字一致、格式合规？"}}
+    preflight -->|通过| finish(["<b>8 提交并核对回执</b><br/>交付论文 PDF 和附件"])
+    preflight -->|需修正| revise["回对应小问补证据或改稿<br/>重新编译并检查"]
+    revise -.-> draft
+
+    classDef endpoint fill:#24405B,stroke:#24405B,color:#ffffff,stroke-width:2px;
+    classDef stage fill:#EAF2FB,stroke:#5F7E9D,color:#172D43,stroke-width:1.4px;
+    classDef gate fill:#E5F3EB,stroke:#52806A,color:#18392C,stroke-width:1.6px;
+    classDef repair fill:#FFF0E1,stroke:#B77542,color:#623A24,stroke-width:1.3px;
+    class start,finish endpoint;
+    class read,model,run,draft,pdf stage;
+    class audit,preflight gate;
+    class fix,revise repair;
+    linkStyle default stroke:#49647C,stroke-width:1.6px;
+    linkStyle 4,6,10,11 stroke:#AA693E,stroke-width:1.5px;

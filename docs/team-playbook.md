@@ -2,9 +2,9 @@
 
 先练到三个人能一起做完一道小问，再扩大到整题。每道小问至少留下一个说得清的答案、一条可复跑的命令或计算步骤，以及一项队友能够独立核对的证据。
 
-![首赛思维导图，包含赛程、队员能力、AI 辅助和三人协作](../figures/first-contest-mindmap.png)
+![从赛题到可提交论文的路线图，包含每步交付物和两处验收返工](../figures/first-contest-mindmap.png)
 
-[查看 Mermaid 思维导图](../figures/first-contest-mindmap.md)
+[查看从赛题到可提交论文的路线图](../figures/first-contest-mindmap.md)
 
 ## 三个岗位怎么分
 

@@ -1,29 +1,45 @@
-# 首次数学建模比赛思维导图
+# 从赛题到可提交论文
 
-四条分支对应首赛手册里的赛程、能力训练、AI 使用和三人交接。按手册的八步推进。
+拿到题面和附件后，从上往下走。每走完一格，就把该步产出的文件或记录交给队友，两次检查通过后再提交。返工支路标出了修完要重新执行的步骤。
+
+第一步先在 `CASE.md` 给每问记下已知数据、要回答的问题和计划交付的结果。[小问交接模板](../templates/CASE.md)
 
 ```mermaid
-%%{init: {"theme":"base","themeVariables":{"fontFamily":"Microsoft YaHei, Noto Sans CJK SC, sans-serif","fontSize":"17px","background":"#ffffff","git0":"#243B53","gitBranchLabel0":"#FFFFFF","cScale0":"#243B53","cScale1":"#BDD5EF","cScale2":"#C5E1D6","cScale3":"#DDD0EB","cScale4":"#F4DEBD","cScaleLabel1":"#1B2B3D","cScaleLabel2":"#1B2B3D","cScaleLabel3":"#1B2B3D","cScaleLabel4":"#1B2B3D"}}}%%
-mindmap
-  first(三人队数模首赛)
-    roadmap[赛程怎么走]
-      prepare(1 赛前分工试跑)
-      select(2 选题并立基准)
-      solve(3 求解验算写稿)
-      close(4 交稿并复盘)
-    growth[队员练什么]
-      先手算并写下预期
-      自己换输入重跑
-      解释结果和局限
-    ai[AI 怎么用]
-      先给题意与已有方案
-      按规则用 AI 辅助
-      从原题与数据核对
-    team[三人怎么配合]
-      建模手提供模型和预期
-      编程手提供复跑和结果
-      论文手核对证据与结论
-      交换复核并确认提交
+%%{init: {"theme":"base","themeVariables":{"fontFamily":"Microsoft YaHei, Noto Sans CJK SC, sans-serif","fontSize":"17px","background":"#ffffff","lineColor":"#49647C","primaryTextColor":"#182C40","edgeLabelBackground":"#ffffff"},"flowchart":{"curve":"linear","nodeSpacing":25,"rankSpacing":24,"padding":10,"wrappingWidth":320}}}%%
+flowchart TB
+    start(["拿到题面和附件"]) --> read["<b>1 拆成小问</b><br/>确定每问的输入、单位和交付物"]
+    read --> model["<b>2 建立基准模型</b><br/>写清变量、目标、约束和手算预期"]
+    model --> run["<b>3 跑通求解或仿真</b><br/>保存重跑命令、结果表和图"]
+    run --> audit{{"<b>4 队友独立复算</b><br/>数据、约束和结果一致吗？"}}
+    audit -->|需修正| fix["查数据、模型或程序<br/>修正后重跑并验算"]
+    audit -->|通过| draft["<b>5 按小问写论文</b><br/>逐问写答案、图表、证据和局限"]
+    fix -.-> run
+    draft --> pdf["<b>6 编译论文</b><br/>生成 PDF 并备齐当届附件"]
+    pdf --> preflight{{"<b>7 队友审查最终版</b><br/>逐问齐全、数字一致、格式合规？"}}
+    preflight -->|通过| finish(["<b>8 提交并核对回执</b><br/>交付论文 PDF 和附件"])
+    preflight -->|需修正| revise["回对应小问补证据或改稿<br/>重新编译并检查"]
+    revise -.-> draft
+
+    classDef endpoint fill:#24405B,stroke:#24405B,color:#ffffff,stroke-width:2px;
+    classDef stage fill:#EAF2FB,stroke:#5F7E9D,color:#172D43,stroke-width:1.4px;
+    classDef gate fill:#E5F3EB,stroke:#52806A,color:#18392C,stroke-width:1.6px;
+    classDef repair fill:#FFF0E1,stroke:#B77542,color:#623A24,stroke-width:1.3px;
+    class start,finish endpoint;
+    class read,model,run,draft,pdf stage;
+    class audit,preflight gate;
+    class fix,revise repair;
+    linkStyle default stroke:#49647C,stroke-width:1.6px;
+    linkStyle 4,6,10,11 stroke:#AA693E,stroke-width:1.5px;
 ```
 
-[首赛手册](../docs/team-playbook.md) · [原始 Mermaid 文件](first-contest-mindmap.mmd) · [图片版](first-contest-mindmap.png)
+## 卡在哪一步就用哪个 Skill
+
+| 步骤 | 可以调用的入口 |
+| --- | --- |
+| 1–2 拆题和定基准 | [mcm-model-training](../.agents/skills/mcm-model-training/SKILL.md) |
+| 3 求解或仿真、生成图 | [mcm-code-training](../.agents/skills/mcm-code-training/SKILL.md) · [mcm-simulation-training](../.agents/skills/mcm-simulation-training/SKILL.md) · [mcm-visualization-training](../.agents/skills/mcm-visualization-training/SKILL.md) |
+| 4 和 7 验算或复核稿件 | [mcm-training-review](../.agents/skills/mcm-training-review/SKILL.md) |
+| 5–6 写稿和编译 | [mcm-paper-training](../.agents/skills/mcm-paper-training/SKILL.md) |
+| 8 核对文件与提交 | [首赛手册的交稿步骤](../docs/team-playbook.md#7-从干净目录复跑一次再提交) |
+
+[首赛手册](../docs/team-playbook.md) · [Mermaid 源文件](first-contest-mindmap.mmd) · [图片版](first-contest-mindmap.png)
