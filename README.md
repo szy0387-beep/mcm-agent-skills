@@ -2,11 +2,11 @@
 
 **给第一次参加数学建模竞赛的三人队。** 用自己的题面和附件开题，从读题、建模和求解走到出图、写论文与交叉验算。也支持个人陪练和 AI 自主训练。
 
-[项目主页](https://szy0387-beep.github.io/mcm-agent-skills/) · [实战百科](HANDBOOK.md) · [本次亚太赛分工](#本次亚太赛三人四日分工) · [常用资料](#常用资料) · [下载完整 ZIP](https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip) · [发布说明](https://github.com/szy0387-beep/mcm-agent-skills/releases/latest) · [更新日志](CHANGELOG.md)
+[项目主页](https://szy0387-beep.github.io/mcm-agent-skills/) · [实战手册](HANDBOOK.md) · [本次亚太赛分工](#本次亚太赛三人四日分工) · [常用资料](#常用资料) · [下载完整 ZIP](https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip) · [发布说明](https://github.com/szy0387-beep/mcm-agent-skills/releases/latest) · [更新日志](CHANGELOG.md)
 
 **正式比赛先看披露要求。** 禁止伪造、篡改数据、文献和数值，关键结论须能回查原始证据。使用 AI 时保留实际记录并按当届规则披露。 [正式比赛指令](docs/codex-prompts.md#正式比赛) · [披露与学术诚信指南](docs/ai-usage-disclosure.md) · [披露模板](templates/AI_USAGE_DISCLOSURE.md)
 
-## 数学建模实战百科
+## 数学建模实战手册
 
 | 现在要做什么 | 打开这一章 |
 | --- | --- |
@@ -29,7 +29,7 @@
 | 11 月 28 日 | 写中文模型与结论 | 写中文结果段，优化图表 | 翻译并合并成英文初稿 | 覆盖各问、可导出 PDF 的英文稿 |
 | 11 月 29 日 | 审模型、推导和结论 | 复跑并核对论文数字 | 合稿，核对英文、引用和格式 | 三人审定，队长当晚提交 |
 
-[网页版分工表](https://szy0387-beep.github.io/mcm-agent-skills/#apmcm-plan) · [完整参赛计划与交接模板](docs/apmcm-2026.md)
+四日分工的任务细则、晚间验收和提交要求以参赛计划为准。 [完整参赛计划](docs/apmcm-2026.md) · [网页版分工表](https://szy0387-beep.github.io/mcm-agent-skills/#apmcm-plan)
 
 ## 常用资料
 
@@ -40,7 +40,7 @@
 | 找方法出处、写正文引用 | [参考文献指南](docs/references-guide.md) · [LaTeX 引用示例](examples/references/) |
 | 调用 Codex、继续已有成果 | [可复制的分阶段指令](docs/codex-prompts.md) · [技能一览](#技能一览) |
 | 先练一遍从题面到论文 | [英文题面](examples/dispatch/problem-en.md) · [完整练习与复跑命令](examples/dispatch/README.md) |
-| 核对比赛要求和交稿 | [当届英文赛项交稿检查](docs/apmcm-2026.md#英文赛项交稿检查) · [官方参赛规则](https://apmcm.org/detail/2513?language=cn) · [当届 AI 使用规定](https://m.saikr.com/contest/notice_detail/50212) |
+| 核对比赛要求和交稿 | [当届英文赛项交稿检查](docs/apmcm-2026.md#英文赛项交稿检查) · [官方规则 PDF 归档](docs/rules/2026-apmcm-en.md) · [当届 AI 使用规定](https://m.saikr.com/contest/notice_detail/50212) |
 
 [在网页首页展开查看资料要点](https://szy0387-beep.github.io/mcm-agent-skills/#resources)
 
@@ -91,13 +91,13 @@ python .agents/skills/mcm-fast/scripts/dispatch.py examples/dispatch/units.csv e
 | [mcm-model-comparison](.agents/skills/mcm-model-comparison/SKILL.md) | 统一约束、分母和指标后比较方案 |
 | [mcm-citation](.agents/skills/mcm-citation/SKILL.md) | 找出处、插入正文引用、整理书目和终审 |
 | [ai-usage-disclosure](.agents/skills/ai-usage-disclosure/SKILL.md) | 记录 AI 辅助、准备披露材料、核实数据、文献和关键数值 |
-| [mcm-training-review](.agents/skills/mcm-training-review/SKILL.md) | 独立复算、单错反例、迁移与复盘 |
-| [mcm-fast](.agents/skills/mcm-fast/SKILL.md) | 复跑本包的调度示例和可复用的月度预测脚本 |
+| [mcm-training-review](.agents/skills/mcm-training-review/SKILL.md) | 合练复盘、单错反例、迁移与用时核验 |
+| [mcm-fast](.agents/skills/mcm-fast/SKILL.md) | 现成脚本复跑与验算，支持调度和月度预测 |
 | [mcm-team-drill](.agents/skills/mcm-team-drill/SKILL.md) | 个人陪练与三人队交接 |
 
 ## 随包专项技能
 
-解压后可以直接点名专项 Skill，也可以让 `$mcm-skill-router` 按当前小问选择。专项设置为按需调用，适合在遇到具体方法或验收问题时使用。[21 个专项 Skill 的入口和用途](.agents/skills/mcm-skill-router/references/specialist-skills.md)
+整题统一由 `$mcm-skill-router` 接续。队员可以直接说「对两版结果做整数解复核」或「把这组结果画成带限值的图」，路由会读取相应专项材料。单项工具支持按需自动选用。三个旧流程名 `$mcm`、`$math-modeling-solver`、`$math-modeling-paper` 用于定向查参考资料。 [专项技能目录](.agents/skills/mcm-skill-router/references/specialist-skills.md)
 
 | 任务 | 可用 Skill |
 | --- | --- |
@@ -109,13 +109,13 @@ python .agents/skills/mcm-fast/scripts/dispatch.py examples/dispatch/units.csv e
 | 做统计分布图、交互图、地图或流程图 | `$seaborn`、`$visualization`（Plotly）、`$geopandas`、`$mermaid-diagrams` |
 | 查写法、审查结论证据 | `$math-modeling-paper`、`$scientific-critical-thinking` |
 
-维护者可用 `python scripts/install_extras.py --list` 查锁定版本和上游来源。[版本清单](third-party-skills.json)
+维护者可用 `python scripts/install_extras.py --list` 查锁定版本和上游来源。缺失技能可用同版本 ZIP 校验后恢复。 [恢复说明](CONTRIBUTING.md#第三方技能) · [版本清单](third-party-skills.json)
 
 在正式比赛中，按当届组委会规则确定 AI 使用范围、提交内容和披露要求。练习真题可从[亚太赛官网](https://www.apmcm.org/)等赛事站点获取。
 
 ## 维护与贡献
 
-运行 `python scripts/check_package.py` 核对随包技能、链接、调度练习和源码 ZIP。[贡献说明](CONTRIBUTING.md) · [GitHub Actions 检查](https://github.com/szy0387-beep/mcm-agent-skills/actions)
+运行 `python scripts/check_package.py` 核对技能、第三方校验和、链接、调度练习、源码 ZIP 与披露文件预检。 [贡献说明](CONTRIBUTING.md) · [GitHub Actions 检查](https://github.com/szy0387-beep/mcm-agent-skills/actions)
 
 ## 许可证
 

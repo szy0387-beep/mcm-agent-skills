@@ -6,4 +6,4 @@ interface:
   default_prompt: "Create a Jupyter notebook for this task with clear sections, runnable cells, and concise takeaways."
 
 policy:
-  allow_implicit_invocation: false
+  allow_implicit_invocation: true

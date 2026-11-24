@@ -1,6 +1,6 @@
 # 第三方 Skill 来源与许可证
 
-随包提供的 21 个专项 Skill 来自这些固定版本。各目录保留上游已有的许可、版权与资源文件。Codex 的调用策略设为按需。
+专项 Skill 来自以下固定版本，保留上游许可、版权与资源文件。随包副本另记录目录内容的 SHA-256，包含文件路径、原文、配置及本库的适配。 [清单](third-party-skills.json)
 
 | Skill | 固定来源 | 许可证 |
 | --- | --- | --- |
@@ -30,5 +30,6 @@
 
 - K-Dense 技能仓库的许可分别对应[当前固定版本](licenses/k-dense-LICENSE.md)和 [Matplotlib 技能固定版本](licenses/k-dense-matplotlib-LICENSE.md)。个别技能声明了表中所列的库许可证。
 - mcm 还随附[上游 NOTICE](licenses/mcm-NOTICE.md)。
-- `math-modeling-paper` 的随包入口增加了本库亚太赛与训练稿的路由说明，保留对应上游固定提交和 MIT 许可。
+- `mcm`、`math-modeling-solver`、`math-modeling-paper` 以本库的定向参考入口随包提供，原始说明保留为各目录的 `UPSTREAM.md`。其余专项技能允许按需自动选用。
+- [2026 亚太赛规则 PDF](docs/rules/2026-apmcm-en.md) 为组委会原件，归档保留原署名和来源。
 - 可复查的完整提交号见[来源清单](third-party-skills.json)。

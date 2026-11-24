@@ -24,10 +24,14 @@ def load_months(path, date_col, value_col):
         reader = csv.DictReader(source)
         if not {date_col, value_col} <= set(reader.fieldnames or []):
             raise ValueError(f"Missing column: expected {date_col!r} and {value_col!r}")
-        for row in reader:
-            stamp = row[date_col].strip()
-            day = date.fromisoformat(stamp + "-01" if len(stamp) == 7 else stamp)
-            observations.append((day.replace(day=1), float(row[value_col])))
+        for line, row in enumerate(reader, start=2):
+            stamp = (row[date_col] or "").strip()
+            try:
+                day = date.fromisoformat(stamp + "-01" if len(stamp) == 7 else stamp)
+                value = float(row[value_col] or "")
+            except ValueError as error:
+                raise ValueError(f"Invalid date or value in CSV record {line}") from error
+            observations.append((day.replace(day=1), value))
     observations.sort()
     if not observations:
         raise ValueError("Monthly data are empty")
@@ -95,8 +99,11 @@ def main():
     parser.add_argument("--horizon", type=int, default=12)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
-    dates, values, months = load_months(args.csv, args.date, args.value)
-    origin, predictions, fold_mae = backtest(values, months, args.folds, args.horizon)
+    try:
+        dates, values, months = load_months(args.csv, args.date, args.value)
+        origin, predictions, fold_mae = backtest(values, months, args.folds, args.horizon)
+    except (OSError, ValueError) as error:
+        parser.error(str(error))
     dates, actual = dates[origin:], values[origin:]
     scores = {}
     for name, prediction in predictions.items():

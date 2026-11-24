@@ -1,20 +1,24 @@
-"""Check the public skill bundle and replay its dispatch practice."""
+"""Check the public bundle and its examples."""
 
+import argparse
+import ast
 import csv
+from hashlib import sha256
 from html.parser import HTMLParser
 from itertools import product
-import json
 from pathlib import Path
 import re
+import shutil
 import subprocess
 import sys
 from tempfile import TemporaryDirectory
 from urllib.parse import unquote, urlsplit
 from zipfile import ZipFile
 
+from check_ai_disclosure import PDF_NAME, check_disclosure
+from vendor_bundle import REFERENCE_SKILLS, ROOT, SKILLS, load_manifest, verify_skill
 
-ROOT = Path(__file__).resolve().parents[1]
-SKILLS = ROOT / ".agents/skills"
+
 GITHUB_PROJECT = "/szy0387-beep/mcm-agent-skills/"
 HTML_PAGE = ROOT / "docs/index.html"
 PAPER_FILES = {"main.tex", "base-schedule.tex", "scenario-schedule.tex", "comparison.tex"}
@@ -26,11 +30,18 @@ def require(condition, message):
 
 
 def check_skills():
-    manifest = json.loads((ROOT / "third-party-skills.json").read_text(encoding="utf-8"))
+    manifest = load_manifest()
     names = []
     for source in manifest["sources"]:
         require(re.fullmatch(r"[a-f0-9]{40}", source["ref"]), f"Unpinned source: {source['repo']}")
-        names.extend(skill["name"] for skill in source["skills"])
+        for skill in source["skills"]:
+            name = skill["name"]
+            names.append(name)
+            verify_skill(skill, SKILLS / name)
+            config = (SKILLS / name / "agents/openai.yaml").read_text(encoding="utf-8")
+            policy = re.findall(r"^  allow_implicit_invocation: (true|false)\s*$", config, re.M)
+            require(policy == ["false" if name in REFERENCE_SKILLS else "true"],
+                    f"Unexpected invocation policy: {name}")
     require(len(names) == len(set(names)), "Duplicate third-party skill name")
 
     installed = {}
@@ -39,6 +50,8 @@ def check_skills():
         require(len(frontmatter) == 3, f"Missing frontmatter: {spec.parent.name}")
         name = re.search(r"""^name:\s*['"]?([a-z0-9-]+)""", frontmatter[1], re.M)
         require(name and name[1] == spec.parent.name, f"Skill name mismatch: {spec.parent.name}")
+        require(re.search(r"^description:\s*\S", frontmatter[1], re.M),
+                f"Missing skill description: {spec.parent.name}")
         installed[name[1]] = spec
     require(set(names) <= installed.keys(), f"Missing bundled skills: {set(names) - installed.keys()}")
 
@@ -63,14 +76,30 @@ class LandingLinks(HTMLParser):
                 self.links.append(value)
 
 
+def markdown_links(markdown):
+    fence = None
+    for line in markdown.splitlines():
+        marker = re.match(r"^ {0,3}(`{3,}|~{3,})", line)
+        if marker:
+            token = marker[1]
+            if fence is None:
+                fence = token
+            elif token.startswith(fence) and line[marker.end():].strip() == "":
+                fence = None
+            continue
+        if fence is not None:
+            continue
+        for match in re.finditer(r"\]\((<[^>]+>|[^\s)]+)|^ {0,3}\[[^\]]+\]:\s*(<[^>]+>|\S+)", line):
+            yield (match[1] or match[2]).strip("<>")
+
+
 def check_links():
-    files = [
-        *ROOT.glob("*.md"), *(ROOT / "docs").glob("*.md"),
-        *(ROOT / "templates").rglob("*.md"), *(ROOT / "examples").glob("*/*.md"),
-    ]
+    files = list(ROOT.glob("*.md"))
+    for folder in ("docs", "templates", "examples", "figures", ".agents/skills"):
+        files.extend((ROOT / folder).rglob("*.md"))
     for file in files:
-        for href in re.findall(r"\]\(([^)\n]+)\)", file.read_text(encoding="utf-8")):
-            link = urlsplit(href.strip("<>"))
+        for href in markdown_links(file.read_text(encoding="utf-8-sig")):
+            link = urlsplit(href)
             if not link.scheme and not link.netloc and link.path:
                 target = (file.parent / unquote(link.path)).resolve()
                 require(target.is_relative_to(ROOT) and target.exists(),
@@ -107,7 +136,19 @@ def dispatch_cost(power, units):
                for amount, unit in zip(power, units) if amount)
 
 
-def check_dispatch():
+def compile_latex(source):
+    with TemporaryDirectory(prefix="mcm-tex-check-") as directory:
+        output = Path(directory)
+        subprocess.run(["tectonic", "--keep-logs", "--outdir", directory, "main.tex"],
+                       cwd=source, check=True, timeout=150)
+        with (output / "main.pdf").open("rb") as pdf:
+            require(pdf.read(5) == b"%PDF-", f"Missing valid PDF from {source.name}")
+        log = (output / "main.log").read_text(encoding="utf-8", errors="replace")
+        require(not re.search(r"undefined references|Citation .+ undefined|Reference .+ undefined", log, re.I),
+                f"Unresolved citation or cross-reference in {source.name}")
+
+
+def check_dispatch(build_pdf):
     example = ROOT / "examples/dispatch"
     units = numeric_rows(example / "units.csv")
     demand = numeric_rows(example / "demand.csv")
@@ -143,6 +184,10 @@ def check_dispatch():
             for name in PAPER_FILES:
                 require(archive.read(name) == (output / "paper" / name).read_bytes(),
                         f"ZIP differs from generated paper source: {name}")
+            if build_pdf:
+                unpacked = output / "unpacked"
+                archive.extractall(unpacked)
+                compile_latex(unpacked)
 
 
 def check_case_status():
@@ -166,16 +211,49 @@ def check_case_status():
         require("进度与交接" in output, "Case status did not report how to read legacy notes")
 
 
+def check_disclosure_and_rules():
+    rules = ROOT / "docs/rules/2026-apmcm-en-rules.pdf"
+    notes = rules.with_name("2026-apmcm-en.md").read_text(encoding="utf-8")
+    require(sha256(rules.read_bytes()).hexdigest() in notes, "Official rules snapshot checksum mismatch")
+    with TemporaryDirectory(prefix="mcm-ai-disclosure-check-") as directory:
+        submitted = Path(directory) / PDF_NAME
+        shutil.copyfile(rules, submitted)
+        check_disclosure(submitted.parent)
+        mismatched = submitted.with_name(submitted.stem + " (1).pdf")
+        submitted.rename(mismatched)
+        try:
+            check_disclosure(submitted.parent)
+        except ValueError:
+            pass
+        else:
+            raise ValueError("Disclosure preflight accepted a mismatched filename")
+
+
+def check_python_syntax():
+    for directory in ("scripts", "examples", "tests", ".agents/skills"):
+        for file in (ROOT / directory).rglob("*.py"):
+            source = file.read_text(encoding="utf-8-sig")
+            ast.parse(source, filename=str(file.relative_to(ROOT)), feature_version=(3, 10))
+
+
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--compile-latex", action="store_true", help="compile the three paper examples using Tectonic")
+    args = parser.parse_args()
     count = check_skills()
     check_links()
-    check_dispatch()
+    check_python_syntax()
+    check_dispatch(args.compile_latex)
     check_case_status()
-    print(f"Verified {count} skills, public links, dispatch results, Overleaf sources, and read-only case status.")
+    check_disclosure_and_rules()
+    if args.compile_latex:
+        compile_latex(ROOT / "templates/apmcm-paper")
+        compile_latex(ROOT / "examples/references")
+    print(f"Verified {count} skills, vendor hashes, links, Python syntax, examples, and disclosure checks.")
 
 
 if __name__ == "__main__":
     try:
         main()
-    except (ValueError, OSError, subprocess.CalledProcessError) as error:
+    except (ValueError, SyntaxError, OSError, subprocess.SubprocessError) as error:
         raise SystemExit(f"Package check failed: {error}") from None

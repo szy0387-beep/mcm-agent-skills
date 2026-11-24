@@ -1,48 +1,73 @@
-"""Install pinned optional skills using Codex's system Skill Installer."""
+"""Restore missing third-party skills from the verified public package."""
 
 import argparse
-import json
-import os
-from pathlib import Path
-import re
-import subprocess
-import sys
+from io import BytesIO
+from pathlib import Path, PurePosixPath
+from tempfile import TemporaryDirectory
+from urllib.error import URLError
 from urllib.request import Request, urlopen
+from zipfile import BadZipFile, ZipFile
+
+from vendor_bundle import SKILLS, bundle_sha256, load_manifest, verify_skill
 
 
-ROOT = Path(__file__).resolve().parents[1]
-DESTINATION = ROOT / ".agents" / "skills"
-DEFAULT_INSTALLER = (
-    Path(os.environ.get("CODEX_HOME", Path.home() / ".codex"))
-    / "skills" / ".system" / "skill-installer" / "scripts" / "install-skill-from-github.py"
-)
+BUNDLE_URL = "https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip"
 
 
-def set_explicit_policy(skill_dir):
-    metadata = skill_dir / "agents" / "openai.yaml"
-    existing = metadata.read_text(encoding="utf-8") if metadata.exists() else ""
-    if any(line.startswith("policy:") for line in existing.splitlines()):
-        print(f"{skill_dir.name}: kept upstream invocation policy", flush=True)
+def read_bundle(archive, names):
+    files = {name: {} for name in names}
+    for entry in archive.infolist():
+        parts = entry.filename.split("/", 4)
+        if entry.is_dir() or len(parts) != 5:
+            continue
+        root, agents, skills, name, relative = parts
+        if not root or (agents, skills) != (".agents", "skills") or name not in files:
+            continue
+        path = PurePosixPath(relative)
+        if not relative or path.is_absolute() or ".." in path.parts or "\\" in relative or ":" in relative:
+            raise ValueError(f"Unsafe archive path: {entry.filename}")
+        normalized = path.as_posix()
+        if normalized in files[name]:
+            raise ValueError(f"Duplicate archive path: {entry.filename}")
+        files[name][normalized] = archive.read(entry)
+    return files
+
+
+def restore(selected, local_archive):
+    pending = {}
+    for name, skill in selected.items():
+        target = SKILLS / name
+        if target.exists():
+            verify_skill(skill, target)
+            print(f"{name}: already present and verified")
+        else:
+            pending[name] = skill
+    if not pending:
         return
-    metadata.parent.mkdir(exist_ok=True)
-    separator = "\n\n" if existing.strip() else ""
-    metadata.write_text(existing.rstrip() + separator + "policy:\n  allow_implicit_invocation: false\n",
-                        encoding="utf-8")
 
+    if local_archive:
+        source = local_archive
+    else:
+        request = Request(BUNDLE_URL, headers={"User-Agent": "mcm-agent-skills"})
+        with urlopen(request, timeout=25) as response:
+            source = BytesIO(response.read())
+    with ZipFile(source) as archive:
+        files = read_bundle(archive, pending)
 
-def install_single_file(source, skill, target):
-    # Avoid extracting the entire benchmark archive for a standalone SKILL.md.
-    url = (f"https://raw.githubusercontent.com/{source['repo']}/{source['ref']}/"
-           f"{skill['path']}/SKILL.md")
-    with urlopen(Request(url, headers={"User-Agent": "mcm-agent-skills"}), timeout=20) as response:
-        data = response.read()
-    name = re.search(r"^name:\s*['\"]?([a-z0-9-]+)", data.decode("utf-8-sig"), re.M)
-    if not name or name[1] != skill["name"]:
-        raise ValueError(f"Unexpected skill metadata at {url}")
-    target.mkdir()
-    (target / "SKILL.md").write_bytes(data)
-    set_explicit_policy(target)
-    print(f"Installed {skill['name']} to {target}", flush=True)
+    for name, skill in pending.items():
+        if "SKILL.md" not in files[name] or bundle_sha256(files[name].items()) != skill["sha256"]:
+            raise ValueError(f"{name}: archive does not match this release; use --archive with its matching ZIP")
+
+    SKILLS.mkdir(parents=True, exist_ok=True)
+    with TemporaryDirectory(prefix=".restore-", dir=SKILLS) as stage:
+        for name, entries in files.items():
+            for relative, data in entries.items():
+                target = Path(stage) / name / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(data)
+        for name in pending:
+            (Path(stage) / name).rename(SKILLS / name)
+            print(f"{name}: restored")
 
 
 def main():
@@ -50,15 +75,15 @@ def main():
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--list", action="store_true")
     group.add_argument("--all", action="store_true")
-    parser.add_argument("--installer", type=Path, default=DEFAULT_INSTALLER)
+    parser.add_argument("--archive", type=Path, help="ZIP of this release, for offline recovery")
     parser.add_argument("names", nargs="*")
     args = parser.parse_args()
-    sources = json.loads((ROOT / "third-party-skills.json").read_text(encoding="utf-8"))["sources"]
-    choices = {skill["name"] for source in sources for skill in source["skills"]}
+    sources = load_manifest()["sources"]
+    skills = {skill["name"]: skill for source in sources for skill in source["skills"]}
 
     if args.list:
-        if args.names:
-            parser.error("--list takes no skill names")
+        if args.names or args.archive:
+            parser.error("--list takes no skill name or archive")
         for source in sources:
             for skill in source["skills"]:
                 print(f"{skill['name']:<32} {source['repo']}  {source['ref'][:10]}  {skill['license']}")
@@ -67,42 +92,14 @@ def main():
         parser.error("--all takes no skill names")
     if not args.all and not args.names:
         parser.error("choose skill names, --all, or --list")
-    unknown = set(args.names) - choices
+    unknown = set(args.names) - skills.keys()
     if unknown:
         parser.error(f"unknown skill(s): {', '.join(sorted(unknown))}")
-    requested = choices if args.all else set(args.names)
-    needs_installer = any(skill["name"] in requested and not skill.get("single_file")
-                          for source in sources for skill in source["skills"])
-    if needs_installer and not args.installer.is_file():
-        parser.error("Codex Skill Installer was not found. Use --installer to give its path.")
-
-    for source in sources:
-        paths = []
-        pending = []
-        for skill in source["skills"]:
-            name = skill["name"]
-            if name not in requested:
-                continue
-            target = DESTINATION / name
-            if target.exists():
-                if not (target / "SKILL.md").is_file():
-                    parser.error(f"remove or rename the incomplete destination: {target}")
-                print(f"{name}: existing skill kept", flush=True)
-                continue
-            if skill.get("single_file"):
-                install_single_file(source, skill, target)
-                continue
-            paths.append(skill["path"])
-            pending.append(target)
-
-        if paths:
-            subprocess.run([
-                sys.executable, str(args.installer), "--repo", source["repo"],
-                "--ref", source["ref"], "--dest", str(DESTINATION),
-                "--method", "download", "--path", *paths,
-            ], check=True)
-            for skill_dir in pending:
-                set_explicit_policy(skill_dir)
+    requested = skills if args.all else {name: skills[name] for name in args.names}
+    try:
+        restore(requested, args.archive)
+    except (OSError, ValueError, BadZipFile, URLError) as error:
+        parser.exit(2, f"Could not restore skills: {error}\n")
 
 
 if __name__ == "__main__":

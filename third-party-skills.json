@@ -7,62 +7,74 @@
         {
           "name": "exploratory-data-analysis",
           "path": "skills/exploratory-data-analysis",
-          "license": "MIT"
+          "license": "MIT",
+          "sha256": "6ca055e9071031daaaec6497e41ff6d0b02af5f3302dbf6529db62cd3cce0c49"
         },
         {
           "name": "statsmodels",
           "path": "skills/statsmodels",
-          "license": "BSD-3-Clause"
+          "license": "BSD-3-Clause",
+          "sha256": "d9981bafa692ad7fefb60a7b72b3d3bd3c34373940d0adc5ee08b765e6825b07"
         },
         {
           "name": "scikit-learn",
           "path": "skills/scikit-learn",
-          "license": "BSD-3-Clause"
+          "license": "BSD-3-Clause",
+          "sha256": "1a5fa15dac83eaf41eda23957662f44ec25be78c03a45bd3387e5df7c3fb0075"
         },
         {
           "name": "simpy",
           "path": "skills/simpy",
-          "license": "MIT"
+          "license": "MIT",
+          "sha256": "01446c933404c3f0c8967d1b10c19a3829981b5896134b8a780f9fffba3421d0"
         },
         {
           "name": "sympy",
           "path": "skills/sympy",
-          "license": "BSD-3-Clause"
+          "license": "BSD-3-Clause",
+          "sha256": "ed050497e88cbf1269dcc5b05c9863427255dd882c751651fb23427b243016bb"
         },
         {
           "name": "uncertainty-and-units",
           "path": "skills/uncertainty-and-units",
-          "license": "MIT"
+          "license": "MIT",
+          "sha256": "6576f8549c01903d3ba3459eedfeb8e5d17dc11026a0925d84cee39d1d87cb82"
         },
         {
           "name": "scientific-visualization",
           "path": "skills/scientific-visualization",
-          "license": "MIT"
+          "license": "MIT",
+          "sha256": "9bcba5246e59f819987451200f1438a56ae8f5b0a40cf82dd20001f18fb170b2"
         },
         {
           "name": "seaborn",
           "path": "skills/seaborn",
-          "license": "BSD-3-Clause"
+          "license": "BSD-3-Clause",
+          "sha256": "f7c8a48a4d5a401f455dbaad81b3e04e2d9abdca6bc5ab0311109c73a90a85cd"
         },
         {
           "name": "geopandas",
           "path": "skills/geopandas",
-          "license": "MIT"
+          "license": "MIT",
+          "sha256": "4dfbb761b25d788fa7811873c951ac56045032a1fa32cbb3386ce126591b7882"
         },
         {
           "name": "networkx",
           "path": "skills/networkx",
-          "license": "BSD-3-Clause"
+          "license": "BSD-3-Clause",
+          "sha256": "986b2af284082d565df4ee14272e8a652633a82931712a8411beb59f53a83b59"
         },
         {
           "name": "pymoo",
           "path": "skills/pymoo",
-          "license": "Apache-2.0"
+          "license": "Apache-2.0",
+          "sha256": "9dbdfc464ad5061782a7842276cae86b90a82654373f25e10fa280ee1aeb0f1a"
         },
         {
           "name": "scientific-critical-thinking",
           "path": "skills/scientific-critical-thinking",
-          "license": "MIT"
+          "license": "MIT",
+          "sha256": "c2cd1f88f977e3cc026e2c21962a0c429627d6ac0221df3bdb0fbe2815950f4d"
         }
       ]
     },
@@ -73,7 +85,8 @@
         {
           "name": "matplotlib",
           "path": "skills/matplotlib",
-          "license": "Matplotlib License"
+          "license": "Matplotlib License",
+          "sha256": "be9356ea3c62986fa444793a508e56243bdb623fa941666fd2ff1cb711f9f8ce"
         }
       ]
     },
@@ -84,7 +97,8 @@
         {
           "name": "visualization",
           "path": "skills/visualization",
-          "license": "Apache-2.0"
+          "license": "Apache-2.0",
+          "sha256": "1e77166f9de35907e8cb81fc927b2653374a735d259d9a7a6177693be63e1c91"
         }
       ]
     },
@@ -95,7 +109,8 @@
         {
           "name": "mermaid-diagrams",
           "path": "skills/mermaid-diagrams",
-          "license": "MIT"
+          "license": "MIT",
+          "sha256": "4b03210965d48ecceb6ce8ec8a3c11ea06d6abee48450b50ee8cf13dc5fa5e2c"
         }
       ]
     },
@@ -106,7 +121,8 @@
         {
           "name": "jupyter-notebook",
           "path": "skills/.curated/jupyter-notebook",
-          "license": "Apache-2.0"
+          "license": "Apache-2.0",
+          "sha256": "9ca86df02193e979bade26bdf582894cc9345a23bf699df3204e9d6a441b8d23"
         }
       ]
     },
@@ -117,7 +133,8 @@
         {
           "name": "problem-formulation",
           "path": "skills/problem-formulation",
-          "license": "MIT"
+          "license": "MIT",
+          "sha256": "2f19eb0e7ded37396381ca3843bfb3ac1e1e7024d29a92a113a4a94ec93e2c53"
         }
       ]
     },
@@ -129,7 +146,8 @@
           "name": "mip-solver-and-solution-audit",
           "path": "tasks/exam-block-sequencing/environment/skills/mip-solver-and-solution-audit",
           "license": "Apache-2.0",
-          "single_file": true
+          "single_file": true,
+          "sha256": "6d0148000690b3fcc4920427a4be95574bbab64b589096eb029ea09cfd2f0db9"
         }
       ]
     },
@@ -140,12 +158,14 @@
         {
           "name": "math-modeling-solver",
           "path": "skills/math-modeling-solver",
-          "license": "MIT"
+          "license": "MIT",
+          "sha256": "9a380a48ab82058ed9a6a28362108c682c9a7ee12187c75627dc69e0724891ee"
         },
         {
           "name": "math-modeling-paper",
           "path": "skills/math-modeling-paper",
-          "license": "MIT"
+          "license": "MIT",
+          "sha256": "e61f4f3e3cb51260e786ab0e8b29b571fa6b9f8eba93b2d9950904400139bc49"
         }
       ]
     },
@@ -156,7 +176,8 @@
         {
           "name": "mcm",
           "path": "mcm",
-          "license": "MIT"
+          "license": "MIT",
+          "sha256": "58a6341198b3f5e9e42c25d819db538531dd982a816c527dd969851a3beecbde"
         }
       ]
     }

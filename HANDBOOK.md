@@ -1,4 +1,4 @@
-# 数学建模实战百科
+# 数学建模实战手册
 
 拿到一份英文赛题后，先找清每问要交什么，再决定数据、模型和验证方法。三个人共用一份 [CASE 记录](templates/CASE.md)，按小问交接。第一次参赛可以按下表走。已有成果时，从缺少的产物接手。
 
@@ -23,4 +23,4 @@
 
 ## 比赛时从这里找工具
 
-先看当届规则。已有程序和结果时，按小问核对当前验收范围，再选用工具。[亚太赛四天安排](docs/apmcm-2026.md) · [披露与学术诚信](docs/ai-usage-disclosure.md) · [论文起稿模板](templates/apmcm-paper/README.md) · [可复制的 Codex 指令](docs/codex-prompts.md) · [35 个技能入口](README.md#技能一览)
+先看当届规则。已有程序和结果时，按小问核对当前验收范围，再选用工具。 [三人工作流](docs/end-to-end.md) · [亚太赛四天安排](docs/apmcm-2026.md) · [披露与学术诚信](docs/ai-usage-disclosure.md) · [论文起稿模板](templates/apmcm-paper/README.md) · [可复制的 Codex 指令](docs/codex-prompts.md) · [技能目录](README.md#技能一览)

@@ -1,0 +1,3 @@
+# Vendor locks hash the published bytes on Windows and Linux.
+/.agents/skills/** -text
+/docs/rules/*.pdf binary

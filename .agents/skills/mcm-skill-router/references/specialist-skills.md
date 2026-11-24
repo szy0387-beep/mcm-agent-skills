@@ -1,6 +1,6 @@
 # 数学建模专项技能
 
-按当前小问选一个专项技能。以下入口均已随包提供，读取对应的本地 SKILL.md 即可。运行示例时按该技能说明确认依赖。
+按当前小问选一个专项技能。用户可只说目标，由总路由直接读取相关文件。18 个单项工具允许 Codex 按需自动选用。三项定向参考可以点名，也可由路由直接读取对应入口；整题的阶段和验收以 [mcm-skill-router](../SKILL.md) 为准。
 
 | 具体任务 | Skill |
 | --- | --- |
@@ -19,7 +19,7 @@
 | 检查因果解释、代理标签、验证设计与外推范围 | [scientific-critical-thinking](../../scientific-critical-thinking/SKILL.md) |
 | 图上的路径、连通性、网络流 | [networkx](../../networkx/SKILL.md) |
 | 权衡多个冲突目标，生成 Pareto 解集 | [pymoo](../../pymoo/SKILL.md) |
-| 快速拆题、选基准与查验证模板 | [mcm](../../mcm/SKILL.md) |
+| 查某个小问的基线、数据检查和独立验算模板 | [mcm](../../mcm/SKILL.md) |
 | 用 Python 生成折线图、柱状图或科研论文图 | [matplotlib](../../matplotlib/SKILL.md) |
 | 探索数据分布、组间差异或统计区间 | [seaborn](../../seaborn/SKILL.md) |
 | 用 Plotly 查看图例开关、悬停和缩放 | [visualization](../../visualization/SKILL.md) |

@@ -2,6 +2,23 @@
 
 按 Git 标签记录面向组员的变化。日期使用北京时间。[GitHub 发布页](https://github.com/szy0387-beep/mcm-agent-skills/releases)
 
+## [v2.5.0] · 2026-11-25
+
+### 新增
+
+- 2026 亚太赛英文赛项规则 PDF 与页码归档，AI 披露 PDF 导出及精确文件名检查。
+- 增加月度预测回归、自动编译三个论文样例、Python 检查以及贡献反馈入口。
+
+### 调整
+
+- 三个旧流程名称改为定向资料入口，单项工具可按需自动选用。整题统一通过总路由推进。
+- 将首赛训练、通用流程和当届四日计划放到各自的主文档，补优化和预测例子。第三方目录增加内容校验，可从匹配版本的 ZIP 恢复。
+
+### 修复
+
+- 链接检查覆盖技能和路线图。手册移除重复硬编码的总数，修正空赛事年份的摘要页标题。
+- 月度输入错误报告具体 CSV 记录。保留并验证跨年季节基线。
+
 ## [v2.4.0] · 2026-11-24
 
 - 借鉴 auto-MM 的阶段交接和倒排赛程，以及 mathmodel-skill 的团队决策与逐问复核。CASE 增加进度、决策和截止记录，新命令可只读查看进度。
@@ -88,6 +105,7 @@
 - 首次标记发布，提供数学建模总入口、训练技能和第三方来源清单。
 - 修正 Windows 上安装独立专项技能的路径处理。
 
+[v2.5.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.4.0...v2.5.0
 [v2.4.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.3.1...v2.4.0
 [v2.3.1]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.3.0...v2.3.1
 [v2.3.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.2.0...v2.3.0

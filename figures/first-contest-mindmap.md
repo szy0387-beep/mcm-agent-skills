@@ -46,4 +46,4 @@ flowchart TB
 | 5–6 写稿和编译 | [mcm-paper-training](../.agents/skills/mcm-paper-training/SKILL.md) |
 | 8 核对文件与提交 | [首赛手册的交稿步骤](../docs/team-playbook.md#7-从干净目录复跑一次再提交) |
 
-[首赛手册](../docs/team-playbook.md) · [Mermaid 源文件](first-contest-mindmap.mmd) · [图片版](first-contest-mindmap.png)
+[首赛手册](../docs/team-playbook.md) · [Mermaid 源文件](first-contest-mindmap.mmd) · [WebP 图片](first-contest-mindmap.webp) · [PNG 下载](first-contest-mindmap.png)
