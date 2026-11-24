@@ -21,3 +21,7 @@
 | 权衡多个冲突目标，生成 Pareto 解集 | [pymoo](../../pymoo/SKILL.md) |
 | 快速拆题、选基准与查验证模板 | [mcm](../../mcm/SKILL.md) |
 | 用 Python 生成折线图、柱状图或科研论文图 | [matplotlib](../../matplotlib/SKILL.md) |
+| 探索数据分布、组间差异或统计区间 | [seaborn](../../seaborn/SKILL.md) |
+| 用 Plotly 查看图例开关、悬停和缩放 | [visualization](../../visualization/SKILL.md) |
+| 画区划、路线、选址或空间覆盖 | [geopandas](../../geopandas/SKILL.md) |
+| 画求解流程或小问依赖 | [mermaid-diagrams](../../mermaid-diagrams/SKILL.md) |

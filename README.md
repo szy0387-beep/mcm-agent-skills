@@ -10,6 +10,7 @@
 | --- | --- |
 | 拿到题目，想和队友从读题走到提交 | [全流程与三人分工](docs/end-to-end.md) |
 | 知道要交什么，想选模型、算法和验证方式 | [常见题型与方法](docs/modeling-methods.md) |
+| 要画论文图、地图、流程图或交互图 | [可视化选型指南与代码示例](docs/visualization-guide.md) |
 | 想看一套真实案例如何分析、运行、写进论文 | [宇树机器人赛题全流程复盘](docs/robotics-case.md) |
 | 想亲手把英文题做成一篇可编译的练习稿 | [英文调度完整短例](examples/dispatch/README.md) |
 | 计算已做完，准备核对结论、打包并交稿 | [终稿复核和源码包检查](docs/final-delivery.md) |
@@ -40,7 +41,7 @@
 
 ## 快速开始
 
-1. [下载完整 ZIP](https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip)并解压。用 Codex 打开包含本页和 `AGENTS.md` 的文件夹。**11 个核心 Skill 和 17 个专项 Skill 均已随包提供。**
+1. [下载完整 ZIP](https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip)并解压。用 Codex 打开包含本页和 `AGENTS.md` 的文件夹。**11 个核心 Skill 和 21 个专项 Skill 均已随包提供。**
 2. 把题面和附件复制到该文件夹下的 `cases/我的题/inputs/`。已有代码、结果或论文时告诉 Codex 位置，方便从当前步骤接手。也可以在 Codex 中附上文件并说明它们对应哪一问。
 3. 在这个项目的聊天里输入下面的一句。也可以点名 `$mcm-skill-router`。
 
@@ -86,7 +87,7 @@ python .agents/skills/mcm-fast/scripts/dispatch.py examples/dispatch/units.csv e
 
 ## 随包专项技能
 
-解压后可以直接点名专项 Skill，也可以让 `$mcm-skill-router` 按当前小问选择。专项设置为按需调用，适合在遇到具体方法或验收问题时使用。[17 个专项 Skill 的入口和用途](.agents/skills/mcm-skill-router/references/specialist-skills.md)
+解压后可以直接点名专项 Skill，也可以让 `$mcm-skill-router` 按当前小问选择。专项设置为按需调用，适合在遇到具体方法或验收问题时使用。[21 个专项 Skill 的入口和用途](.agents/skills/mcm-skill-router/references/specialist-skills.md)
 
 | 任务 | 可用 Skill |
 | --- | --- |
@@ -95,6 +96,7 @@ python .agents/skills/mcm-fast/scripts/dispatch.py examples/dispatch/units.csv e
 | 列优化模型、验算整数解、规划网络或权衡多目标 | `$problem-formulation`、`$mip-solver-and-solution-audit`、`$networkx`、`$pymoo` |
 | 离散事件仿真、公式和单位验证 | `$simpy`、`$sympy`、`$uncertainty-and-units` |
 | 画图、审图和共享可复跑笔记本 | `$matplotlib`、`$scientific-visualization`、`$jupyter-notebook` |
+| 做统计分布图、交互图、地图或流程图 | `$seaborn`、`$visualization`（Plotly）、`$geopandas`、`$mermaid-diagrams` |
 | 查写法、审查结论证据 | `$math-modeling-paper`、`$scientific-critical-thinking` |
 
 维护者可用 `python scripts/install_extras.py --list` 查锁定版本和上游来源。[版本清单](third-party-skills.json)

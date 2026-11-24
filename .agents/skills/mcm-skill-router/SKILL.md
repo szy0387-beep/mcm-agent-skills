@@ -24,6 +24,7 @@ description: 数学建模项目的总入口。用户描述想做的事、询问�
 | 知道题目要交什么，想选建模基线或比较两种方法 | 按小问目标选择可验算的基线，再看是否需要复杂方案 | [题型与方法表](../../../docs/modeling-methods.md) |
 | 模型已定，想写可复跑代码或做仿真 | 按需求选实现或情景实验，给重跑命令及验收证据 | [代码与求解](../mcm-code-training/SKILL.md) 或 [仿真与灵敏度](../mcm-simulation-training/SKILL.md) |
 | 有结果表，想做论文图或审图 | 按结果表出图，核对标签、单位和图中数值 | [可视化训练](../mcm-visualization-training/SKILL.md) |
+| 想探索数据分布、做交互图、画地图或流程图 | 按交付物选 Seaborn、Plotly、GeoPandas 或 Mermaid | [可视化选型指南](../../../docs/visualization-guide.md) |
 | 有模型与结果，想要完整竞赛论文或 Overleaf 包 | 用已核验结果生成论文，按所用模板检查并交付 | [论文训练](../mcm-paper-training/SKILL.md) |
 | 有稿件，想核对数字或交付终稿 | 核对证据和假设、修编译，交源码包时在新目录解包重编 | [论文训练](../mcm-paper-training/SKILL.md) · [终稿复核](../../../docs/final-delivery.md) |
 | 想复盘训练、定位实现错因或验证能否迁移 | 独立复算，做单错反例和新输入检查 | [训练复盘](../mcm-training-review/SKILL.md) |

@@ -2,6 +2,11 @@
 
 按 Git 标签记录面向组员的变化。日期使用北京时间。[GitHub 发布页](https://github.com/szy0387-beep/mcm-agent-skills/releases)
 
+## [v2.2.0] · 2026-11-24
+
+- 收录 Seaborn、Plotly、GeoPandas 和 Mermaid 四项可视化 Skill，随包技能达到 32 个。
+- 新增可视化选型指南和离线 HTML 示例，按统计图、论文图、交互图、地图与流程图选择工具。
+
 ## [v2.1.0] · 2026-11-24
 
 - 宇树机器人案例更新到四问闭合和英文论文交付，按题面图修正第一问坐标方向，补齐两种负载下的能耗估计、约束诊断和证据范围。
@@ -66,6 +71,7 @@
 - 首次标记发布，提供数学建模总入口、训练技能和第三方来源清单。
 - 修正 Windows 上安装独立专项技能的路径处理。
 
+[v2.2.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.1.0...v2.2.0
 [v2.1.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.0.0...v2.1.0
 [v2.0.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v1.8.0...v2.0.0
 [v1.8.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v1.7.1...v1.8.0

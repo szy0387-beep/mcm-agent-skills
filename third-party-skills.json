@@ -40,6 +40,16 @@
           "license": "MIT"
         },
         {
+          "name": "seaborn",
+          "path": "skills/seaborn",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "name": "geopandas",
+          "path": "skills/geopandas",
+          "license": "MIT"
+        },
+        {
           "name": "networkx",
           "path": "skills/networkx",
           "license": "BSD-3-Clause"
@@ -64,6 +74,28 @@
           "name": "matplotlib",
           "path": "skills/matplotlib",
           "license": "Matplotlib License"
+        }
+      ]
+    },
+    {
+      "repo": "atlassian-labs/data-visualization-skill",
+      "ref": "d8afff42a2104ae112b05701ed8915522d11be72",
+      "skills": [
+        {
+          "name": "visualization",
+          "path": "skills/visualization",
+          "license": "Apache-2.0"
+        }
+      ]
+    },
+    {
+      "repo": "softaworks/agent-toolkit",
+      "ref": "3027f20f3181758385a1bb8c022d4041dfb4de84",
+      "skills": [
+        {
+          "name": "mermaid-diagrams",
+          "path": "skills/mermaid-diagrams",
+          "license": "MIT"
         }
       ]
     },
