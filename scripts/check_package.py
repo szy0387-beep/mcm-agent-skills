@@ -145,11 +145,33 @@ def check_dispatch():
                         f"ZIP differs from generated paper source: {name}")
 
 
+def check_case_status():
+    command = [sys.executable, "-X", "utf8", str(ROOT / "scripts/case_status.py")]
+    template = (ROOT / "templates/CASE.md").read_text(encoding="utf-8")
+    example = template.replace("官方截止＝—", "官方截止＝2999-11-30T09:00:00+08:00")
+    example = example.replace("收尾开始＝—", "收尾开始＝2999-11-29T20:00:00+08:00")
+    pending = "| Q2 | 求解与验证 | 需返工 | 编程手 | 需求情景版本变更 | 重跑 Q2 |"
+    content = example.replace(
+        "\n\n从仓库根目录运行", f"\n{pending}\n\n从仓库根目录运行", 1,
+    )
+    with TemporaryDirectory(prefix="mcm-status-check-") as directory:
+        case = Path(directory) / "CASE.md"
+        case.write_text(content, encoding="utf-8")
+        output = subprocess.check_output([*command, directory], encoding="utf-8")
+        require("需返工 1" in output and "重跑 Q2" in output and "计划收尾" in output,
+                "Case status did not report the pending revision and planned finalization")
+        require(case.read_text(encoding="utf-8") == content, "Case status modified the notes")
+        case.write_text("# 旧案例\n", encoding="utf-8")
+        output = subprocess.check_output([*command, str(case)], encoding="utf-8")
+        require("进度与交接" in output, "Case status did not report how to read legacy notes")
+
+
 def main():
     count = check_skills()
     check_links()
     check_dispatch()
-    print(f"Verified {count} skills, public links, dispatch results, and Overleaf sources.")
+    check_case_status()
+    print(f"Verified {count} skills, public links, dispatch results, Overleaf sources, and read-only case status.")
 
 
 if __name__ == "__main__":

@@ -15,16 +15,22 @@
 \newcommand{\ProblemChosen}{}
 \newcommand{\PaperTitle}{Paper Title}
 
+% For practice in the historical layout, uncomment the following switch.
+\newif\ifTrainingPagination
+% \TrainingPaginationtrue
+
 \newcommand{\TeamHeader}{\ifdefempty{\TeamNumber}{}{Team \# \TeamNumber}}
+\newcommand{\PageHeader}{\fontsize{9}{11}\selectfont Page \thepage\ of \pageref*{LastPage}}
 \fancypagestyle{frontmatter}{%
   \fancyhf{}%
   \fancyhead[L]{\fontsize{9}{11}\selectfont\TeamHeader}%
+  \ifTrainingPagination\else\fancyhead[R]{\PageHeader}\fi
   \renewcommand{\headrulewidth}{0.6pt}%
 }
 \fancypagestyle{mainmatter}{%
   \fancyhf{}%
   \fancyhead[L]{\fontsize{9}{11}\selectfont\TeamHeader}%
-  \fancyhead[R]{\fontsize{9}{11}\selectfont Page \thepage\ of \pageref*{LastPage}}%
+  \fancyhead[R]{\PageHeader}%
   \renewcommand{\headrulewidth}{0.6pt}%
 }
 
@@ -108,7 +114,7 @@ its units and the conditions under which it applies.
 \newgeometry{top=25.4mm,bottom=25.4mm,left=31.8mm,right=31.8mm,
   headheight=12pt,headsep=18.5pt}
 \setlength{\headwidth}{\textwidth}
-\setcounter{page}{1}
+\ifTrainingPagination\setcounter{page}{1}\fi
 \hypersetup{pageanchor=true}
 \pagestyle{mainmatter}
 

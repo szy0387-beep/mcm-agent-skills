@@ -11,6 +11,7 @@
 | 现在要做什么 | 打开这一章 |
 | --- | --- |
 | 拿到题目，想和队友从读题走到提交 | [全流程与三人分工](docs/end-to-end.md) |
+| 选题、查进度、换人接手或只返工受影响的小问 | [赛程与断点续跑](docs/competition-run.md) |
 | 想从手机和 WPS 练到陌生题合练 | [三人分级练习](docs/training-drill.md) |
 | 知道要交什么，想选模型、算法和验证方式 | [常见题型与方法](docs/modeling-methods.md) |
 | 要画论文图、地图、流程图或交互图 | [可视化选型指南与代码示例](docs/visualization-guide.md) |
@@ -39,7 +40,7 @@
 | 找方法出处、写正文引用 | [参考文献指南](docs/references-guide.md) · [LaTeX 引用示例](examples/references/) |
 | 调用 Codex、继续已有成果 | [可复制的分阶段指令](docs/codex-prompts.md) · [技能一览](#技能一览) |
 | 先练一遍从题面到论文 | [英文题面](examples/dispatch/problem-en.md) · [完整练习与复跑命令](examples/dispatch/README.md) |
-| 核对比赛要求和交稿 | [当届参赛规则](https://apmcm.org/detail/2513?language=cn) · [当届 AI 使用规定](https://m.saikr.com/contest/notice_detail/50212) |
+| 核对比赛要求和交稿 | [当届英文赛项交稿检查](docs/apmcm-2026.md#英文赛项交稿检查) · [官方参赛规则](https://apmcm.org/detail/2513?language=cn) · [当届 AI 使用规定](https://m.saikr.com/contest/notice_detail/50212) |
 
 [在网页首页展开查看资料要点](https://szy0387-beep.github.io/mcm-agent-skills/#resources)
 
@@ -62,6 +63,8 @@
 使用技能需要可用的 Codex。运行内置案例和 Python 解题代码还需要 Python 3.10 或更新版本。运行某个专项技能的示例时，按需安装它用到的 Python 库或求解器。生成论文源稿后，可用题目指定的本地编译器或 Overleaf 生成 PDF。
 
 如希望在终端建立完整案例目录，在项目根目录运行 `python scripts/new_case.py team-q1`。它会建立 `inputs/`、`src/`、`outputs/`、`paper/` 和 `CASE.md`。组员各用自己的案例目录，附件与结果默认保存在本地。
+
+换队员或换聊天时，打开同一案例的 `CASE.md`。在项目根目录运行 `python scripts/case_status.py cases/team-q1` 可以查看已登记的阶段、卡点、倒计时和下一步。 [赛程与断点续跑](docs/competition-run.md)
 
 ### 验证安装
 

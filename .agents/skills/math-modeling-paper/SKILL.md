@@ -9,6 +9,8 @@ description: 数学建模竞赛论文写作全流程指导。覆盖国赛(CUMCM)
 
 收到写作任务后，按以下步骤操作：
 
+本库的亚太赛稿件，以及用户未指定版式的本库训练稿，先走 [mcm-paper-training](../mcm-paper-training/SKILL.md)。接收 `[PAPER_READY]` 时核对题号、模型和已验收结果版本。用户指定模板与当届提交要求优先。
+
 ### Step 0: 检查建模来源
 
 先判断用户是否已完成建模：

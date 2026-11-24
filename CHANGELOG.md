@@ -2,6 +2,12 @@
 
 按 Git 标签记录面向组员的变化。日期使用北京时间。[GitHub 发布页](https://github.com/szy0387-beep/mcm-agent-skills/releases)
 
+## [v2.4.0] · 2026-11-24
+
+- 借鉴 auto-MM 的阶段交接和倒排赛程，以及 mathmodel-skill 的团队决策与逐问复核。CASE 增加进度、决策和截止记录，新命令可只读查看进度。
+- 同步建模、代码、仿真、图表、写稿和复盘等 Skill 的更新。明确最紧约束、首次失败、结果版本和受影响的下游复验范围。
+- 英文论文模板同步组内选定的获奖稿结构，默认适配 2026 亚太赛连续页码，补充当届交稿清单。
+
 ## [v2.3.1] · 2026-11-24
 
 - 新增 `ai-usage-disclosure` Skill、AI 使用披露指南和独立填写模板，标明当届亚太赛使用与未使用 AI 的两种交稿方式。
@@ -82,6 +88,7 @@
 - 首次标记发布，提供数学建模总入口、训练技能和第三方来源清单。
 - 修正 Windows 上安装独立专项技能的路径处理。
 
+[v2.4.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.3.1...v2.4.0
 [v2.3.1]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.3.0...v2.3.1
 [v2.3.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.2.0...v2.3.0
 [v2.2.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.1.0...v2.2.0

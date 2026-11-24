@@ -30,4 +30,5 @@
 
 - K-Dense 技能仓库的许可分别对应[当前固定版本](licenses/k-dense-LICENSE.md)和 [Matplotlib 技能固定版本](licenses/k-dense-matplotlib-LICENSE.md)。个别技能声明了表中所列的库许可证。
 - mcm 还随附[上游 NOTICE](licenses/mcm-NOTICE.md)。
+- `math-modeling-paper` 的随包入口增加了本库亚太赛与训练稿的路由说明，保留对应上游固定提交和 MIT 许可。
 - 可复查的完整提交号见[来源清单](third-party-skills.json)。
