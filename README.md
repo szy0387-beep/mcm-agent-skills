@@ -6,11 +6,13 @@
 
 ## 快速开始
 
-1. 在 GitHub 选 **Code → Download ZIP** 并解压。用 Codex 打开包含本页和 `AGENTS.md` 的文件夹。**9 个核心 Skill 和 17 个专项 Skill 均已随包提供。**
+1. 在 GitHub 选 **Code → Download ZIP** 并解压。用 Codex 打开包含本页和 `AGENTS.md` 的文件夹。**11 个核心 Skill 和 17 个专项 Skill 均已随包提供。**
 2. 把题面和附件复制到该文件夹下的 `cases/我的题/inputs/`。已有代码、结果或论文时告诉 Codex 位置，方便从当前步骤接手。也可以在 Codex 中附上文件并说明它们对应哪一问。
 3. 在这个项目的聊天里输入下面的一句。也可以点名 `$mcm-skill-router`。
 
 > 这是我自己的练习题。题面和附件在 `cases/我的题/inputs/`。按新题流程帮我完成第一问，交付模型说明、复跑命令、结果表和验算证据。完成后我会用另外一组输入复核。
+
+第一次拿到英文题，可以先说「用 `$mcm-problem-translate` 带我们读第一问。标出英文原文的位置，翻译约束，并列出输入、输出和本问要交什么」。找方法、数据出处或整理论文引用时，用 `$mcm-citation`。
 
 想自己推模型时，可以说「用 `$mcm-team-drill` 带我做第一问。每次给我一步，等我作答后再验算」。想先选方案时，可以说「我已有结果表，帮我推荐出图和写论文的技能组合」。[新题协作流程](.agents/skills/mcm-skill-router/references/new-problem.md)
 
@@ -35,11 +37,13 @@ python .agents/skills/mcm-fast/scripts/dispatch.py examples/dispatch/units.csv e
 | Skill | 用途 |
 | --- | --- |
 | [mcm-skill-router](.agents/skills/mcm-skill-router/SKILL.md) | 推荐或执行当前最合适的流程 |
+| [mcm-problem-translate](.agents/skills/mcm-problem-translate/SKILL.md) | 英文题逐问翻译、术语对照和中文任务表 |
 | [mcm-model-training](.agents/skills/mcm-model-training/SKILL.md) | 审题、约束、假设、可验算基准 |
 | [mcm-code-training](.agents/skills/mcm-code-training/SKILL.md) | 实现、复跑、求解状态和验错 |
 | [mcm-simulation-training](.agents/skills/mcm-simulation-training/SKILL.md) | 过程仿真、情景和灵敏度 |
 | [mcm-visualization-training](.agents/skills/mcm-visualization-training/SKILL.md) | 论文图、数据口径和视觉复核 |
 | [mcm-paper-training](.agents/skills/mcm-paper-training/SKILL.md) | 竞赛论文源稿、Overleaf 和证据对照 |
+| [mcm-citation](.agents/skills/mcm-citation/SKILL.md) | 找出处、插入正文引用、整理书目和终审 |
 | [mcm-training-review](.agents/skills/mcm-training-review/SKILL.md) | 独立复算、单错反例、迁移与复盘 |
 | [mcm-fast](.agents/skills/mcm-fast/SKILL.md) | 复跑本包的调度示例和可复用的月度预测脚本 |
 | [mcm-team-drill](.agents/skills/mcm-team-drill/SKILL.md) | 个人陪练与三人队交接 |

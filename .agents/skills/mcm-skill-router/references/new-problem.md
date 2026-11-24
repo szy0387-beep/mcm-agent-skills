@@ -10,6 +10,7 @@
 
 | 阶段 | 主技能 | 该阶段的验收 |
 | --- | --- | --- |
+| 英文题理解与翻译 | [mcm-problem-translate](../../mcm-problem-translate/SKILL.md) | 需要翻译时，逐问留下可回查英文原文的中文译文和任务表，核对符号、单位、硬约束和交付。 |
 | 审题与建模 | [mcm-model-training](../../mcm-model-training/SKILL.md) | 把题意写成输入、输出、约束与指标。选择一个简单基准，登记一个能手算的预期。 |
 | 代码与求解 | [mcm-code-training](../../mcm-code-training/SKILL.md) | 从 `inputs/` 读原始数据，程序放 `src/`，结果放 `outputs/`。运行后记录工作目录、命令和依赖。 |
 | 仿真与图表 | [mcm-simulation-training](../../mcm-simulation-training/SKILL.md) 或 [mcm-visualization-training](../../mcm-visualization-training/SKILL.md) | 按本问需要做情景实验或生成图。检查结果表、单位、基准和图中数字。 |
@@ -17,6 +18,6 @@
 
 优先使用能运行和验算的现有工具。有实质性改善时再加复杂模型。需要某个专项技能时查[专项技能](specialist-skills.md)，把必须安装的 Python 依赖按实际采用的实现写进当前案例。编译条件未齐时先交源稿和可执行的编译步骤，标明 PDF 的验证状态。
 
-每阶段更新 `CASE.md`。拆题和建模时登记数据、参数及方法的来源，写稿时把引用放到相应句子旁，交稿前由队友对照原文和最终 PDF。[参考文献指南](../../../../docs/references-guide.md)
+每阶段更新 `CASE.md`。用 [mcm-citation](../../mcm-citation/SKILL.md) 在拆题和建模时找数据、参数及方法的来源，写稿时把引用放到相应句子旁，交稿前由队友对照原文和最终 PDF。
 
 结束时检查每个已做小问都交清答案、代码和证据，换输入后仍可从原始数据重跑。需要用对照试验确认验错能力时，加一个只造成单项失败的反例。

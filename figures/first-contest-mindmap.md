@@ -38,7 +38,9 @@ flowchart TB
 
 | 步骤 | 可以调用的入口 |
 | --- | --- |
+| 1 翻译英文题、核对约束和附件 | [mcm-problem-translate](../.agents/skills/mcm-problem-translate/SKILL.md) |
 | 1–2 拆题和定基准 | [mcm-model-training](../.agents/skills/mcm-model-training/SKILL.md) |
+| 1–2、5、7 找来源、写引用与终审 | [mcm-citation](../.agents/skills/mcm-citation/SKILL.md) |
 | 3 求解或仿真、生成图 | [mcm-code-training](../.agents/skills/mcm-code-training/SKILL.md) · [mcm-simulation-training](../.agents/skills/mcm-simulation-training/SKILL.md) · [mcm-visualization-training](../.agents/skills/mcm-visualization-training/SKILL.md) |
 | 4 和 7 验算或复核稿件 | [mcm-training-review](../.agents/skills/mcm-training-review/SKILL.md) |
 | 5–6 写稿和编译 | [mcm-paper-training](../.agents/skills/mcm-paper-training/SKILL.md) |
