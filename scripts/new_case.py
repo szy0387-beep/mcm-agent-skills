@@ -1,4 +1,4 @@
-"""Create a local workspace for a new modeling problem."""
+"""Prepare a modeling case without overwriting existing files."""
 
 import argparse
 from pathlib import Path
@@ -17,14 +17,20 @@ def main():
 
     instructions = (ROOT / "templates/CASE.md").read_text(encoding="utf-8")
     case = ROOT / "cases" / args.name
+    case_file = case / "CASE.md"
     try:
-        case.mkdir(parents=True)
-    except FileExistsError:
-        parser.error(f"case already exists: {case.relative_to(ROOT)}")
-
-    for directory in ("inputs", "src", "outputs", "paper"):
-        (case / directory).mkdir()
-    (case / "CASE.md").write_text(instructions, encoding="utf-8")
+        case.mkdir(parents=True, exist_ok=True)
+        for directory in ("inputs", "src", "outputs", "paper"):
+            (case / directory).mkdir(exist_ok=True)
+        try:
+            with case_file.open("x", encoding="utf-8") as record:
+                record.write(instructions)
+        except FileExistsError:
+            if not case_file.is_file():
+                raise
+            print("Existing CASE.md kept.")
+    except OSError as error:
+        parser.error(str(error))
     print(f"Case ready: {case.relative_to(ROOT).as_posix()}")
 
 

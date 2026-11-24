@@ -373,6 +373,7 @@ h1 span { color: #ccd7ff; }
 .setup { margin: 1rem 0 0; padding-left: 1.35rem; }
 .setup li { padding-left: .25rem; }
 .setup li + li { margin-top: .45rem; }
+.setup + p { margin-top: 1rem; }
 .setup code { font: inherit; font-weight: 650; overflow-wrap: anywhere; }
 .prompt-panel {
   padding: clamp(1.05rem, 3vw, 1.4rem);
@@ -386,6 +387,11 @@ h1 span { color: #ccd7ff; }
   align-items: center;
   gap: .5rem;
   margin-bottom: .75rem;
+}
+.prompt-option + .prompt-option {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
 }
 .copy-button {
   min-height: 2.75rem;
@@ -402,6 +408,7 @@ h1 span { color: #ccd7ff; }
 .copy-button:hover { background: #e1e7ff; }
 .prompt { color: var(--muted); overflow-wrap: anywhere; }
 .copy-status { margin: .42rem 0; color: #225645; font-size: .875rem; }
+.copy-status:empty { margin: 0; }
 .prompt-panel > a { display: inline-block; margin-top: .45rem; }
 
 .skill-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }

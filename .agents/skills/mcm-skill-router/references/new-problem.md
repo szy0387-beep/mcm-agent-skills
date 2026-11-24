@@ -8,7 +8,7 @@
 
 ## 建立案例
 
-从仓库根目录可运行 `python scripts/new_case.py <题目名>`。如果组员已建好 `cases/<题目名>/inputs/`，从已有附件入手，按需创建 `src/`、`outputs/`、`paper/`，并用 [CASE 模板](../../../../templates/CASE.md) 建立交接记录。用 `CASE.md` 记录题号、交付物和关键假设。若必要资料确实缺失，列出缺项，同时推进可独立完成的任务。
+从仓库根目录可运行 `python scripts/new_case.py <题目名>`。已有 `inputs/` 或 `CASE.md` 时，可用同一命令补齐其余目录并接续实际记录。用 [CASE 模板](../../../../templates/CASE.md) 登记模式、题号、交付物和关键假设。若必要资料确实缺失，列出缺项，同时推进可独立完成的任务。
 
 ## 按小问推进
 
@@ -17,8 +17,9 @@
 | 英文题理解与翻译 | [mcm-problem-translate](../../mcm-problem-translate/SKILL.md) | 需要翻译时，逐问留下可回查英文原文的中文译文和任务表，核对符号、单位、硬约束和交付。 |
 | 审题与建模 | [mcm-model-training](../../mcm-model-training/SKILL.md) | 把题意写成输入、输出、约束与指标。选择一个简单基准，登记一个能手算的预期。 |
 | 代码与求解 | [mcm-code-training](../../mcm-code-training/SKILL.md) | 从 `inputs/` 读原始数据，程序放 `src/`，结果放 `outputs/`。运行后记录工作目录、命令和依赖。 |
-| 仿真与图表 | [mcm-simulation-training](../../mcm-simulation-training/SKILL.md) 或 [mcm-visualization-training](../../mcm-visualization-training/SKILL.md) | 按本问需要做情景实验或生成图。检查结果表、单位、基准和图中数字。 |
-| 论文与结果审查 | [mcm-paper-training](../../mcm-paper-training/SKILL.md) 和 [mcm-training-review](../../mcm-training-review/SKILL.md) | 从已验算的结果写 `paper/`，独立复核关键数值、边界条件与结论。交付来源、重跑命令、产物路径及尚待验证的部分。 |
+| 仿真与灵敏度分析 | [mcm-simulation-training](../../mcm-simulation-training/SKILL.md) | 小问需要时运行情景或参数试验，写明基准、变更及结论的成立范围。 |
+| 图表与解释 | [mcm-visualization-training](../../mcm-visualization-training/SKILL.md) | 从已验收的结果版本出图并核对单位、标注和图表所支持的结论。 |
+| 写稿、审查与交付 | [mcm-paper-training](../../mcm-paper-training/SKILL.md)、[mcm-paper-self-review](../../mcm-paper-self-review/SKILL.md) | 从核验结果写 `paper/`。逐问自审，解包重编，并按[终稿清单](../../../../docs/final-delivery.md)核对文件和披露。 |
 
 优先使用能运行和验算的现有工具。有实质性改善时再加复杂模型。需要某个专项技能时查[专项技能](specialist-skills.md)，把必须安装的 Python 依赖按实际采用的实现写进当前案例。编译条件未齐时先交源稿和可执行的编译步骤，标明 PDF 的验证状态。
 

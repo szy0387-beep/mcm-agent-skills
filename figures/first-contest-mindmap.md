@@ -42,8 +42,9 @@ flowchart TB
 | 1–2 拆题和定基准 | [mcm-model-training](../.agents/skills/mcm-model-training/SKILL.md) |
 | 1–2、5、7 找来源、写引用与终审 | [mcm-citation](../.agents/skills/mcm-citation/SKILL.md) |
 | 3 求解或仿真、生成图 | [mcm-code-training](../.agents/skills/mcm-code-training/SKILL.md) · [mcm-simulation-training](../.agents/skills/mcm-simulation-training/SKILL.md) · [mcm-visualization-training](../.agents/skills/mcm-visualization-training/SKILL.md) |
-| 4 和 7 验算或复核稿件 | [mcm-training-review](../.agents/skills/mcm-training-review/SKILL.md) |
+| 4 独立复算与验错 | [mcm-code-training](../.agents/skills/mcm-code-training/SKILL.md) |
+| 7 逐问复核稿件 | [mcm-paper-self-review](../.agents/skills/mcm-paper-self-review/SKILL.md) |
 | 5–6 写稿和编译 | [mcm-paper-training](../.agents/skills/mcm-paper-training/SKILL.md) |
-| 8 核对文件与提交 | [首赛手册的交稿步骤](../docs/team-playbook.md#7-从干净目录复跑一次再提交) |
+| 8 核对文件与提交 | [三人终审步骤](../docs/end-to-end.md#8-从干净目录复跑并终审) · [当届提交清单](../docs/apmcm-2026.md#英文赛项交稿检查) |
 
 [首赛手册](../docs/team-playbook.md) · [Mermaid 源文件](first-contest-mindmap.mmd) · [WebP 图片](first-contest-mindmap.webp) · [PNG 下载](first-contest-mindmap.png)

@@ -27,7 +27,7 @@ description: 数学建模项目的总入口。用户描述想做的事、询问�
 | 有结果表，想做论文图或审图 | 按结果表出图，核对标签、单位和图中数值 | [可视化训练](../mcm-visualization-training/SKILL.md) |
 | 想探索数据分布、做交互图、画地图或流程图 | 按交付物选 Seaborn、Plotly、GeoPandas 或 Mermaid | [可视化选型指南](../../../docs/visualization-guide.md) |
 | 有模型与结果，想要完整竞赛论文或 Overleaf 包 | 用已核验结果生成论文，按所用模板检查并交付 | [论文训练](../mcm-paper-training/SKILL.md) |
-| 有稿件，想核对数字或交付终稿 | 核对证据和假设、修编译，交源码包时在新目录解包重编 | [论文训练](../mcm-paper-training/SKILL.md) · [终稿复核](../../../docs/final-delivery.md) |
+| 有稿件，想核对数字或交付终稿 | 逐问核查题意、数值和引用，再解包重编并核对交付文件 | [论文自审](../mcm-paper-self-review/SKILL.md) · [终稿复核](../../../docs/final-delivery.md) |
 | 想按评阅原则自查或看同题获奖稿差在哪 | 对照原题逐问查证据，按影响给出修订和验收 | [论文自审](../mcm-paper-self-review/SKILL.md) |
 | 两份答案差很多，或要比较节能幅度、基线和候选 | 统一任务、约束、指标、单位和分母后复算 | [方案对照](../mcm-model-comparison/SKILL.md) |
 | 想复盘训练、定位实现错因或验证能否迁移 | 独立复算，做单错反例和新输入检查 | [训练复盘](../mcm-training-review/SKILL.md) |
@@ -39,4 +39,4 @@ description: 数学建模项目的总入口。用户描述想做的事、询问�
 - 只读取当前阶段需要的说明。按[专项入口](references/specialist-skills.md)直接打开相应 `SKILL.md` 和本轮资料，队员可以只描述需求。`mcm`、`math-modeling-solver`、`math-modeling-paper` 是定向参考入口，整题仍按本路由推进。先核对相应的运行依赖。
 - 「看进度」只读案例记录与证据，可用 `python scripts/case_status.py cases/题目名`。用户要求继续时，从最早的受阻依赖或下一项已具备材料的任务接手。选择题目、改关键假设或改变交付范围时由队伍确认，先做可独立推进的工作。
 - 个人陪练衔接用户做到的步骤，让用户先尝试。审排班时，从实际输出重算供需、出力和成本，并核对求解器状态。
-- 正式比赛开题时先按[披露指南](../../../docs/ai-usage-disclosure.md)核对当届规则和 AI 使用范围，交接时登记实际使用和已完成的人工核验。
+- 开题先在 CASE 记下训练或正式比赛。正式比赛先核对当届规则和队伍本轮需要的辅助，再按允许范围接手。遇到用途不明的当前赛题，可先整理原文要求和附件，按[披露指南](../../../docs/ai-usage-disclosure.md)核对能否继续。交接登记实际使用和人工核验。

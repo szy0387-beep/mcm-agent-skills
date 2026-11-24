@@ -3,6 +3,8 @@
 import argparse
 import ast
 import csv
+from collections import Counter
+from functools import lru_cache
 from hashlib import sha256
 from html.parser import HTMLParser
 from itertools import product
@@ -20,6 +22,8 @@ from vendor_bundle import REFERENCE_SKILLS, ROOT, SKILLS, load_manifest, verify_
 
 
 GITHUB_PROJECT = "/szy0387-beep/mcm-agent-skills/"
+PAGES_HOST = "szy0387-beep.github.io"
+PAGES_PROJECT = "/mcm-agent-skills/"
 HTML_PAGE = ROOT / "docs/index.html"
 PAPER_FILES = {"main.tex", "base-schedule.tex", "scenario-schedule.tex", "comparison.tex"}
 
@@ -66,6 +70,7 @@ class LandingLinks(HTMLParser):
         super().__init__()
         self.links = []
         self.anchors = set()
+        self.controls = []
 
     def handle_starttag(self, tag, attrs):
         for name, value in attrs:
@@ -74,9 +79,11 @@ class LandingLinks(HTMLParser):
                 self.anchors.add(value)
             if name in ("href", "src") and value:
                 self.links.append(value)
+            if name in ("aria-controls", "aria-labelledby") and value:
+                self.controls.extend(value.split())
 
 
-def markdown_links(markdown):
+def markdown_body(markdown):
     fence = None
     for line in markdown.splitlines():
         marker = re.match(r"^ {0,3}(`{3,}|~{3,})", line)
@@ -89,36 +96,97 @@ def markdown_links(markdown):
             continue
         if fence is not None:
             continue
+        yield line
+
+
+def markdown_links(markdown):
+    for line in markdown_body(markdown):
         for match in re.finditer(r"\]\((<[^>]+>|[^\s)]+)|^ {0,3}\[[^\]]+\]:\s*(<[^>]+>|\S+)", line):
             yield (match[1] or match[2]).strip("<>")
+
+
+@lru_cache(maxsize=None)
+def anchors_for(file):
+    body = file.read_text(encoding="utf-8-sig")
+    if file.suffix.lower() == ".html":
+        page = LandingLinks()
+        page.feed(body)
+        return page.anchors
+    anchors = set()
+    used = Counter()
+    previous = ""
+    for line in markdown_body(body):
+        anchors.update(re.findall(r"""<(?:a|span)\b[^>]*\b(?:name|id)=["']([^"']+)["']""", line))
+        heading = re.match(r"^ {0,3}#{1,6}\s+(.+?)\s*#*\s*$", line)
+        if heading:
+            title = heading[1]
+        elif re.fullmatch(r" {0,3}(?:=+|-+)", line) and previous and not previous.startswith((">", "- ", "|")):
+            title = previous
+        else:
+            previous = line.strip()
+            continue
+        previous = ""
+        title = re.sub(r"<[^>]+>|\*\*", "", title).lower().strip()
+        slug = "".join(char if not char.isspace() else "-" for char in title
+                       if char.isalnum() or char in "_-" or char.isspace())
+        serial = used[slug]
+        while (candidate := f"{slug}-{serial}" if serial else slug) in anchors:
+            serial += 1
+        used[slug] = serial + 1
+        anchors.add(candidate)
+    return anchors
+
+
+def repository_target(file, link):
+    path = unquote(link.path)
+    if not link.netloc and not link.scheme:
+        return file.parent / path if path else file
+    if link.netloc == PAGES_HOST and path.startswith(PAGES_PROJECT):
+        return HTML_PAGE.parent / (path.removeprefix(PAGES_PROJECT) or "index.html")
+    if link.netloc == "github.com" and path.startswith(GITHUB_PROJECT):
+        repo_path = path.removeprefix(GITHUB_PROJECT)
+        if repo_path.startswith(("blob/main/", "tree/main/")):
+            return ROOT / repo_path.split("/", 2)[2]
+    return None
 
 
 def check_links():
     files = list(ROOT.glob("*.md"))
     for folder in ("docs", "templates", "examples", "figures", ".agents/skills"):
         files.extend((ROOT / folder).rglob("*.md"))
-    for file in files:
-        for href in markdown_links(file.read_text(encoding="utf-8-sig")):
-            link = urlsplit(href)
-            if not link.scheme and not link.netloc and link.path:
-                target = (file.parent / unquote(link.path)).resolve()
-                require(target.is_relative_to(ROOT) and target.exists(),
-                        f"Broken Markdown link in {file.relative_to(ROOT)}: {href}")
-
     page = LandingLinks()
     page.feed(HTML_PAGE.read_text(encoding="utf-8"))
-    for href in page.links:
-        link = urlsplit(href)
-        if link.netloc == "github.com" and link.path.startswith(GITHUB_PROJECT):
-            path = link.path.removeprefix(GITHUB_PROJECT)
-            if path.startswith(("blob/main/", "tree/main/")):
-                target = ROOT / unquote(path.split("/", 2)[2])
-                require(target.exists(), f"Homepage target missing: {href}")
-        elif not link.netloc and not link.scheme:
-            target = HTML_PAGE.parent / unquote(link.path)
-            require(target.exists(), f"Homepage resource missing: {href}")
-            if not link.path and link.fragment:
-                require(unquote(link.fragment) in page.anchors, f"Homepage anchor missing: {href}")
+    require(set(page.controls) <= page.anchors, "Homepage ARIA reference points to a missing element")
+    link_sources = [(file, markdown_links(file.read_text(encoding="utf-8-sig"))) for file in files]
+    link_sources.append((HTML_PAGE, page.links))
+    checked = 0
+    for file, links in link_sources:
+        for href in links:
+            link = urlsplit(href)
+            target = repository_target(file, link)
+            if target is None:
+                continue
+            target = target.resolve()
+            require(target.is_relative_to(ROOT) and target.exists(),
+                    f"Broken link in {file.relative_to(ROOT)}: {href}")
+            if target.is_dir() and link.fragment:
+                target = target / ("index.html" if target == HTML_PAGE.parent else "README.md")
+            if link.fragment and target.suffix.lower() in (".md", ".html"):
+                fragment = unquote(link.fragment)
+                require(target.is_file() and fragment in anchors_for(target),
+                        f"Broken anchor in {file.relative_to(ROOT)}: {href}")
+            checked += 1
+    return checked
+
+
+def check_release_downloads():
+    latest = re.search(r"^## \[(v\d+\.\d+\.\d+)\]", (ROOT / "CHANGELOG.md").read_text(encoding="utf-8"), re.M)
+    require(latest, "Changelog is missing the latest release")
+    download = f"https://github.com{GITHUB_PROJECT}archive/refs/tags/{latest[1]}.zip"
+    for source in (ROOT / "README.md", HTML_PAGE):
+        content = source.read_text(encoding="utf-8")
+        require(download in content and "archive/refs/heads/main.zip" not in content,
+                f"{source.name} must link to the release ZIP {latest[1]}")
 
 
 def numeric_rows(path):
@@ -211,6 +279,30 @@ def check_case_status():
         require("进度与交接" in output, "Case status did not report how to read legacy notes")
 
 
+def check_case_creation():
+    with TemporaryDirectory(prefix="mcm-case-check-") as directory:
+        example = Path(directory)
+        for name in ("scripts/new_case.py", "templates/CASE.md"):
+            target = example / name
+            target.parent.mkdir()
+            shutil.copyfile(ROOT / name, target)
+        existing = example / "cases" / "测试题"
+        inputs = existing / "inputs"
+        inputs.mkdir(parents=True)
+        attachment = inputs / "original.txt"
+        attachment.write_bytes(b"existing input")
+        command = [sys.executable, "-X", "utf8", str(example / "scripts/new_case.py"), "测试题"]
+        subprocess.run(command, check=True, capture_output=True)
+        require(all((existing / path).is_dir() for path in ("src", "outputs", "paper")),
+                "Case initializer did not add missing directories")
+        record = existing / "CASE.md"
+        require(record.is_file(), "Case initializer did not create CASE.md")
+        record.write_bytes(b"# Existing notes\n")
+        subprocess.run(command, check=True, capture_output=True)
+        require(attachment.read_bytes() == b"existing input" and record.read_bytes() == b"# Existing notes\n",
+                "Case initializer overwrote an existing input or CASE.md")
+
+
 def check_disclosure_and_rules():
     rules = ROOT / "docs/rules/2026-apmcm-en-rules.pdf"
     notes = rules.with_name("2026-apmcm-en.md").read_text(encoding="utf-8")
@@ -241,15 +333,17 @@ def main():
     parser.add_argument("--compile-latex", action="store_true", help="compile the three paper examples using Tectonic")
     args = parser.parse_args()
     count = check_skills()
-    check_links()
+    links = check_links()
+    check_release_downloads()
     check_python_syntax()
     check_dispatch(args.compile_latex)
+    check_case_creation()
     check_case_status()
     check_disclosure_and_rules()
     if args.compile_latex:
         compile_latex(ROOT / "templates/apmcm-paper")
         compile_latex(ROOT / "examples/references")
-    print(f"Verified {count} skills, vendor hashes, links, Python syntax, examples, and disclosure checks.")
+    print(f"Verified {count} skills, {links} repository links, vendor hashes, cases, and examples.")
 
 
 if __name__ == "__main__":

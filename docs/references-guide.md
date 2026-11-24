@@ -22,7 +22,7 @@
 | --- | --- | --- |
 | 题面、提交要求、赛题附件 | 当届赛事页和题目附件 | 组委会的公告、下载页或原始题面，写到具体问题、表或条款。[亚太赛官网](https://www.apmcm.org/) |
 | 方法和同类应用 | 用英文关键词在 Google Scholar 搜，或用学校图书馆的知网入口找中文文献 | 首选可核对的原论文、出版方页面或可靠教材。已有 DOI 时用 Crossref / DOI 链接核对元数据。[Google Scholar](https://scholar.google.com/) · [中国知网](https://www.cnki.net/) · [Crossref](https://search.crossref.org/) · [DOI](https://doi.org/) |
-| 公开数据 | 按地区、指标、时间粒度查官方数据门户 | 引具体数据集或指标页，保留单位、下载日期或版本。核对该题是否允许自行补充外部数据。[国家统计局国家数据](https://data.stats.gov.cn/) · [世界银行开放数据](https://data.worldbank.org/) |
+| 公开数据 | 按地区、指标、时间粒度查官方数据门户 | 引具体数据集或指标页，保留单位、下载日期或版本。核对该题是否允许自行补充外部数据。 [国家统计局中国统计年鉴](https://www.stats.gov.cn/sj/ndsj/) · [世界银行发展指标 DataBank](https://databank.worldbank.org/source/world-development-indicators) |
 | 软件接口、求解器参数 | 查对应库的官方文档，按实际版本和函数名检索 | 引实际使用的版本和接口。方法依据和软件实现可以分别引用。[SciPy `milp` 文档](https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.milp.html) |
 
 试着用“问题对象 + 方法或验证词”组合检索，例如 `unit commitment mixed integer programming`、`load forecasting rolling origin cross validation`。找到候选后，打开原文查看支撑那句话的段落、公式或表格，再核对作者、标题、年份、版本、DOI 或链接。若目前只能看到摘要或搜索片段，就把正文才有的细节留待核实。

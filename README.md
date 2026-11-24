@@ -1,122 +1,78 @@
-# Math Modeling Agent Skills
+# Math Modeling Agent Skills · v2.7 正式版
 
-**给第一次参加数学建模竞赛的三人队。** 用自己的题面和附件开题，从读题、建模和求解走到出图、写论文与交叉验算。也支持个人陪练和 AI 自主训练。
+**给第一次参加数学建模竞赛的三人队。** 从英文题、附件和分工开始，把每个小问落到模型、可复跑结果、图表、论文和交稿证据。可用于赛前陪练、正式比赛中的合规辅助，以及换队员后的接续。
 
-[项目主页](https://szy0387-beep.github.io/mcm-agent-skills/) · [实战手册](HANDBOOK.md) · [本次亚太赛分工](#本次亚太赛三人四日分工) · [常用资料](#常用资料) · [下载完整 ZIP](https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip) · [发布说明](https://github.com/szy0387-beep/mcm-agent-skills/releases/latest) · [更新日志](CHANGELOG.md)
+[下载 v2.7 完整 ZIP](https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/tags/v2.7.0.zip) · [项目网页](https://szy0387-beep.github.io/mcm-agent-skills/) · [本次亚太赛分工](#本次亚太赛三人四日分工) · [实战手册](HANDBOOK.md) · [发布记录](https://github.com/szy0387-beep/mcm-agent-skills/releases/latest)
 
-**正式比赛先看披露要求。** 禁止伪造、篡改数据、文献和数值，关键结论须能回查原始证据。使用 AI 时保留实际记录并按当届规则披露。 [正式比赛指令](docs/codex-prompts.md#正式比赛) · [披露与学术诚信指南](docs/ai-usage-disclosure.md) · [披露模板](templates/AI_USAGE_DISCLOSURE.md)
+## 三步开始
 
-## 数学建模实战手册
+1. 下载并解压发行包。用 Codex 打开包含 `AGENTS.md` 的包根目录。**14 个核心 Skill 和 21 个专项 Skill** 均已随包提供。
+2. 用 Python 3.10 或更新版本，从包根目录运行 `python scripts/new_case.py 我的题`，把原题和附件放进 `cases/我的题/inputs/`。也可以在 Codex 中附上文件并让它建档。已有附件或 CASE 的目录可以用同一条命令补齐。
+3. 选择「赛前练习」「正式比赛」或「接着做」。告诉 Codex 当前小问、已有材料和这次要交什么。组内共享 `CASE.md` 和相关产物，从同一份记录接续。
 
-| 现在要做什么 | 打开这一章 |
-| --- | --- |
-| 拿到题目，想和队友从读题走到提交 | [全流程与三人分工](docs/end-to-end.md) |
-| 选题、查进度、换人接手或只返工受影响的小问 | [赛程与断点续跑](docs/competition-run.md) |
-| 想从手机和 WPS 练到陌生题合练 | [三人分级练习](docs/training-drill.md) |
-| 知道要交什么，想选模型、算法和验证方式 | [常见题型与方法](docs/modeling-methods.md) |
-| 要画论文图、地图、流程图或交互图 | [可视化选型指南与代码示例](docs/visualization-guide.md) |
-| 想看一套真实案例如何分析、运行、写进论文 | [宇树机器人赛题全流程复盘](docs/robotics-case.md) |
-| 想亲手把英文题做成一篇可编译的练习稿 | [英文调度完整短例](examples/dispatch/README.md) |
-| 计算已做完，准备核对结论、打包并交稿 | [终稿复核和源码包检查](docs/final-delivery.md) |
-| 要起英文稿或按评阅原则审自己的论文 | [亚太赛 LaTeX 模板](templates/apmcm-paper/) · [逐问自审与同题对照](docs/paper-review.md) |
+### 赛前练习
+
+> 用 `$mcm-skill-router` 带我们做一道往年英文题。题面和附件在 `cases/我的题/inputs/`。先审第一问，翻译关键条件，列清输入、单位和交付物。等我们写一个手算预期，再进入建模。
+
+### 正式比赛
+
+> 用 `$mcm-skill-router` 协助本次正式比赛。先对照当届规则核实允许的 AI 辅助范围。下面是本队已独立完成的工作和本轮需要的辅助。请注明证据位置、待核事项和实际使用情况，交由队员复核。
+
+2026 亚太赛的核心模型构建、算法设计与求解、结果分析由参赛队独立完成。实际使用随手记录，终审核对披露与提交文件。数据、引文和数值都须能回查，仿真及合成数据如实标注。 [当届规则归档](docs/rules/2026-apmcm-en.md) · [AI 使用与学术诚信](docs/ai-usage-disclosure.md)
+
+### 接着做
+
+> 用 `$mcm-skill-router` 看进度。请只读当前案例的 `CASE.md` 和相关证据，告诉我已通过的阶段、要返工的小问，以及接手人下一步可以做什么。
+
+在终端可以运行 `python scripts/case_status.py cases/我的题`。要继续执行时，再指定小问和希望交付的文件。 [换人接手与局部返工](docs/competition-run.md) · [更多可复制指令](docs/codex-prompts.md)
 
 ## 本次亚太赛三人四日分工
 
-| 日期 | 建模手 | 编程手 | 论文手 | 晚间交付 |
+| 日期 | 建模手 | 编程手 | 论文手 | 晚间验收 |
 | --- | --- | --- | --- | --- |
-| 11 月 26 日 | 拆题、定基线 | 查数据，跑通第一问 | 找文献和相关方法，搭英文稿骨架 | 小问表、首份结果和文献表 |
-| 11 月 27 日 | 验算并核对思路 | 跑各问主结果 | 理解项目，写方法段，协作出图 | 主结果、验算记录和图表初稿 |
-| 11 月 28 日 | 写中文模型与结论 | 写中文结果段，优化图表 | 翻译并合并成英文初稿 | 覆盖各问、可导出 PDF 的英文稿 |
-| 11 月 29 日 | 审模型、推导和结论 | 复跑并核对论文数字 | 合稿，核对英文、引用和格式 | 三人审定，队长当晚提交 |
+| 11 月 26 日 | 拆题、定基线 | 查附件、跑第一问 | 查文献、搭英文稿骨架 | 小问表、首份结果、来源表 |
+| 11 月 27 日 | 独立验算主结果 | 跑各问、记录复跑 | 写方法、协作出图 | 主结果表、验算记录、图表初稿 |
+| 11 月 28 日 | 写中文模型与结论 | 优化图表、写结果段 | 翻译及合并英文初稿 | 覆盖各问且可编译的英文稿 |
+| 11 月 29 日 | 审题意、推导和结论 | 独立复跑、核对数字 | 合稿、核对格式和披露 | 三人共审，队长当晚提交 |
 
-四日分工的任务细则、晚间验收和提交要求以参赛计划为准。 [完整参赛计划](docs/apmcm-2026.md) · [网页版分工表](https://szy0387-beep.github.io/mcm-agent-skills/#apmcm-plan)
+官方截止为北京时间 **11 月 30 日 09:00**。队内以 11 月 29 日晚为上传目标。 [当届参赛计划与交稿清单](docs/apmcm-2026.md) · [网页版分工](https://szy0387-beep.github.io/mcm-agent-skills/#apmcm-plan)
 
-## 常用资料
+## 从题面到论文，每一步留下什么
 
-| 什么时候用 | 直接打开 |
-| --- | --- |
-| 开题、选题和三人分工 | [首赛实战手册](docs/team-playbook.md) · [赛题到论文路线图](figures/first-contest-mindmap.md) |
-| 看本次日程、换人接手 | [亚太赛参赛计划](docs/apmcm-2026.md) · [CASE 交接模板](templates/CASE.md) |
-| 找方法出处、写正文引用 | [参考文献指南](docs/references-guide.md) · [LaTeX 引用示例](examples/references/) |
-| 调用 Codex、继续已有成果 | [可复制的分阶段指令](docs/codex-prompts.md) · [技能一览](#技能一览) |
-| 先练一遍从题面到论文 | [英文题面](examples/dispatch/problem-en.md) · [完整练习与复跑命令](examples/dispatch/README.md) |
-| 核对比赛要求和交稿 | [当届英文赛项交稿检查](docs/apmcm-2026.md#英文赛项交稿检查) · [官方规则 PDF 归档](docs/rules/2026-apmcm-en.md) · [当届 AI 使用规定](https://m.saikr.com/contest/notice_detail/50212) |
+| 阶段 | 应交给下一位队友的东西 | 入口 |
+| --- | --- | --- |
+| 读题、选题和建模 | 逐问任务表、原文出处、假设和手算基线 | [三人全流程](docs/end-to-end.md) · [常见题型](docs/modeling-methods.md) |
+| 编程、验证和仿真 | 可复跑命令、结果表、独立验算与失败范围 | [赛程与验收](docs/competition-run.md) · [宇树案例复盘](docs/robotics-case.md) |
+| 出图、引用与写作 | 同版本的图表、真实来源、论文源码 | [可视化](docs/visualization-guide.md) · [参考文献](docs/references-guide.md) · [亚太赛 LaTeX 模板](templates/apmcm-paper/) |
+| 终审与交稿 | 独立重编的 PDF、逐问证据、规则要求的附件 | [论文自审](docs/paper-review.md) · [终稿复核](docs/final-delivery.md) · [AI 披露模板](templates/AI_USAGE_DISCLOSURE.md) |
 
-[在网页首页展开查看资料要点](https://szy0387-beep.github.io/mcm-agent-skills/#resources)
+[查看从赛题到论文的路线图](figures/first-contest-mindmap.md)
 
-## 快速开始
+## 先在空目录跑一个合成题
 
-1. [下载完整 ZIP](https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip)并解压。用 Codex 打开包含本页和 `AGENTS.md` 的文件夹。**14 个核心 Skill 和 21 个专项 Skill 均已随包提供。**
-2. 把题面和附件复制到该文件夹下的 `cases/我的题/inputs/`。已有代码、结果或论文时告诉 Codex 位置，方便从当前步骤接手。也可以在 Codex 中附上文件并说明它们对应哪一问。
-3. 在这个项目的聊天里输入下面的一句。也可以点名 `$mcm-skill-router`。
-
-> 这是我自己的练习题。题面和附件在 `cases/我的题/inputs/`。按新题流程帮我完成第一问，交付模型说明、复跑命令、结果表和验算证据。完成后我会用另外一组输入复核。
-
-第一次拿到英文题，可以先说「用 `$mcm-problem-translate` 带我们读第一问。标出英文原文的位置，翻译约束，并列出输入、输出和本问要交什么」。找方法、数据出处或整理论文引用时，用 `$mcm-citation`。
-
-已有模型、代码、结果表或论文时，可以从对应步骤继续。[可复制的 Codex 调用指令](docs/codex-prompts.md)
-
-想自己推模型时，可以说「用 `$mcm-team-drill` 带我做第一问。每次给我一步，等我作答后再验算」。想先选方案时，可以说「我已有结果表，帮我推荐出图和写论文的技能组合」。[新题协作流程](.agents/skills/mcm-skill-router/references/new-problem.md)
-
-### 我该准备什么
-
-使用技能需要可用的 Codex。运行内置案例和 Python 解题代码还需要 Python 3.10 或更新版本。运行某个专项技能的示例时，按需安装它用到的 Python 库或求解器。生成论文源稿后，可用题目指定的本地编译器或 Overleaf 生成 PDF。
-
-如希望在终端建立完整案例目录，在项目根目录运行 `python scripts/new_case.py team-q1`。它会建立 `inputs/`、`src/`、`outputs/`、`paper/` 和 `CASE.md`。组员各用自己的案例目录，附件与结果默认保存在本地。
-
-换队员或换聊天时，打开同一案例的 `CASE.md`。在项目根目录运行 `python scripts/case_status.py cases/team-q1` 可以查看已登记的阶段、卡点、倒计时和下一步。 [赛程与断点续跑](docs/competition-run.md)
-
-### 验证安装
-
-下面的合成案例只用 Python 标准库。从仓库根目录运行：
+这条命令仅用 Python 标准库。它会从合成英文调度题的 CSV 生成两组结果和 Overleaf 源码包。
 
 ```sh
-python .agents/skills/mcm-fast/scripts/dispatch.py examples/dispatch/units.csv examples/dispatch/demand.csv --output outputs/dispatch
+python examples/dispatch/run_paper.py --output outputs/dispatch-paper --overleaf-zip
 ```
 
-输出总费用应为 **980**。还可以用同一例题从英文原题走一遍，得到可在 Overleaf 打开的英文稿。[从英文题到论文的完整短例](examples/dispatch/README.md)
+验收时应得到基准费用 **980**、每小时需求增加 10 MW 后的费用 **1120**，以及 **141 MW** 超出容量的反例。将 `outputs/dispatch-paper/overleaf.zip` 上传至 Overleaf，或解压后从 `main.tex` 本地编译。 [英文题面](examples/dispatch/problem-en.md) · [复跑步骤](examples/dispatch/README.md) · [三人交接示例](examples/dispatch/team-handoff.md)
 
 ## 技能一览
 
-| Skill | 用途 |
+整题交给 `$mcm-skill-router`。遇到单项问题可以直接描述目标，也可点名对应 Skill。三个旧流程名 `$mcm`、`$math-modeling-solver`、`$math-modeling-paper` 可用于定向查资料。
+
+| 你要做什么 | 核心入口 |
 | --- | --- |
-| [mcm-skill-router](.agents/skills/mcm-skill-router/SKILL.md) | 推荐或执行当前最合适的流程 |
-| [mcm-problem-translate](.agents/skills/mcm-problem-translate/SKILL.md) | 英文题逐问翻译、术语对照和中文任务表 |
-| [mcm-model-training](.agents/skills/mcm-model-training/SKILL.md) | 审题、约束、假设、可验算基准 |
-| [mcm-code-training](.agents/skills/mcm-code-training/SKILL.md) | 实现、复跑、求解状态和验错 |
-| [mcm-simulation-training](.agents/skills/mcm-simulation-training/SKILL.md) | 过程仿真、情景和灵敏度 |
-| [mcm-visualization-training](.agents/skills/mcm-visualization-training/SKILL.md) | 论文图、数据口径和视觉复核 |
-| [mcm-paper-training](.agents/skills/mcm-paper-training/SKILL.md) | 竞赛论文源稿、Overleaf 和证据对照 |
-| [mcm-paper-self-review](.agents/skills/mcm-paper-self-review/SKILL.md) | 逐问查漏、核对摘要和评阅证据 |
-| [mcm-model-comparison](.agents/skills/mcm-model-comparison/SKILL.md) | 统一约束、分母和指标后比较方案 |
-| [mcm-citation](.agents/skills/mcm-citation/SKILL.md) | 找出处、插入正文引用、整理书目和终审 |
-| [ai-usage-disclosure](.agents/skills/ai-usage-disclosure/SKILL.md) | 记录 AI 辅助、准备披露材料、核实数据、文献和关键数值 |
-| [mcm-training-review](.agents/skills/mcm-training-review/SKILL.md) | 合练复盘、单错反例、迁移与用时核验 |
-| [mcm-fast](.agents/skills/mcm-fast/SKILL.md) | 现成脚本复跑与验算，支持调度和月度预测 |
-| [mcm-team-drill](.agents/skills/mcm-team-drill/SKILL.md) | 个人陪练与三人队交接 |
+| 开题、协作或陪练 | [总路由](.agents/skills/mcm-skill-router/SKILL.md) · [三人合练](.agents/skills/mcm-team-drill/SKILL.md) · [英译与审题](.agents/skills/mcm-problem-translate/SKILL.md) |
+| 建模、比较和实现 | [建模](.agents/skills/mcm-model-training/SKILL.md) · [方案对照](.agents/skills/mcm-model-comparison/SKILL.md) · [代码](.agents/skills/mcm-code-training/SKILL.md) · [复跑现有案例](.agents/skills/mcm-fast/SKILL.md) |
+| 验证、图表和合练复盘 | [仿真](.agents/skills/mcm-simulation-training/SKILL.md) · [可视化](.agents/skills/mcm-visualization-training/SKILL.md) · [训练复盘](.agents/skills/mcm-training-review/SKILL.md) |
+| 论文、引用和交稿 | [写作与编译](.agents/skills/mcm-paper-training/SKILL.md) · [引用](.agents/skills/mcm-citation/SKILL.md) · [论文自审](.agents/skills/mcm-paper-self-review/SKILL.md) · [AI 披露](.agents/skills/ai-usage-disclosure/SKILL.md) |
 
-## 随包专项技能
+[专项技能目录](.agents/skills/mcm-skill-router/references/specialist-skills.md)包含数据检查、求解器审查、统计、网络、地图及制图工具。按每项任务的说明安装所需依赖。
 
-整题统一由 `$mcm-skill-router` 接续。队员可以直接说「对两版结果做整数解复核」或「把这组结果画成带限值的图」，路由会读取相应专项材料。单项工具支持按需自动选用。三个旧流程名 `$mcm`、`$math-modeling-solver`、`$math-modeling-paper` 用于定向查参考资料。 [专项技能目录](.agents/skills/mcm-skill-router/references/specialist-skills.md)
+## 验收与贡献
 
-| 任务 | 可用 Skill |
-| --- | --- |
-| 拆题、看同类案例 | `$mcm`、`$math-modeling-solver` |
-| 理解附件、预测和比较模型 | `$exploratory-data-analysis`、`$statsmodels`、`$scikit-learn` |
-| 列优化模型、验算整数解、规划网络或权衡多目标 | `$problem-formulation`、`$mip-solver-and-solution-audit`、`$networkx`、`$pymoo` |
-| 离散事件仿真、公式和单位验证 | `$simpy`、`$sympy`、`$uncertainty-and-units` |
-| 画图、审图和共享可复跑笔记本 | `$matplotlib`、`$scientific-visualization`、`$jupyter-notebook` |
-| 做统计分布图、交互图、地图或流程图 | `$seaborn`、`$visualization`（Plotly）、`$geopandas`、`$mermaid-diagrams` |
-| 查写法、审查结论证据 | `$math-modeling-paper`、`$scientific-critical-thinking` |
+`python scripts/check_package.py` 核对技能、链接与锚点、第三方校验和、调度结果、CASE 接续和披露。CI 另外跑月度预测测试并编译三个论文样例。 [贡献说明](CONTRIBUTING.md) · [GitHub Actions](https://github.com/szy0387-beep/mcm-agent-skills/actions) · [版本记录](CHANGELOG.md)
 
-维护者可用 `python scripts/install_extras.py --list` 查锁定版本和上游来源。缺失技能可用同版本 ZIP 校验后恢复。 [恢复说明](CONTRIBUTING.md#第三方技能) · [版本清单](third-party-skills.json)
-
-在正式比赛中，按当届组委会规则确定 AI 使用范围、提交内容和披露要求。练习真题可从[亚太赛官网](https://www.apmcm.org/)等赛事站点获取。
-
-## 维护与贡献
-
-运行 `python scripts/check_package.py` 核对技能、第三方校验和、链接、调度练习、源码 ZIP 与披露文件预检。 [贡献说明](CONTRIBUTING.md) · [GitHub Actions 检查](https://github.com/szy0387-beep/mcm-agent-skills/actions)
-
-## 许可证
-
-本仓库自制内容采用 [MIT](LICENSE)。随包专项技能保留各自的上游许可证与版权说明。[第三方来源与许可证](THIRD_PARTY.md)
+自制内容采用 [MIT](LICENSE)。第三方 Skill 按各自的许可证与固定提交随包发布。 [第三方说明](THIRD_PARTY.md)

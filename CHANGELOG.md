@@ -2,6 +2,19 @@
 
 按 Git 标签记录面向组员的变化。日期使用北京时间。[GitHub 发布页](https://github.com/szy0387-beep/mcm-agent-skills/releases)
 
+## [v2.7.0] · 2026-11-25
+
+### 调整
+
+- 重写 README。把赛前练习、正式比赛和接手已有案例放在同一入口，保留本队亚太赛四日安排。
+- 网页和 README 指向固定版本下载。网页可分别复制三种指令，剪贴板不可用时选中原文供手动复制。
+- 将仿真、出图、写稿和终审的验收分清。正式比赛先核对当届规则及允许的辅助范围。
+
+### 修复
+
+- 建案命令能补齐已有案例目录并保留附件与 CASE。终稿路由直接接到论文自审和提交清单。
+- 验收加入 Markdown 文档锚点、网页版内部跳转和下载版本一致性检查。
+
 ## [v2.5.0] · 2026-11-25
 
 ### 新增
@@ -105,6 +118,7 @@
 - 首次标记发布，提供数学建模总入口、训练技能和第三方来源清单。
 - 修正 Windows 上安装独立专项技能的路径处理。
 
+[v2.7.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.5.0...v2.7.0
 [v2.5.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.4.0...v2.5.0
 [v2.4.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.3.1...v2.4.0
 [v2.3.1]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.3.0...v2.3.1

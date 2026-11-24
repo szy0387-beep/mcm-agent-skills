@@ -34,8 +34,8 @@
           <h1 id="hero-title">亚太赛<br><span>三人队四天分工</span></h1>
           <p class="hero-summary">三人并行推进，每晚核对结果和接手人。</p>
           <div class="actions">
-            <a class="button button-primary" href="#handbook">打开实战手册</a>
-            <a class="button button-outline" href="https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip">下载完整 ZIP</a>
+            <a class="button button-primary" href="#start">选择开始方式</a>
+            <a class="button button-outline" href="https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/tags/v2.7.0.zip">下载 v2.7 正式版</a>
           </div>
         </div>
         <aside class="contest-preview" aria-labelledby="contest-preview-title">
@@ -212,7 +212,7 @@
           <p>告诉助手当前做到哪一问、已有哪份文件、这一轮要交什么。</p>
           <div class="resource-links">
             <a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/docs/codex-prompts.md">分阶段指令模板</a>
-            <a href="#start">复制网页练习指令</a>
+            <a href="#start">复制练习、正式比赛或接手指令</a>
           </div>
           <details>
             <summary>展开换队友或换聊天的交接格式</summary>
@@ -325,19 +325,37 @@
         <div>
           <h2 id="start-title">打开 Codex 开题</h2>
           <ol class="setup">
-            <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip">下载完整 ZIP</a>并解压。随包提供 Skill、实战手册、三人分工和练习。</li>
+            <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/tags/v2.7.0.zip">下载 v2.7 完整 ZIP</a>并解压。</li>
             <li>用 Codex 打开包含 <code>AGENTS.md</code> 的文件夹。</li>
-            <li>把题面和附件放进 <code>cases/我的题/inputs/</code>，再发送练习指令。</li>
+            <li>放入题面和附件，或打开已有案例的 <code>CASE.md</code>，再选择对应指令。</li>
           </ol>
-          <a class="text-link" href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/docs/codex-prompts.md#正式比赛">正式比赛指令与披露步骤</a>
+          <p><a class="text-link" href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/docs/ai-usage-disclosure.md">正式比赛的使用范围与披露步骤</a></p>
         </div>
         <div class="prompt-panel">
-          <div class="prompt-header">
-            <h3>练习指令</h3>
-            <button type="button" class="copy-button" id="copy-prompt" hidden>复制指令</button>
+          <div class="prompt-option">
+            <div class="prompt-header">
+              <h3>赛前练习</h3>
+              <button type="button" class="copy-button" aria-controls="practice-prompt" hidden>复制练习指令</button>
+            </div>
+            <p class="prompt" id="practice-prompt">用 $mcm-skill-router 带我们做一道往年英文题。题面和附件在 cases/我的题/inputs/。先审第一问，翻译关键条件，列清输入、单位和交付物。等我们写一个手算预期，再进入建模。</p>
+            <p class="copy-status" role="status"></p>
           </div>
-          <p class="prompt" id="prompt-text">这是我的练习题。题面和附件在 cases/我的题/inputs/。用 $mcm-skill-router 帮我审第一问，列出题目要求、附件和约束，并说明接下来要交付什么。</p>
-          <p id="copy-status" class="copy-status" role="status"></p>
+          <div class="prompt-option">
+            <div class="prompt-header">
+              <h3>正式比赛</h3>
+              <button type="button" class="copy-button" aria-controls="contest-prompt" hidden>复制比赛指令</button>
+            </div>
+            <p class="prompt" id="contest-prompt">用 $mcm-skill-router 协助本次正式比赛。先对照当届规则核实允许的 AI 辅助范围。下面是本队已独立完成的工作和本轮需要的辅助。请注明证据位置、待核事项和实际使用情况，交由队员复核。</p>
+            <p class="copy-status" role="status"></p>
+          </div>
+          <div class="prompt-option">
+            <div class="prompt-header">
+              <h3>接着做</h3>
+              <button type="button" class="copy-button" aria-controls="resume-prompt" hidden>复制接手指令</button>
+            </div>
+            <p class="prompt" id="resume-prompt">用 $mcm-skill-router 看进度。请只读当前案例的 CASE.md 和相关证据，告诉我已通过的阶段、要返工的小问，以及接手人下一步可以做什么。</p>
+            <p class="copy-status" role="status"></p>
+          </div>
           <a class="text-link" href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/docs/codex-prompts.md">查看各阶段的指令模板</a>
         </div>
       </div>

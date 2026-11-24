@@ -16,4 +16,4 @@ python scripts/check_package.py
 
 维护时先对照固定提交、许可和本库适配，再更新 `third-party-skills.json` 的 `sha256`。计算方式见 [vendor_bundle.py](scripts/vendor_bundle.py)。CI 会核对每个专项目录的路径与文件原始字节。
 
-缺失目录可用同版本 ZIP 离线恢复。例如运行 `python scripts/install_extras.py --all --archive "mcm-agent-skills-2.5.0.zip"`。已存在的目录先校验，缺失的目录用通过校验的文件恢复。只有最新版且可联网时，可以省略 `--archive`。
+缺失目录可用同版本 ZIP 离线恢复。例如运行 `python scripts/install_extras.py --all --archive "mcm-agent-skills-2.7.0.zip"`。已存在的目录先校验，缺失的目录用通过校验的文件恢复。省略 `--archive` 会尝试下载主分支 ZIP，校验不匹配时请使用对应发行包。
