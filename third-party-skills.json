@@ -1,0 +1,131 @@
+{
+  "sources": [
+    {
+      "repo": "K-Dense-AI/scientific-agent-skills",
+      "ref": "c21d13b3cc2894680229ba9959a53281acb9200e",
+      "skills": [
+        {
+          "name": "exploratory-data-analysis",
+          "path": "skills/exploratory-data-analysis",
+          "license": "MIT"
+        },
+        {
+          "name": "statsmodels",
+          "path": "skills/statsmodels",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "name": "scikit-learn",
+          "path": "skills/scikit-learn",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "name": "simpy",
+          "path": "skills/simpy",
+          "license": "MIT"
+        },
+        {
+          "name": "sympy",
+          "path": "skills/sympy",
+          "license": "See license in upstream SKILL.md"
+        },
+        {
+          "name": "uncertainty-and-units",
+          "path": "skills/uncertainty-and-units",
+          "license": "MIT"
+        },
+        {
+          "name": "scientific-visualization",
+          "path": "skills/scientific-visualization",
+          "license": "MIT"
+        },
+        {
+          "name": "networkx",
+          "path": "skills/networkx",
+          "license": "BSD-3-Clause"
+        },
+        {
+          "name": "pymoo",
+          "path": "skills/pymoo",
+          "license": "Apache-2.0"
+        },
+        {
+          "name": "scientific-critical-thinking",
+          "path": "skills/scientific-critical-thinking",
+          "license": "MIT"
+        }
+      ]
+    },
+    {
+      "repo": "K-Dense-AI/scientific-agent-skills",
+      "ref": "ec59a29a03d5c40f73ab40878df04860bc00e876",
+      "skills": [
+        {
+          "name": "matplotlib",
+          "path": "skills/matplotlib",
+          "license": "See license in upstream SKILL.md"
+        }
+      ]
+    },
+    {
+      "repo": "openai/skills",
+      "ref": "49f948faa9258a0c61caceaf225e179651397431",
+      "skills": [
+        {
+          "name": "jupyter-notebook",
+          "path": "skills/.curated/jupyter-notebook",
+          "license": "Apache-2.0"
+        }
+      ]
+    },
+    {
+      "repo": "hajibabaie/combinatorial-optimization-skills",
+      "ref": "8b67011dbaa54809a67af6c77c06809bfadc44d1",
+      "skills": [
+        {
+          "name": "problem-formulation",
+          "path": "skills/problem-formulation",
+          "license": "MIT"
+        }
+      ]
+    },
+    {
+      "repo": "benchflow-ai/skillsbench",
+      "ref": "f860ecf02ef53412a030f8661c83d644b739ff01",
+      "skills": [
+        {
+          "name": "mip-solver-and-solution-audit",
+          "path": "tasks/exam-block-sequencing/environment/skills/mip-solver-and-solution-audit",
+          "license": "Apache-2.0"
+        }
+      ]
+    },
+    {
+      "repo": "Lupynow/math-modeling-skills",
+      "ref": "3a9428c006cc1b977c6a72a531b739a62868a4bc",
+      "skills": [
+        {
+          "name": "math-modeling-solver",
+          "path": "skills/math-modeling-solver",
+          "license": "MIT"
+        },
+        {
+          "name": "math-modeling-paper",
+          "path": "skills/math-modeling-paper",
+          "license": "MIT"
+        }
+      ]
+    },
+    {
+      "repo": "gdl1605/MCM.skill",
+      "ref": "de41c09d6b6d63f0209c335eb196f21a99a4b83e",
+      "skills": [
+        {
+          "name": "mcm",
+          "path": "mcm",
+          "license": "MIT"
+        }
+      ]
+    }
+  ]
+}
