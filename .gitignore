@@ -2,6 +2,7 @@ __pycache__/
 *.py[cod]
 /.venv/
 /outputs/
+/cases/
 /.env
 /.env.*
 /.agents/skills/exploratory-data-analysis/

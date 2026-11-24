@@ -1,14 +1,26 @@
 # Math Modeling Agent Skills
 
-一套面向数学建模备赛的 Codex 技能。从审题、建模、代码、仿真和可视化，走到论文交付与结果审查。既可带人练真题，也可让 AI 自主训练并留下可复用的结果。
+面向数模小组的 Codex 技能。组员可以用自己的题面和附件开题，从拆解小问、建模和求解走到出图、论文与结果复核。也可以按个人陪练或 AI 自主训练的方式使用。
 
 ## 快速开始
 
-1. 克隆或下载本仓库，用 Codex 打开仓库根目录。Codex 会从 `.agents/skills/` 发现项目技能。
-2. 输入「用 `$mcm-skill-router` 帮我推荐一套流程。我已经有结果表，需要论文图和可编译的 Overleaf 论文」。
-3. 想直接执行时，输入「按这个做」。只想了解路线时，描述目标和手头已有材料即可。
+1. 在 GitHub 选 **Code → Download ZIP** 并解压。用 Codex 打开包含本页和 `AGENTS.md` 的文件夹。9 个核心 Skill 随仓库一起提供。
+2. 把题面和附件复制到该文件夹下的 `cases/我的题/inputs/`。已有代码、结果或论文时告诉 Codex 位置，方便从当前步骤接手。也可以在 Codex 中附上文件并说明它们对应哪一问。
+3. 在这个项目的聊天里输入下面的一句。也可以点名 `$mcm-skill-router`。
 
-用 Python 3.10 或更新版本复跑内置合成案例。该案例只用 Python 标准库：
+> 这是我自己的练习题。题面和附件在 `cases/我的题/inputs/`。按新题流程帮我完成第一问，交付模型说明、复跑命令、结果表和验算证据。完成后我会用另外一组输入复核。
+
+想自己推模型时，可以说「用 `$mcm-team-drill` 带我做第一问。每次给我一步，等我作答后再验算」。想先选方案时，可以说「我已有结果表，帮我推荐出图和写论文的技能组合」。[新题协作流程](.agents/skills/mcm-skill-router/references/new-problem.md)
+
+### 我该准备什么
+
+使用核心技能需要可用的 Codex。运行内置案例和 Python 解题代码还需要 Python 3.10 或更新版本。可选专项和第三方 Python 包按你的题目安装。生成论文源稿后，可用题目指定的本地编译器或 Overleaf 生成 PDF。
+
+如希望在终端建立完整案例目录，在项目根目录运行 `python scripts/new_case.py team-q1`。它会建立 `inputs/`、`src/`、`outputs/`、`paper/` 和 `CASE.md`。组员各用自己的案例目录，附件与结果默认保存在本地。
+
+### 验证安装
+
+下面的合成案例只用 Python 标准库。从仓库根目录运行：
 
 ```sh
 python .agents/skills/mcm-fast/scripts/dispatch.py examples/dispatch/units.csv examples/dispatch/demand.csv --output outputs/dispatch
