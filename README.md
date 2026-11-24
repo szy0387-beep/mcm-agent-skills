@@ -2,13 +2,31 @@
 
 **给第一次参加数学建模竞赛的三人队。** 用自己的题面和附件开题，从读题、建模和求解走到出图、写论文与交叉验算。也支持个人陪练和 AI 自主训练。
 
-[项目主页](https://szy0387-beep.github.io/mcm-agent-skills/) · [下载最新版](https://github.com/szy0387-beep/mcm-agent-skills/releases/latest) · [更新日志](CHANGELOG.md)
+[项目主页](https://szy0387-beep.github.io/mcm-agent-skills/) · [本次亚太赛分工](#本次亚太赛三人四日分工) · [常用资料](#常用资料) · [下载最新版](https://github.com/szy0387-beep/mcm-agent-skills/releases/latest) · [更新日志](CHANGELOG.md)
 
-| 你现在要做什么 | 从这里开始 |
+## 本次亚太赛三人四日分工
+
+| 日期 | 建模手 | 编程手 | 论文手 | 晚间交付 |
+| --- | --- | --- | --- | --- |
+| 11 月 26 日 | 拆题、定基线 | 查数据，跑通第一问 | 找文献和相关方法，搭英文稿骨架 | 小问表、首份结果和文献表 |
+| 11 月 27 日 | 验算并核对思路 | 跑各问主结果 | 理解项目，写方法段，协作出图 | 主结果、验算记录和图表初稿 |
+| 11 月 28 日 | 写中文模型与结论 | 写中文结果段，优化图表 | 翻译并合并成英文初稿 | 覆盖各问、可导出 PDF 的英文稿 |
+| 11 月 29 日 | 审模型、推导和结论 | 复跑并核对论文数字 | 合稿，核对英文、引用和格式 | 三人审定，队长当晚提交 |
+
+[网页版分工表](https://szy0387-beep.github.io/mcm-agent-skills/#apmcm-plan) · [完整参赛计划与交接模板](docs/apmcm-2026.md)
+
+## 常用资料
+
+| 什么时候用 | 直接打开 |
 | --- | --- |
-| 拿到一份新赛题 | [赛题到论文路线图](figures/first-contest-mindmap.md) · [首赛实战手册](docs/team-playbook.md) |
-| 想先练一遍完整流程 | [英文题到论文短例](examples/dispatch/README.md) · [可复制的 Codex 指令](docs/codex-prompts.md) |
-| 已经有代码、数据或论文 | [技能一览](#技能一览) · [参考文献怎么找、怎么用](docs/references-guide.md) |
+| 开题、选题和三人分工 | [首赛实战手册](docs/team-playbook.md) · [赛题到论文路线图](figures/first-contest-mindmap.md) |
+| 看本次日程、换人接手 | [亚太赛参赛计划](docs/apmcm-2026.md) · [CASE 交接模板](templates/CASE.md) |
+| 找方法出处、写正文引用 | [参考文献指南](docs/references-guide.md) · [LaTeX 引用示例](examples/references/) |
+| 调用 Codex、继续已有成果 | [可复制的分阶段指令](docs/codex-prompts.md) · [技能一览](#技能一览) |
+| 先练一遍从题面到论文 | [英文题面](examples/dispatch/problem-en.md) · [完整练习与复跑命令](examples/dispatch/README.md) |
+| 核对比赛要求和交稿 | [当届参赛规则](https://apmcm.org/detail/2513?language=cn) · [当届 AI 使用规定](https://m.saikr.com/contest/notice_detail/50212) |
+
+[在网页首页展开查看资料要点](https://szy0387-beep.github.io/mcm-agent-skills/#resources)
 
 ## 快速开始
 

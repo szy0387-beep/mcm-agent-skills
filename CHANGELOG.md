@@ -2,6 +2,12 @@
 
 按 Git 标签记录面向组员的变化。日期使用北京时间。[GitHub 发布页](https://github.com/szy0387-beep/mcm-agent-skills/releases)
 
+## [v1.8.0] · 2026-11-24
+
+- 新增 2026 亚太赛三人四日分工表，主页首屏可直达 26–29 日各位队员的任务和晚间交付。
+- 在 README 同步简表，并在首赛手册加入参赛计划入口，附组内交接表、提交复核和当届 AI 规则链接。
+- 把首赛手册、交接模板、参考文献指南、Codex 指令和英文练习列入 GitHub 仓库首页。网页版可直接展开查看要点。
+
 ## [v1.7.1] · 2026-11-24
 
 - 新增 GitHub Pages 项目主页，把下载、首赛路线、技能入口和英文短例放在一页。
@@ -47,6 +53,7 @@
 - 首次标记发布，提供数学建模总入口、训练技能和第三方来源清单。
 - 修正 Windows 上安装独立专项技能的路径处理。
 
+[v1.8.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v1.7.1...v1.8.0
 [v1.7.1]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v1.7.0...v1.7.1
 [v1.7.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v1.6.0...v1.7.0
 [v1.6.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v1.5.0...v1.6.0

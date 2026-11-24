@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="面向数学建模新手三人队的开源 Codex 技能库。拿到英文赛题后，按路线完成审题、求解、验算与论文。">
+  <meta name="description" content="2026 亚太赛三人队 11 月 26–29 日分工。从英文审题、建模和求解，到交叉验算与论文提交。">
   <meta name="theme-color" content="#111a30">
   <title>数学建模技能库 · 从赛题到论文</title>
   <link rel="stylesheet" href="site.css">
@@ -18,7 +18,8 @@
         <span>数学建模技能库</span>
       </a>
       <nav aria-label="主要导航">
-        <a href="#route">参赛路线</a>
+        <a href="#apmcm-plan">亚太赛分工</a>
+        <a href="#resources">常用资料</a>
         <a href="#skills">技能索引</a>
         <a href="#updates">更新日志</a>
       </nav>
@@ -29,40 +30,214 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">面向第一次参赛的三人队</p>
-          <h1 id="hero-title">把赛题做成<br><span>一篇可提交的论文</span></h1>
-          <p class="hero-summary">从英文原题开始，逐问明确交付物。用 Codex 协助建模和求解，由队友验算结果，再整理成论文与提交附件。</p>
+          <p class="eyebrow">2026 APMCM · 英文赛项</p>
+          <h1 id="hero-title">亚太赛<br><span>三人队四天分工</span></h1>
+          <p class="hero-summary">三人并行推进，每晚核对结果和接手人。</p>
           <div class="actions">
-            <a class="button button-primary" href="#start">开始使用</a>
+            <a class="button button-primary" href="#apmcm-plan">查看四天分工表</a>
             <a class="button button-outline" href="https://github.com/szy0387-beep/mcm-agent-skills/releases/latest">下载最新版</a>
           </div>
-          <p class="hero-meta">11 个核心 Skill <span aria-hidden="true">/</span> 17 个专项 Skill <span aria-hidden="true">/</span> MIT 开源</p>
         </div>
-        <figure class="example">
-          <figcaption>
-            <span class="example-label">可复跑短例</span>
-            <strong>两台机组的三小时调度</strong>
-          </figcaption>
-          <div class="chart" aria-label="调度总费用">
-            <div class="chart-row">
-              <span>原始需求</span>
-              <div class="chart-track" aria-hidden="true"><span class="chart-bar base"></span></div>
-              <strong>980</strong>
-            </div>
-            <div class="chart-row">
-              <span>每小时 +10 MW</span>
-              <div class="chart-track" aria-hidden="true"><span class="chart-bar raised"></span></div>
-              <strong>1120</strong>
-            </div>
-            <p class="chart-note">两条柱形均从 0 开始，数值为总费用。</p>
-          </div>
-          <div class="example-check">
-            <span>可行性检查</span>
-            <p>需求 141 MW，超过两台机组的总上限 140 MW。</p>
-          </div>
-          <a class="example-link" href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/examples/dispatch/README.md">打开英文题面与论文练习</a>
-        </figure>
+        <aside class="contest-preview" aria-labelledby="contest-preview-title">
+          <h2 id="contest-preview-title">11 月 26–29 日 · 队内安排</h2>
+          <ol>
+            <li><a href="#apmcm-nov-26"><time datetime="2026-11-26">26 日</time><span>定基线 · 跑通第一问</span></a></li>
+            <li><a href="#apmcm-nov-27"><time datetime="2026-11-27">27 日</time><span>出主结果 · 验算与图表初稿</span></a></li>
+            <li><a href="#apmcm-nov-28"><time datetime="2026-11-28">28 日</time><span>优化图表 · 完成英文初稿</span></a></li>
+            <li><a href="#apmcm-nov-29"><time datetime="2026-11-29">29 日</time><span>三人终审 · 队长晚间提交</span></a></li>
+          </ol>
+          <p>官方赛程至 <time datetime="2026-11-30T09:00:00+08:00">11 月 30 日 09:00</time>（北京时间）。</p>
+        </aside>
       </div>
+    </section>
+
+    <section class="container section" id="apmcm-plan" aria-labelledby="apmcm-plan-title">
+      <div class="section-head">
+        <div>
+          <h2 id="apmcm-plan-title">三人四日分工表</h2>
+          <p>每晚用 <code>CASE.md</code> 确认各问的结论、结果文件、核验状态和接手人。</p>
+        </div>
+        <a class="text-link" href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/docs/apmcm-2026.md">查看参赛计划与交接模板</a>
+      </div>
+      <table class="contest-table" role="table" aria-labelledby="apmcm-plan-title">
+        <thead role="rowgroup">
+          <tr role="row">
+            <th scope="col" role="columnheader">日期</th>
+            <th scope="col" role="columnheader">建模手</th>
+            <th scope="col" role="columnheader">编程手</th>
+            <th scope="col" role="columnheader">论文手</th>
+            <th scope="col" role="columnheader">晚间交付</th>
+          </tr>
+        </thead>
+        <tbody role="rowgroup">
+          <tr id="apmcm-nov-26" role="row">
+            <th scope="row" role="rowheader"><time datetime="2026-11-26">11 月 26 日</time><span>选题与定基线</span></th>
+            <td role="cell"><span class="mobile-cell-label" aria-hidden="true">建模手</span><span>三人对照英文题面选题后，拆小问，确定基线的变量、目标、约束和假设。</span></td>
+            <td role="cell"><span class="mobile-cell-label" aria-hidden="true">编程手</span><span>保留原始附件，核对字段和单位，把第一问跑通并留下命令。</span></td>
+            <td role="cell"><span class="mobile-cell-label" aria-hidden="true">论文手</span><span>查找相关论文，提取方法、适用条件和出处，同时搭好英文论文骨架。</span></td>
+            <td role="cell"><span class="mobile-cell-label" aria-hidden="true">晚间交付</span><span>小问任务表、基线说明、首份结果和文献表。</span></td>
+          </tr>
+          <tr id="apmcm-nov-27" role="row">
+            <th scope="row" role="rowheader"><time datetime="2026-11-27">11 月 27 日</time><span>出结果与验算</span></th>
+            <td role="cell"><span class="mobile-cell-label" aria-hidden="true">建模手</span><span>用小例子独立验算，逐问核对建模思路、关键约束和结果是否回答原题。</span></td>
+            <td role="cell"><span class="mobile-cell-label" aria-hidden="true">编程手</span><span>跑各问主结果，保存参数、结果表和复跑命令。给图表标出来源。</span></td>
+            <td role="cell"><span class="mobile-cell-label" aria-hidden="true">论文手</span><span>听队友逐问讲解，写已确认的英文方法段，与编程手完成图表初稿。</span></td>
+            <td role="cell"><span class="mobile-cell-label" aria-hidden="true">晚间交付</span><span>主结果表、独立验算记录、图表初稿和英文方法段。</span></td>
+          </tr>
+          <tr id="apmcm-nov-28" role="row">
+            <th scope="row" role="rowheader"><time datetime="2026-11-28">11 月 28 日</time><span>写稿与优化图表</span></th>
+            <td role="cell"><span class="mobile-cell-label" aria-hidden="true">建模手</span><span>写中文模型、假设与逐问结论，和编程手确认推导、数值和局限。</span></td>
+            <td role="cell"><span class="mobile-cell-label" aria-hidden="true">编程手</span><span>写中文实验与结果段，优化图表、单位和图例，从结果表复核每张主图。</span></td>
+            <td role="cell"><span class="mobile-cell-label" aria-hidden="true">论文手</span><span>把核验过的中文内容陆续译入英文稿，统一术语、图注与引用。</span></td>
+            <td role="cell"><span class="mobile-cell-label" aria-hidden="true">晚间交付</span><span>覆盖所有小问、带结果图表、可导出 PDF 的英文初稿。</span></td>
+          </tr>
+          <tr id="apmcm-nov-29" role="row">
+            <th scope="row" role="rowheader"><time datetime="2026-11-29">11 月 29 日</time><span>共审与提交</span></th>
+            <td role="cell"><span class="mobile-cell-label" aria-hidden="true">建模手</span><span>逐问对照英文原题，审公式、假设、推导、结论和适用范围。</span></td>
+            <td role="cell"><span class="mobile-cell-label" aria-hidden="true">编程手</span><span>从干净目录复跑，核对摘要、正文和图表里的数字，备好所需材料。</span></td>
+            <td role="cell"><span class="mobile-cell-label" aria-hidden="true">论文手</span><span>主持合稿，逐项核对英文、引用、匿名、命名及提交要求，导出最终 PDF。</span></td>
+            <td role="cell"><span class="mobile-cell-label" aria-hidden="true">晚间交付</span><span>三人确认同版，队长上传并核对平台提交状态。</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="contest-rules">
+        <p>核心模型、算法设计与求解、结果分析由队员独立完成。若使用 AI 辅助，当天记录用途、关键交互和人工修改，终审时核对披露文件。</p>
+        <div>
+          <a class="text-link" href="https://m.saikr.com/vse/apmcm26">组委会赛程</a>
+          <a class="text-link" href="https://m.saikr.com/contest/notice_detail/50212">AI 使用规定</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="container section" id="resources" aria-labelledby="resources-title">
+      <div class="section-head">
+        <div>
+          <h2 id="resources-title">常用资料</h2>
+          <p>开题、交接、查文献和写论文时，直接从这里找。</p>
+        </div>
+      </div>
+      <div class="resource-grid">
+        <article class="resource">
+          <h3>首赛实战手册与路线图</h3>
+          <p>从三人选题到提交确认，逐步对照每人的任务和验收标准。</p>
+          <div class="resource-links">
+            <a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/docs/team-playbook.md">首赛手册</a>
+            <a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/figures/first-contest-mindmap.md">完整路线图</a>
+          </div>
+          <details>
+            <summary>展开开题检查项</summary>
+            <ol>
+              <li>三人各读一遍英文题面，逐问写明要交付的结果，再一起定题。</li>
+              <li>定一个能手算的基准模型，把输入、约束和单位交给编程手。</li>
+              <li>队友核对结果和约束后，再把对应的数字、图表与局限写入论文。</li>
+            </ol>
+            <a href="#route">查看网页里的通用流程</a>
+          </details>
+        </article>
+        <article class="resource">
+          <h3>参赛安排与队内交接</h3>
+          <p>用同一份记录追踪每个小问的负责人、结果位置和复核状态。</p>
+          <div class="resource-links">
+            <a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/docs/apmcm-2026.md">亚太赛参赛计划</a>
+            <a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/templates/CASE.md">CASE 交接模板</a>
+          </div>
+          <details>
+            <summary>展开晚间交接清单</summary>
+            <ul>
+              <li>本问已确认的答案、单位，以及结果表的路径和对应行列。</li>
+              <li>可复跑的命令、核对人、核对方式和尚未解决的问题。</li>
+              <li>下一位负责人、明天的验收标准，以及依赖这份结果的其他小问。</li>
+            </ul>
+          </details>
+        </article>
+        <article class="resource">
+          <h3>参考文献怎么找、怎么用</h3>
+          <p>先确定哪句话需要出处，再查论文、数据或官方规则。</p>
+          <div class="resource-links">
+            <a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/docs/references-guide.md">参考文献指南</a>
+            <a href="https://github.com/szy0387-beep/mcm-agent-skills/tree/main/examples/references">LaTeX 引用示例</a>
+          </div>
+          <details>
+            <summary>展开找来源和核对引用的方法</summary>
+            <ul>
+              <li>方法查原论文或教材，数据查发布机构的原始数据页。</li>
+              <li>记下它实际支持的那句话、页码或表号，并核对作者、年份和 DOI。</li>
+              <li>在正文首次用到的地方引用，交稿前请队友对照原文和最终 PDF。</li>
+            </ul>
+          </details>
+        </article>
+        <article class="resource">
+          <h3>Codex 调用指令</h3>
+          <p>告诉助手当前做到哪一问、已有哪份文件、这一轮要交什么。</p>
+          <div class="resource-links">
+            <a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/docs/codex-prompts.md">分阶段指令模板</a>
+            <a href="#start">复制网页练习指令</a>
+          </div>
+          <details>
+            <summary>展开换队友或换聊天的交接格式</summary>
+            <p>发出 <code>CASE.md</code> 的路径、已核验的数值与单位、复跑命令和输出位置，再写清本轮目标和验收标准。</p>
+          </details>
+        </article>
+        <article class="resource">
+          <h3>英文题到论文的完整短例</h3>
+          <p>先手算一个排班，再用两份原始 CSV 复跑，最后核对英文稿里的数字。</p>
+          <div class="resource-links">
+            <a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/examples/dispatch/problem-en.md">英文题面</a>
+            <a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/examples/dispatch/README.md">完整练习与命令</a>
+          </div>
+          <details>
+            <summary>展开结果核对项</summary>
+            <p>基准总费用应为 980，每小时需求增加 10 MW 后应为 1120。第 2 小时需求改为 141 MW 时，应判断为不可行。</p>
+            <a href="#practice">查看网页示例图</a>
+          </details>
+        </article>
+        <article class="resource">
+          <h3>官方规则与交稿前检查</h3>
+          <p>最终 PDF、文件命名、支撑材料和 AI 披露按当届要求复核。</p>
+          <div class="resource-links">
+            <a href="https://apmcm.org/detail/2513?language=cn">当届参赛规则</a>
+            <a href="https://m.saikr.com/contest/notice_detail/50212">当届 AI 使用规定</a>
+          </div>
+          <details>
+            <summary>展开交稿前检查项</summary>
+            <ul>
+              <li>按原题逐问核对答案，检查摘要、正文与图表里的数字一致。</li>
+              <li>打开最终 PDF 检查匿名、引用、排版与附件，再核对平台提交状态。</li>
+            </ul>
+          </details>
+        </article>
+      </div>
+    </section>
+
+    <section class="container section practice-layout" id="practice" aria-labelledby="practice-title">
+      <div>
+        <h2 id="practice-title">赛前先跑一遍英文短例</h2>
+        <p>用三个小问练习从原始附件生成主结果、复核情景和写英文稿。</p>
+      </div>
+      <figure class="example">
+        <figcaption>
+          <span class="example-label">可复跑短例</span>
+          <strong>两台机组的三小时调度</strong>
+        </figcaption>
+        <div class="chart" role="group" aria-label="调度总费用">
+          <div class="chart-row">
+            <span>原始需求</span>
+            <div class="chart-track" aria-hidden="true"><span class="chart-bar base"></span></div>
+            <strong>980</strong>
+          </div>
+          <div class="chart-row">
+            <span>每小时 +10 MW</span>
+            <div class="chart-track" aria-hidden="true"><span class="chart-bar raised"></span></div>
+            <strong>1120</strong>
+          </div>
+          <p class="chart-note">两条柱形均从 0 开始，数值为总费用。</p>
+        </div>
+        <div class="example-check">
+          <span>可行性检查</span>
+          <p>需求 141 MW，超过两台机组的总上限 140 MW。</p>
+        </div>
+        <a class="example-link" href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/examples/dispatch/README.md">打开英文题面与论文练习</a>
+      </figure>
     </section>
 
     <section class="container section" id="route" aria-labelledby="route-title">
@@ -127,7 +302,7 @@
       <div class="section-head">
         <div>
           <h2 id="skills-title">按任务找 Skill</h2>
-          <p>从总入口开始，或直接调用当前小问需要的技能。</p>
+          <p>11 个核心 Skill 和 17 个专项 Skill 均随包提供。</p>
         </div>
         <a class="text-link" href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-skill-router/references/specialist-skills.md">查看 17 个专项 Skill</a>
       </div>
