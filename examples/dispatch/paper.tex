@@ -1,0 +1,77 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\input{comparison.tex}
+
+\title{Three-Hour Generator Scheduling}
+\author{Synthetic training example}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We enumerate feasible integer generator outputs for three independent hours.
+The base schedule costs \BaseCost{} cost units. Raising demand by 10 MW in
+each hour increases the cost to \ScenarioCost{}. A demand of 141 MW in hour 2
+exceeds available capacity.
+\end{abstract}
+
+\section{Data and model}
+The training case provides generator limits and prices in \texttt{units.csv}
+and hourly demand in \texttt{demand.csv}. For each unit \(i\) and hour \(t\),
+output \(p_{i,t}\) is either zero or an integer in the inclusive range
+\([\ell_i,u_i]\) MW. The cost is
+\(f_i\mathbf{1}_{\{p_{i,t}>0\}}+c_i p_{i,t}\).
+We minimize the sum of both units' costs subject to
+\(p_{\mathrm{A},t}+p_{\mathrm{B},t}=d_t\). With independent hours, we enumerate
+unit A's allowed outputs, compute B's residual output, check the bounds and
+select the cheapest feasible pair.
+
+\section{Base schedule}
+Table~\ref{tab:base} gives the result for Question 1. The total cost is
+\BaseCost{} cost units.
+
+\begin{table}[ht]
+\centering
+\caption{Minimum-cost schedule under the original demand.}
+\label{tab:base}
+\input{base-schedule.tex}
+\end{table}
+
+\section{Demand scenario}
+For Question 2, Table~\ref{tab:scenario} gives the updated schedule.
+The total cost increases by \CostIncrease{} cost units
+(Figure~\ref{fig:costs}).
+
+\begin{table}[ht]
+\centering
+\caption{Minimum-cost schedule with demand raised by 10 MW in each hour.}
+\label{tab:scenario}
+\input{scenario-schedule.tex}
+\end{table}
+
+\begin{figure}[ht]
+\centering
+\begin{tabular}{lp{48mm}r}
+Base & {\color{blue!65!black}\rule{\BaseBar}{2.5mm}} & \BaseCost \\
++10 MW per hour & {\color{teal!65!black}\rule{\ScenarioBar}{2.5mm}} & \ScenarioCost
+\end{tabular}
+\caption{Total cost in both scenarios, starting at zero (cost units).}
+\label{fig:costs}
+\end{figure}
+
+\section{Independent checks and scope}
+When demand is 95 MW, both units must operate. A costs less per MW, so its
+output is 80 MW and B supplies the remaining 15 MW. The hourly cost is
+\(60+4(80)+30+6(15)=500\) cost units. A putative 85 MW from A and 10 MW from
+B meets demand but violates A's upper limit.
+
+For Question 3, the two maximum outputs sum to \(80+60=140\) MW.
+The 141 MW demand is therefore infeasible, and the script rejects that input.
+The results apply to the stated independent hours and integer MW resolution.
+Inter-hour ramping and start-up constraints require a different model.
+
+\end{document}

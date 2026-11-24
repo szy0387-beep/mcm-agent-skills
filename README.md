@@ -14,6 +14,8 @@
 
 第一次拿到英文题，可以先说「用 `$mcm-problem-translate` 带我们读第一问。标出英文原文的位置，翻译约束，并列出输入、输出和本问要交什么」。找方法、数据出处或整理论文引用时，用 `$mcm-citation`。
 
+已有模型、代码、结果表或论文时，可以从对应步骤继续。[可复制的 Codex 调用指令](docs/codex-prompts.md)
+
 想自己推模型时，可以说「用 `$mcm-team-drill` 带我做第一问。每次给我一步，等我作答后再验算」。想先选方案时，可以说「我已有结果表，帮我推荐出图和写论文的技能组合」。[新题协作流程](.agents/skills/mcm-skill-router/references/new-problem.md)
 
 ### 我该准备什么
@@ -30,7 +32,7 @@
 python .agents/skills/mcm-fast/scripts/dispatch.py examples/dispatch/units.csv examples/dispatch/demand.csv --output outputs/dispatch
 ```
 
-输出总费用应为 **980**。[题目、手算对照与迁移验收](examples/dispatch/README.md)
+输出总费用应为 **980**。还可以用同一例题从英文原题走一遍，得到可在 Overleaf 打开的英文稿。[从英文题到论文的完整短例](examples/dispatch/README.md)
 
 ## 技能一览
 
