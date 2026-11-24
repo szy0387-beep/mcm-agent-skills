@@ -2,7 +2,7 @@
 
 **给第一次参加数学建模竞赛的三人队。** 用自己的题面和附件开题，从读题、建模和求解走到出图、写论文与交叉验算。也支持个人陪练和 AI 自主训练。
 
-[项目主页](https://szy0387-beep.github.io/mcm-agent-skills/) · [实战百科](HANDBOOK.md) · [本次亚太赛分工](#本次亚太赛三人四日分工) · [常用资料](#常用资料) · [下载最新版](https://github.com/szy0387-beep/mcm-agent-skills/releases/latest) · [更新日志](CHANGELOG.md)
+[项目主页](https://szy0387-beep.github.io/mcm-agent-skills/) · [实战百科](HANDBOOK.md) · [本次亚太赛分工](#本次亚太赛三人四日分工) · [常用资料](#常用资料) · [下载完整 ZIP](https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip) · [发布说明](https://github.com/szy0387-beep/mcm-agent-skills/releases/latest) · [更新日志](CHANGELOG.md)
 
 ## 数学建模实战百科
 
@@ -40,7 +40,7 @@
 
 ## 快速开始
 
-1. 在[发布页](https://github.com/szy0387-beep/mcm-agent-skills/releases/latest)下载 **Source code (zip)** 并解压。用 Codex 打开包含本页和 `AGENTS.md` 的文件夹。**11 个核心 Skill 和 17 个专项 Skill 均已随包提供。**
+1. [下载完整 ZIP](https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip)并解压。用 Codex 打开包含本页和 `AGENTS.md` 的文件夹。**11 个核心 Skill 和 17 个专项 Skill 均已随包提供。**
 2. 把题面和附件复制到该文件夹下的 `cases/我的题/inputs/`。已有代码、结果或论文时告诉 Codex 位置，方便从当前步骤接手。也可以在 Codex 中附上文件并说明它们对应哪一问。
 3. 在这个项目的聊天里输入下面的一句。也可以点名 `$mcm-skill-router`。
 
