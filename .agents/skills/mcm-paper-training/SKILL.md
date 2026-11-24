@@ -12,4 +12,6 @@ description: 在数学建模备赛中自主训练从已验证的模型和结果�
 
 交付 LaTeX 源码包时，从该包解压到空目录独立编译，确认主文件、数值命令、图、样式与书目随包。保留一个由表格重算的对照数，并把估计情景与未通过的约束在摘要、图表和结论里说清。[终稿复核和源码包检查](../../../docs/final-delivery.md)
 
+正式交稿前用 [ai-usage-disclosure](../ai-usage-disclosure/SKILL.md) 核对数据、文献、数值来源和 AI 披露。证据不足的说法须在锁定终稿前补证、删除或缩小范围。
+
 需要模拟评阅或对照同题稿时，使用 [mcm-paper-self-review](../mcm-paper-self-review/SKILL.md)。英文亚太赛起稿可用[可编译模板](../../../templates/apmcm-paper/main.tex)，然后按当届规则调整。

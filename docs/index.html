@@ -101,8 +101,9 @@
         </tbody>
       </table>
       <div class="contest-rules">
-        <p>核心模型、算法设计与求解、结果分析由队员独立完成。若使用 AI 辅助，当天记录用途、关键交互和人工修改，终审时核对披露文件。</p>
+        <p>核心模型、算法设计与求解、结果分析由队员独立完成。禁止伪造、篡改数据、文献和数值。使用 AI 时当天登记，交稿按当届规定核对披露材料。</p>
         <div>
+          <a class="text-link" href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/docs/ai-usage-disclosure.md">AI 披露与学术诚信</a>
           <a class="text-link" href="https://m.saikr.com/vse/apmcm26">组委会赛程</a>
           <a class="text-link" href="https://m.saikr.com/contest/notice_detail/50212">AI 使用规定</a>
         </div>
@@ -232,15 +233,16 @@
         </article>
         <article class="resource">
           <h3>官方规则与交稿前检查</h3>
-          <p>最终 PDF、文件命名、支撑材料和 AI 披露按当届要求复核。</p>
+          <p>从原始数据、文献和复算结果核对终稿，按当届要求准备披露。</p>
           <div class="resource-links">
             <a href="https://apmcm.org/detail/2513?language=cn">当届参赛规则</a>
             <a href="https://m.saikr.com/contest/notice_detail/50212">当届 AI 使用规定</a>
+            <a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/templates/AI_USAGE_DISCLOSURE.md">披露填写模板</a>
           </div>
           <details>
             <summary>展开交稿前检查项</summary>
             <ul>
-              <li>按原题逐问核对答案，检查摘要、正文与图表里的数字一致。</li>
+              <li>按原题逐问核对答案，关键数值回查计算结果，数据和引文回查原始出处。</li>
               <li>打开最终 PDF 检查匿名、引用、排版与附件，再核对平台提交状态。</li>
             </ul>
           </details>
@@ -320,10 +322,11 @@
         <div>
           <h2 id="start-title">打开 Codex 开题</h2>
           <ol class="setup">
-            <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip">下载完整 ZIP</a>并解压。压缩包包括 34 个 Skill、实战百科、三人分工和练习。</li>
+            <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip">下载完整 ZIP</a>并解压。压缩包包括 35 个 Skill、实战百科、三人分工和练习。</li>
             <li>用 Codex 打开包含 <code>AGENTS.md</code> 的文件夹。</li>
             <li>把题面和附件放进 <code>cases/我的题/inputs/</code>，再发送练习指令。</li>
           </ol>
+          <a class="text-link" href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/docs/codex-prompts.md#正式比赛">正式比赛指令与披露步骤</a>
         </div>
         <div class="prompt-panel">
           <div class="prompt-header">
@@ -341,7 +344,7 @@
       <div class="section-head">
         <div>
           <h2 id="skills-title">按任务找 Skill</h2>
-          <p>13 个核心 Skill 和 21 个专项 Skill 均随包提供。<a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/docs/visualization-guide.md">按图的用途选可视化 Skill</a>。</p>
+          <p>14 个核心 Skill 和 21 个专项 Skill 均随包提供。<a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/docs/visualization-guide.md">按图的用途选可视化 Skill</a>。</p>
         </div>
         <a class="text-link" href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-skill-router/references/specialist-skills.md">查看 21 个专项 Skill</a>
       </div>
@@ -369,6 +372,7 @@
             <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-team-drill/SKILL.md">三人合练与交接</a><span>mcm-team-drill</span></li>
             <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-paper-training/SKILL.md">论文写作与编译</a><span>mcm-paper-training</span></li>
             <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-citation/SKILL.md">文献检索与引用</a><span>mcm-citation</span></li>
+            <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/ai-usage-disclosure/SKILL.md">AI 披露与学术诚信</a><span>ai-usage-disclosure</span></li>
             <li><a href="https://github.com/szy0387-beep/mcm-agent-skills/blob/main/.agents/skills/mcm-training-review/SKILL.md">独立验算与复盘</a><span>mcm-training-review</span></li>
           </ul>
         </article>

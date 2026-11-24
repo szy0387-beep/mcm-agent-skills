@@ -22,4 +22,4 @@
 
 ## 比赛时从这里找工具
 
-先看当届规则。已有程序和结果时，按小问核对当前验收范围，再选用工具。[亚太赛四天安排](docs/apmcm-2026.md) · [论文起稿模板](templates/apmcm-paper/README.md) · [可复制的 Codex 指令](docs/codex-prompts.md) · [34 个技能入口](README.md#技能一览)
+先看当届规则。已有程序和结果时，按小问核对当前验收范围，再选用工具。[亚太赛四天安排](docs/apmcm-2026.md) · [披露与学术诚信](docs/ai-usage-disclosure.md) · [论文起稿模板](templates/apmcm-paper/README.md) · [可复制的 Codex 指令](docs/codex-prompts.md) · [35 个技能入口](README.md#技能一览)

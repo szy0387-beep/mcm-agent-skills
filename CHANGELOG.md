@@ -2,6 +2,11 @@
 
 按 Git 标签记录面向组员的变化。日期使用北京时间。[GitHub 发布页](https://github.com/szy0387-beep/mcm-agent-skills/releases)
 
+## [v2.3.1] · 2026-11-24
+
+- 新增 `ai-usage-disclosure` Skill、AI 使用披露指南和独立填写模板，标明当届亚太赛使用与未使用 AI 的两种交稿方式。
+- 将禁止伪造数据、文献和数值的声明纳入开题和终稿复核，要求关键结果与引用回查原始证据。网页首页增加正式比赛指令与披露入口。
+
 ## [v2.3.0] · 2026-11-24
 
 - 新增论文自审和方案对照两个核心 Skill，随包技能达到 34 个。补上七项评阅原则、自审表及宇树同题作品的对照方法。
@@ -77,6 +82,7 @@
 - 首次标记发布，提供数学建模总入口、训练技能和第三方来源清单。
 - 修正 Windows 上安装独立专项技能的路径处理。
 
+[v2.3.1]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.3.0...v2.3.1
 [v2.3.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.2.0...v2.3.0
 [v2.2.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.1.0...v2.2.0
 [v2.1.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v2.0.0...v2.1.0

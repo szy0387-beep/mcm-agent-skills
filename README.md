@@ -4,6 +4,8 @@
 
 [项目主页](https://szy0387-beep.github.io/mcm-agent-skills/) · [实战百科](HANDBOOK.md) · [本次亚太赛分工](#本次亚太赛三人四日分工) · [常用资料](#常用资料) · [下载完整 ZIP](https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip) · [发布说明](https://github.com/szy0387-beep/mcm-agent-skills/releases/latest) · [更新日志](CHANGELOG.md)
 
+**正式比赛先看披露要求。** 禁止伪造、篡改数据、文献和数值，关键结论须能回查原始证据。使用 AI 时保留实际记录并按当届规则披露。 [正式比赛指令](docs/codex-prompts.md#正式比赛) · [披露与学术诚信指南](docs/ai-usage-disclosure.md) · [披露模板](templates/AI_USAGE_DISCLOSURE.md)
+
 ## 数学建模实战百科
 
 | 现在要做什么 | 打开这一章 |
@@ -43,7 +45,7 @@
 
 ## 快速开始
 
-1. [下载完整 ZIP](https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip)并解压。用 Codex 打开包含本页和 `AGENTS.md` 的文件夹。**13 个核心 Skill 和 21 个专项 Skill 均已随包提供。**
+1. [下载完整 ZIP](https://github.com/szy0387-beep/mcm-agent-skills/archive/refs/heads/main.zip)并解压。用 Codex 打开包含本页和 `AGENTS.md` 的文件夹。**14 个核心 Skill 和 21 个专项 Skill 均已随包提供。**
 2. 把题面和附件复制到该文件夹下的 `cases/我的题/inputs/`。已有代码、结果或论文时告诉 Codex 位置，方便从当前步骤接手。也可以在 Codex 中附上文件并说明它们对应哪一问。
 3. 在这个项目的聊天里输入下面的一句。也可以点名 `$mcm-skill-router`。
 
@@ -85,6 +87,7 @@ python .agents/skills/mcm-fast/scripts/dispatch.py examples/dispatch/units.csv e
 | [mcm-paper-self-review](.agents/skills/mcm-paper-self-review/SKILL.md) | 逐问查漏、核对摘要和评阅证据 |
 | [mcm-model-comparison](.agents/skills/mcm-model-comparison/SKILL.md) | 统一约束、分母和指标后比较方案 |
 | [mcm-citation](.agents/skills/mcm-citation/SKILL.md) | 找出处、插入正文引用、整理书目和终审 |
+| [ai-usage-disclosure](.agents/skills/ai-usage-disclosure/SKILL.md) | 记录 AI 辅助、准备披露材料、核实数据、文献和关键数值 |
 | [mcm-training-review](.agents/skills/mcm-training-review/SKILL.md) | 独立复算、单错反例、迁移与复盘 |
 | [mcm-fast](.agents/skills/mcm-fast/SKILL.md) | 复跑本包的调度示例和可复用的月度预测脚本 |
 | [mcm-team-drill](.agents/skills/mcm-team-drill/SKILL.md) | 个人陪练与三人队交接 |

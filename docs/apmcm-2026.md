@@ -46,6 +46,6 @@
 
 ## 比赛中怎样使用这个库
 
-组委会要求核心模型构建、算法设计与求解、结果分析由参赛队独立完成。确需使用 AI 辅助时，组内当天记录工具与版本、用途、关键提示与回复、采纳内容及人工修改。29 日对照官方要求核查正文标注、参考文献中的工具条目及随交的 PDF 说明。未使用 AI 的队伍按规定在参考文献后声明。[当届 AI 使用规定](https://m.saikr.com/contest/notice_detail/50212)
+组委会要求核心模型构建、算法设计与求解、结果分析由参赛队独立完成。使用 AI 时当天记录，29 日核对正文标注、参考文献工具条目及独立的 `AI工具使用详情.pdf`。全队核实未使用 AI 后按规定在参考文献后声明。三人共审时分别回查原始数据、文献原文与数值证据。 [披露与学术诚信指南](ai-usage-disclosure.md) · [披露模板](../templates/AI_USAGE_DISCLOSURE.md) · [当届 AI 使用规定](https://m.saikr.com/contest/notice_detail/50212)
 
 [通用首赛手册](team-playbook.md) · [参考文献指南](references-guide.md) · [英文题到论文短例](../examples/dispatch/README.md)
