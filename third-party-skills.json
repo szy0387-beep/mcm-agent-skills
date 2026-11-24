@@ -96,7 +96,8 @@
         {
           "name": "mip-solver-and-solution-audit",
           "path": "tasks/exam-block-sequencing/environment/skills/mip-solver-and-solution-audit",
-          "license": "Apache-2.0"
+          "license": "Apache-2.0",
+          "single_file": true
         }
       ]
     },

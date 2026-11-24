@@ -4,8 +4,10 @@ import argparse
 import json
 import os
 from pathlib import Path
+import re
 import subprocess
 import sys
+from urllib.request import Request, urlopen
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -26,6 +28,21 @@ def set_explicit_policy(skill_dir):
     separator = "\n\n" if existing.strip() else ""
     metadata.write_text(existing.rstrip() + separator + "policy:\n  allow_implicit_invocation: false\n",
                         encoding="utf-8")
+
+
+def install_single_file(source, skill, target):
+    # Avoid extracting the entire benchmark archive for a standalone SKILL.md.
+    url = (f"https://raw.githubusercontent.com/{source['repo']}/{source['ref']}/"
+           f"{skill['path']}/SKILL.md")
+    with urlopen(Request(url, headers={"User-Agent": "mcm-agent-skills"}), timeout=20) as response:
+        data = response.read()
+    name = re.search(r"^name:\s*['\"]?([a-z0-9-]+)", data.decode("utf-8-sig"), re.M)
+    if not name or name[1] != skill["name"]:
+        raise ValueError(f"Unexpected skill metadata at {url}")
+    target.mkdir()
+    (target / "SKILL.md").write_bytes(data)
+    set_explicit_policy(target)
+    print(f"Installed {skill['name']} to {target}", flush=True)
 
 
 def main():
@@ -53,10 +70,12 @@ def main():
     unknown = set(args.names) - choices
     if unknown:
         parser.error(f"unknown skill(s): {', '.join(sorted(unknown))}")
-    if not args.installer.is_file():
+    requested = choices if args.all else set(args.names)
+    needs_installer = any(skill["name"] in requested and not skill.get("single_file")
+                          for source in sources for skill in source["skills"])
+    if needs_installer and not args.installer.is_file():
         parser.error("Codex Skill Installer was not found. Use --installer to give its path.")
 
-    requested = choices if args.all else set(args.names)
     for source in sources:
         paths = []
         pending = []
@@ -69,6 +88,9 @@ def main():
                 if not (target / "SKILL.md").is_file():
                     parser.error(f"remove or rename the incomplete destination: {target}")
                 print(f"{name}: existing skill kept", flush=True)
+                continue
+            if skill.get("single_file"):
+                install_single_file(source, skill, target)
                 continue
             paths.append(skill["path"])
             pending.append(target)
