@@ -2,6 +2,13 @@
 
 按 Git 标签记录面向组员的变化。日期使用北京时间。[GitHub 发布页](https://github.com/szy0387-beep/mcm-agent-skills/releases)
 
+## [v2.0.0] · 2026-11-24
+
+- 新增数学建模实战百科，覆盖英文审题、建模选型、资料查证、实现与仿真、出图、写稿和终审。
+- 新增宇树机器人赛题四问复盘，说明每个岗位怎么分析、实现、核对并写出结论。
+- 总入口按产物查方法和分工，CASE 模板记录模型决策、跨问产物版本和验收范围。
+- 在首页加入实战百科入口，并为英文调度练习提供可照填的三人交接示例。
+
 ## [v1.8.0] · 2026-11-24
 
 - 新增 2026 亚太赛三人四日分工表，主页首屏可直达 26–29 日各位队员的任务和晚间交付。
@@ -53,6 +60,7 @@
 - 首次标记发布，提供数学建模总入口、训练技能和第三方来源清单。
 - 修正 Windows 上安装独立专项技能的路径处理。
 
+[v2.0.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v1.8.0...v2.0.0
 [v1.8.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v1.7.1...v1.8.0
 [v1.7.1]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v1.7.0...v1.7.1
 [v1.7.0]: https://github.com/szy0387-beep/mcm-agent-skills/compare/v1.6.0...v1.7.0

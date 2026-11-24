@@ -2,7 +2,16 @@
 
 **给第一次参加数学建模竞赛的三人队。** 用自己的题面和附件开题，从读题、建模和求解走到出图、写论文与交叉验算。也支持个人陪练和 AI 自主训练。
 
-[项目主页](https://szy0387-beep.github.io/mcm-agent-skills/) · [本次亚太赛分工](#本次亚太赛三人四日分工) · [常用资料](#常用资料) · [下载最新版](https://github.com/szy0387-beep/mcm-agent-skills/releases/latest) · [更新日志](CHANGELOG.md)
+[项目主页](https://szy0387-beep.github.io/mcm-agent-skills/) · [实战百科](HANDBOOK.md) · [本次亚太赛分工](#本次亚太赛三人四日分工) · [常用资料](#常用资料) · [下载最新版](https://github.com/szy0387-beep/mcm-agent-skills/releases/latest) · [更新日志](CHANGELOG.md)
+
+## 数学建模实战百科
+
+| 现在要做什么 | 打开这一章 |
+| --- | --- |
+| 拿到题目，想和队友从读题走到提交 | [全流程与三人分工](docs/end-to-end.md) |
+| 知道要交什么，想选模型、算法和验证方式 | [常见题型与方法](docs/modeling-methods.md) |
+| 想看一套真实案例如何分析、运行、写进论文 | [宇树机器人赛题全流程复盘](docs/robotics-case.md) |
+| 想亲手把英文题做成一篇可编译的练习稿 | [英文调度完整短例](examples/dispatch/README.md) |
 
 ## 本次亚太赛三人四日分工
 
